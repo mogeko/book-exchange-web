@@ -1,0 +1,32 @@
+name: Test
+on:
+  pull_request:
+  push:
+    branches-ignore:    
+      - master
+
+jobs:
+  test:
+    name: Test Next.js App
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Run test
+        run: pnpm run test.ci
