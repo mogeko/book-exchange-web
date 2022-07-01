@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card renders a Card with a title, a description and a link 1`] = `
+<div>
+  <a
+    class="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
+    href="https://nextjs.org"
+  >
+    <h2
+      class="m-0 mb-4 text-[1.5rem]"
+    >
+      Title
+    </h2>
+    <p
+      class="m-0 text-xl leading-[1.5]"
+    >
+      Description
+    </p>
+    object
+  </a>
+</div>
+`;
+
+exports[`Card snapshot an empty Card 1`] = `
+<div>
+  <a
+    class="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
+  >
+    undefined
+  </a>
+</div>
+`;
