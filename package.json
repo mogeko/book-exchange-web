@@ -7,8 +7,10 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --watch",
+    "test.cov": "jest --coverage",
+    "test.ci": "jest --ci --coverage",
     "lint": "next lint",
-    "format": "next lint --fix"
+    "lint.fix": "next lint --fix"
   },
   "dependencies": {
     "next": "12.2.0",
