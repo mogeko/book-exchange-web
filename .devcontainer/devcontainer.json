@@ -33,6 +33,9 @@
 					"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
 					"jest.config.js": "jest.*.ts, jest.*.js",
 					"next.config.js": "next-env.d.ts"
+				},
+				"files.associations": {
+					"*.css": "tailwindcss"
 				}
 			}
 		}
