@@ -48,6 +48,7 @@ exports[`Home renders homepage unchanged 1`] = `
           >
             Find in-depth information about Next.js features and API.
           </p>
+          object
         </a>
         <a
           class="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
@@ -63,6 +64,7 @@ exports[`Home renders homepage unchanged 1`] = `
           >
             Learn about Next.js in an interactive course with quizzes!
           </p>
+          object
         </a>
         <a
           class="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
@@ -78,6 +80,7 @@ exports[`Home renders homepage unchanged 1`] = `
           >
             Discover and deploy boilerplate example Next.js projects.
           </p>
+          object
         </a>
         <a
           class="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
@@ -93,6 +96,7 @@ exports[`Home renders homepage unchanged 1`] = `
           >
             Instantly deploy your Next.js site to a public URL with Vercel.
           </p>
+          object
         </a>
       </div>
     </main>

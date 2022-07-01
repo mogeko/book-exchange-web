@@ -1,23 +1,8 @@
 import type { NextPage } from "next";
+import Card from "@/components/card";
 import Head from "next/head";
 import Image from "next/image";
 import React from "react";
-
-const Card: React.FC<{
-  href?: string;
-  title?: string;
-  children: React.ReactNode;
-}> = ({ href, title, children }) => {
-  return (
-    <a
-      className="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
-      href={href}
-    >
-      <h2 className="m-0 mb-4 text-[1.5rem]">{title}</h2>
-      <p className="m-0 text-xl leading-[1.5]">{children}</p>
-    </a>
-  );
-};
 
 const Home: NextPage = () => {
   return (
@@ -47,26 +32,32 @@ const Home: NextPage = () => {
         </p>
 
         <div className="flex-col w-full flex items-center justify-center flex-wrap sm:flex-row sm:max-w-[800px]">
-          <Card href="https://nextjs.org/docs" title="Documentation &rarr;">
-            Find in-depth information about Next.js features and API.
+          <Card href="https://nextjs.org/docs">
+            <Card.Title>Documentation &rarr;</Card.Title>
+            <Card.Desc>
+              Find in-depth information about Next.js features and API.
+            </Card.Desc>
           </Card>
 
-          <Card href="https://nextjs.org/learn" title="Learn &rarr;">
-            Learn about Next.js in an interactive course with quizzes!
+          <Card href="https://nextjs.org/learn">
+            <Card.Title>Learn &rarr;</Card.Title>
+            <Card.Desc>
+              Learn about Next.js in an interactive course with quizzes!
+            </Card.Desc>
           </Card>
 
-          <Card
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            title="Examples &rarr;"
-          >
-            Discover and deploy boilerplate example Next.js projects.
+          <Card href="https://github.com/vercel/next.js/tree/canary/examples">
+            <Card.Title>Examples &rarr;</Card.Title>
+            <Card.Desc>
+              Discover and deploy boilerplate example Next.js projects.
+            </Card.Desc>
           </Card>
 
-          <Card
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            title="Deploy &rarr;"
-          >
-            Instantly deploy your Next.js site to a public URL with Vercel.
+          <Card href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
+            <Card.Title>Deploy &rarr;</Card.Title>
+            <Card.Desc>
+              Instantly deploy your Next.js site to a public URL with Vercel.
+            </Card.Desc>
           </Card>
         </div>
       </main>

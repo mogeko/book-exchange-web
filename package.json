@@ -8,6 +8,7 @@
     "start": "next start",
     "test": "jest --watch",
     "test.cov": "jest --coverage",
+    "test.detail": "jest --verbose --watch",
     "test.ci": "jest --ci --coverage",
     "lint": "next lint",
     "lint.fix": "next lint --fix"
