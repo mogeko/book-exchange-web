@@ -3,85 +3,104 @@
 exports[`Home renders homepage unchanged 1`] = `
 <div>
   <div
-    class="container"
+    class="py-0 px-8"
   >
     <main
-      class="main"
+      class="min-h-screen py-16 px-0 flex flex-auto flex-col justify-center items-center"
     >
       <h1
-        class="title"
+        class="m-0 leading-[1.15rem] text-[4rem]"
       >
-        Welcome to 
+        Welcome to
+         
         <a
+          class="text-[#0070f3] no-underline hover:underline focus:underline active:underline"
           href="https://nextjs.org"
         >
           Next.js!
         </a>
       </h1>
       <p
-        class="description"
+        class="text-center my-16 mx-0 leading-normal text-2xl"
       >
         Get started by editing
          
         <code
-          class="code"
+          class="bg-[#fafafa] rounded-[5px] p-3 text-[1.1rem] font-code"
         >
           pages/index.tsx
         </code>
       </p>
       <div
-        class="grid"
+        class="flex-col w-full flex items-center justify-center flex-wrap sm:flex-row sm:max-w-[800px]"
       >
         <a
-          class="card"
+          class="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
           href="https://nextjs.org/docs"
         >
-          <h2>
+          <h2
+            class="m-0 mb-4 text-[1.5rem]"
+          >
             Documentation →
           </h2>
-          <p>
+          <p
+            class="m-0 text-xl leading-[1.5]"
+          >
             Find in-depth information about Next.js features and API.
           </p>
         </a>
         <a
-          class="card"
+          class="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
           href="https://nextjs.org/learn"
         >
-          <h2>
+          <h2
+            class="m-0 mb-4 text-[1.5rem]"
+          >
             Learn →
           </h2>
-          <p>
+          <p
+            class="m-0 text-xl leading-[1.5]"
+          >
             Learn about Next.js in an interactive course with quizzes!
           </p>
         </a>
         <a
-          class="card"
+          class="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
           href="https://github.com/vercel/next.js/tree/canary/examples"
         >
-          <h2>
+          <h2
+            class="m-0 mb-4 text-[1.5rem]"
+          >
             Examples →
           </h2>
-          <p>
+          <p
+            class="m-0 text-xl leading-[1.5]"
+          >
             Discover and deploy boilerplate example Next.js projects.
           </p>
         </a>
         <a
-          class="card"
+          class="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
         >
-          <h2>
+          <h2
+            class="m-0 mb-4 text-[1.5rem]"
+          >
             Deploy →
           </h2>
-          <p>
+          <p
+            class="m-0 text-xl leading-[1.5]"
+          >
             Instantly deploy your Next.js site to a public URL with Vercel.
           </p>
         </a>
       </div>
     </main>
     <footer
-      class="footer"
+      class="flex flex-auto py-8 px-0 justify-center items-center border-t border-solid border-[#eaeaea]"
     >
       <a
+        class="flex justify-center items-center flex-grow"
         href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
         rel="noopener noreferrer"
         target="_blank"
@@ -89,7 +108,7 @@ exports[`Home renders homepage unchanged 1`] = `
         Powered by
          
         <span
-          class="logo"
+          class="h-[1em] ml-2"
         >
           <span
             style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
