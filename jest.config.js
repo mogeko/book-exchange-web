@@ -9,6 +9,13 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   moduleDirectories: ["node_modules", "<rootDir>/"],
+  moduleNameMapper: {
+    // Handle module aliases (this will be automatically configured for you soon)
+    "^@/components/(.*)$": "<rootDir>/src/components/$1",
+    "^@/pages/(.*)$": "<rootDir>/src/pages/$1",
+    "^@/lib/(.*)$": "<rootDir>/src/lib/$1",
+    "^@/styles/(.*)$": "<rootDir>/src/styles/$1",
+  },
   testEnvironment: "jest-environment-jsdom",
 };
 
