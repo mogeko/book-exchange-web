@@ -3,9 +3,12 @@ lockfileVersion: 5.4
 specifiers:
   '@testing-library/jest-dom': ^5.16.4
   '@testing-library/react': ^13.3.0
+  '@testing-library/user-event': ^14.2.1
+  '@types/jest': ^28.1.4
   '@types/node': 18.0.0
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
+  '@types/testing-library__jest-dom': ^5.14.5
   eslint: 8.18.0
   eslint-config-next: 12.2.0
   eslint-config-prettier: ^8.5.0
@@ -26,9 +29,12 @@ dependencies:
 devDependencies:
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
+  '@testing-library/user-event': 14.2.1_ihvo3xlg2d6kwqju3os3zitn3y
+  '@types/jest': 28.1.4
   '@types/node': 18.0.0
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
+  '@types/testing-library__jest-dom': 5.14.5
   eslint: 8.18.0
   eslint-config-next: 12.2.0_b5e7v2qnwxfo6hmiq56u52mz3e
   eslint-config-prettier: 8.5.0_eslint@8.18.0
@@ -866,6 +872,15 @@ packages:
       '@types/react-dom': 18.0.5
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: true
+
+  /@testing-library/user-event/14.2.1_ihvo3xlg2d6kwqju3os3zitn3y:
+    resolution: {integrity: sha512-HOr1QiODrq+0j9lKU5i10y9TbhxMBMRMGimNx10asdmau9cb8Xb1Vyg0GvTwyIL2ziQyh2kAloOtAQFBQVuecA==}
+    engines: {node: '>=12', npm: '>=6'}
+    peerDependencies:
+      '@testing-library/dom': '>=7.21.4'
+    dependencies:
+      '@testing-library/dom': 8.14.0
     dev: true
 
   /@tootallnate/once/2.0.0:
