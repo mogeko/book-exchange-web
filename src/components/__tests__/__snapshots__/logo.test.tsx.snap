@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo snapshot a text logo 1`] = `
+<div>
+  <div
+    class="flex justify-start"
+  >
+    <a
+      class="btn btn-ghost normal-case"
+      href="/"
+    >
+      <span
+        class="sr-only"
+      >
+        Test Logo
+      </span>
+      <h1
+        class="text-xl font-bold text-primary-content"
+      >
+        Test Logo
+      </h1>
+    </a>
+  </div>
+</div>
+`;
