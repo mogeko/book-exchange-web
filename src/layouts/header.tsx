@@ -2,25 +2,37 @@ import Search from "@/components/search";
 import Logo from "@/components/logo";
 import { HiMenu } from "react-icons/hi";
 import Link from "next/link";
+import User from "@/components/user";
 
-const menus = [
+const NavMenus = [
   { name: "My library", href: "#" },
   { name: "Ranking", href: "#" },
   { name: "Quote", href: "#" },
   { name: "I'm Feeling Lucky", href: "#" },
 ];
 
+const userMenus = [
+  { name: "Profile", href: "#", badge: "New" },
+  { name: "Settings", href: "#" },
+  { name: "Logout", href: "#" },
+];
+
 const TopNav: React.FC<TopNavProps> = ({ data }) => {
   return (
-    <nav className="hidden flex-1 h-7 bg-base-300 sm:navbar sm:min-h-0">
-      {data.map((menu, index) => (
-        <Link href={menu.href} key={index}>
-          <a className="btn btn-link px-3 text-gray-400 hover:text-primary focus:text-primary-focus">
-            {menu.name}
-          </a>
-        </Link>
-      ))}
-    </nav>
+    <div className="hidden h-7 bg-black justify-between sm:flex">
+      <nav className="navbar min-h-0 flex-1">
+        {data.map((menu, index) => (
+          <Link href={menu.href} key={index}>
+            <a className="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus">
+              {menu.name}
+            </a>
+          </Link>
+        ))}
+      </nav>
+      <div className="justify-end">
+        <User menus={userMenus} />
+      </div>
+    </div>
   );
 };
 
@@ -32,7 +44,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ data }) => {
       </label>
       <ul
         tabIndex={0}
-        className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+        className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52"
       >
         {data.map((menu, index) => (
           <li key={index}>
@@ -49,17 +61,18 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ data }) => {
 const Header: React.FC = () => {
   return (
     <div className="min-w-full">
-      <TopNav data={menus} />
-      <div className="bg-base-200">
+      <TopNav data={NavMenus} />
+      <div className="bg-base-300">
         <header className="navbar max-w-5xl m-auto">
           <div className="navbar-start sm:hidden">
-            <MobileMenu data={menus} />
+            <MobileMenu data={NavMenus} />
           </div>
           <div className="navbar-center sm:navbar-start">
             <Logo href="/">Bookworm</Logo>
           </div>
           <div className="navbar-end">
             <Search />
+            <User.Mobile menus={userMenus} />
           </div>
         </header>
       </div>
@@ -68,14 +81,9 @@ const Header: React.FC = () => {
 };
 
 type TopNavProps = {
-  data: MenuProps[];
+  data: typeof NavMenus;
 };
 
 type MobileMenuProps = TopNavProps;
-
-interface MenuProps {
-  name: string;
-  href: string;
-}
 
 export default Header;
