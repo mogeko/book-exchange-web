@@ -4,12 +4,12 @@ import Container from "@/layouts/container";
 
 describe("Container", () => {
   it("should render correctly", () => {
-    const { container } = render(
+    render(
       <Container>
         <div>hello, world!</div>
       </Container>
     );
-    expect(container).toBeInTheDocument();
+    expect(screen.getAllByText(/hello, world!/)[0]).toBeInTheDocument();
   });
 
   it("snapshot a container", () => {
