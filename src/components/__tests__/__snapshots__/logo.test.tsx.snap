@@ -15,7 +15,7 @@ exports[`Logo snapshot a text logo 1`] = `
         Test Logo
       </span>
       <h1
-        class="text-xl font-bold text-primary-content"
+        class="text-xl font-bold text-base-content"
       >
         Test Logo
       </h1>

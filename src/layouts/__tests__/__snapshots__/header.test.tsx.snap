@@ -7,6 +7,7 @@ exports[`Header snapshot a header 1`] = `
   >
     <div
       class="hidden h-7 bg-black justify-between sm:flex"
+      data-theme="dracula"
     >
       <nav
         class="navbar min-h-0 flex-1"
@@ -60,7 +61,7 @@ exports[`Header snapshot a header 1`] = `
       class="bg-base-300"
     >
       <header
-        class="navbar max-w-5xl m-auto"
+        class="navbar max-w-screen-lg m-auto"
       >
         <div
           class="navbar-start sm:hidden"
@@ -155,7 +156,7 @@ exports[`Header snapshot a header 1`] = `
                 Bookworm
               </span>
               <h1
-                class="text-xl font-bold text-primary-content"
+                class="text-xl font-bold text-base-content"
               >
                 Bookworm
               </h1>
