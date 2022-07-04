@@ -8,7 +8,7 @@ const Home: NextPage = () => {
     <Container>
       <Header />
       <Container.Main>
-        <h1>welcome to next.js!</h1>
+        <></>
       </Container.Main>
       <Footer time={2022} author="Zheng Junyi" />
     </Container>
