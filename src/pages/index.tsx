@@ -6,9 +6,9 @@ const Home: NextPage = () => {
   return (
     <Container>
       <Header />
-      <main>
+      <Container.Main>
         <h1>welcome to next.js!</h1>
-      </main>
+      </Container.Main>
     </Container>
   );
 };
