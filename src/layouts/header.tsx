@@ -1,17 +1,19 @@
+import { DrawerButton } from "@/components/drawer";
 import Search from "@/components/search";
 import Logo from "@/components/logo";
-import { HiMenu } from "react-icons/hi";
-import Link from "next/link";
 import User from "@/components/user";
 import logoImage from "@/public/logo.svg";
+import Link from "next/link";
 
-const NavMenus = [
+// TODO: Rewrite with swr
+const navMenus = [
   { name: "My library", href: "#", badge: 1 },
   { name: "Ranking", href: "#" },
   { name: "Quote", href: "#", badge: 2 },
   { name: "I'm Feeling Lucky", href: "#" },
 ];
 
+// TODO: Rewrite with swr
 const userMenus = [
   { name: "Profile", href: "#", badge: "New" },
   { name: "Settings", href: "#" },
@@ -45,41 +47,14 @@ const TopNav: React.FC<TopNavProps> = ({ data }) => {
   );
 };
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ data }) => {
-  return (
-    <div className="dropdown">
-      <label tabIndex={0} className="btn btn-ghost btn-circle">
-        <HiMenu className="h-6 w-6" aria-hidden="true" />
-      </label>
-      <ul
-        tabIndex={0}
-        className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52"
-      >
-        {data.map((menu, index) => (
-          <li key={index}>
-            <Link href={menu.href}>
-              <a className="justify-between">
-                {menu.name}
-                {menu.badge ? (
-                  <span className="badge">{menu.badge}</span>
-                ) : null}
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
 const Header: React.FC = () => {
   return (
     <div className="min-w-full">
-      <TopNav data={NavMenus} />
+      <TopNav data={navMenus} />
       <div className="bg-inherit p-2 md:p-0 md:bg-base-300">
         <header className="navbar p-0 m-auto rounded-md max-w-screen-lg bg-base-300 md:rounded-none">
           <div className="navbar-start sm:hidden">
-            <MobileMenu data={NavMenus} />
+            <DrawerButton toggleId="mobile-menu" />
           </div>
           <div className="navbar-center sm:navbar-start">
             <Logo src={logoImage}>Bookworm</Logo>
@@ -95,9 +70,7 @@ const Header: React.FC = () => {
 };
 
 type TopNavProps = {
-  data: typeof NavMenus;
+  data: typeof navMenus;
 };
-
-type MobileMenuProps = TopNavProps;
 
 export default Header;
