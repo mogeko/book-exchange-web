@@ -18,4 +18,8 @@ module.exports = {
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["emerald", "dracula"],
+    darkTheme: "dracula",
+  },
 };

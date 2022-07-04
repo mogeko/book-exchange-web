@@ -10,9 +10,7 @@ const Logo: React.FC<LogoProps> = ({ href, src, children }) => {
           {src ? (
             <Image className="h-8 w-auto sm:h-10" src={src} alt="logo" />
           ) : (
-            <h1 className="text-xl font-bold text-primary-content">
-              {children}
-            </h1>
+            <h1 className="text-xl font-bold text-base-content">{children}</h1>
           )}
         </a>
       </Link>

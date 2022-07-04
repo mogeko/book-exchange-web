@@ -19,7 +19,10 @@ const userMenus = [
 
 const TopNav: React.FC<TopNavProps> = ({ data }) => {
   return (
-    <div className="hidden h-7 bg-black justify-between sm:flex">
+    <div
+      className="hidden h-7 bg-black justify-between sm:flex"
+      data-theme="dracula"
+    >
       <nav className="navbar min-h-0 flex-1">
         {data.map((menu, index) => (
           <Link href={menu.href} key={index}>
@@ -73,7 +76,7 @@ const Header: React.FC = () => {
     <div className="min-w-full">
       <TopNav data={NavMenus} />
       <div className="bg-base-300">
-        <header className="navbar max-w-5xl m-auto">
+        <header className="navbar max-w-screen-lg m-auto">
           <div className="navbar-start sm:hidden">
             <MobileMenu data={NavMenus} />
           </div>
