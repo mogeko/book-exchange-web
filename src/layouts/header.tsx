@@ -76,8 +76,8 @@ const Header: React.FC = () => {
   return (
     <div className="min-w-full">
       <TopNav data={NavMenus} />
-      <div className="bg-base-300">
-        <header className="navbar max-w-screen-lg m-auto">
+      <div className="bg-inherit p-2 md:p-0 md:bg-base-300">
+        <header className="navbar p-0 m-auto rounded-md max-w-screen-lg bg-base-300 md:rounded-none">
           <div className="navbar-start sm:hidden">
             <MobileMenu data={NavMenus} />
           </div>
