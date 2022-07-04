@@ -19,8 +19,11 @@
       "@/components/*": [
         "./src/components/*"
       ],
+      "@/layouts/*": [
+        "./src/layouts/*"
+      ],
       "@/lib/*": [
-        "./src/lib/*"
+        "./lib/*"
       ],
       "@/pages/*": [
         "./src/pages/*"
