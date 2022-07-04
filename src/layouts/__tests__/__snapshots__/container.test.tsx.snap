@@ -16,19 +16,19 @@ exports[`Container snapshot a container 1`] = `
 exports[`Container snapshot a layout with Header and Footer 1`] = `
 <div>
   <div
-    class="flex flex-col min-h-screen min-w-full w-full"
-    id="container"
+    class="drawer"
   >
+    <input
+      class="drawer-toggle"
+      id="mobile-menu"
+      type="checkbox"
+    />
     <div
-      class="drawer"
+      class="drawer-content"
     >
-      <input
-        class="drawer-toggle"
-        id="mobile-menu"
-        type="checkbox"
-      />
       <div
-        class="drawer-content"
+        class="flex flex-col min-h-screen min-w-full w-full"
+        id="container"
       >
         <div
           class="min-w-full"
@@ -264,82 +264,82 @@ exports[`Container snapshot a layout with Header and Footer 1`] = `
             </header>
           </div>
         </div>
-      </div>
-      <div
-        class="drawer-side"
-      >
-        <label
-          class="drawer-overlay"
-          for="mobile-menu"
-        />
-        <ul
-          class="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content"
+        <main
+          class="flex-1 max-w-screen-lg w-full mx-auto p-6 md:p-4"
         >
-          <li>
-            <a
-              class="justify-between"
-              href="/#"
-            >
-              My library
-              <span
-                class="badge"
-              >
-                1
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              class="justify-between"
-              href="/#"
-            >
-              Ranking
-            </a>
-          </li>
-          <li>
-            <a
-              class="justify-between"
-              href="/#"
-            >
-              Quote
-              <span
-                class="badge"
-              >
-                2
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              class="justify-between"
-              href="/#"
-            >
-              I'm Feeling Lucky
-            </a>
-          </li>
-        </ul>
+          <div>
+            hello, world!
+          </div>
+        </main>
+        <footer
+          class="footer footer-center p-4 bg-base-300 text-base-content"
+        >
+          <div>
+            <p>
+              Copyright © 
+              2022
+              , All right reserved
+               by Zheng Junyi
+              .
+            </p>
+          </div>
+        </footer>
       </div>
     </div>
-    <main
-      class="flex-1 max-w-screen-lg w-full mx-auto p-6 md:p-4"
+    <div
+      class="drawer-side"
     >
-      <div>
-        hello, world!
-      </div>
-    </main>
-    <footer
-      class="footer footer-center p-4 bg-base-300 text-base-content"
-    >
-      <div>
-        <p>
-          Copyright © 
-          2022
-          , All right reserved
-           by Zheng Junyi
-          .
-        </p>
-      </div>
-    </footer>
+      <label
+        class="drawer-overlay"
+        for="mobile-menu"
+      />
+      <ul
+        class="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content"
+      >
+        <li>
+          <a
+            class="justify-between"
+            href="/#"
+          >
+            My library
+            <span
+              class="badge"
+            >
+              1
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="justify-between"
+            href="/#"
+          >
+            Ranking
+          </a>
+        </li>
+        <li>
+          <a
+            class="justify-between"
+            href="/#"
+          >
+            Quote
+            <span
+              class="badge"
+            >
+              2
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="justify-between"
+            href="/#"
+          >
+            I'm Feeling Lucky
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 `;

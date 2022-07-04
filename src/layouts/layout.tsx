@@ -1,3 +1,4 @@
+import { withDrawer } from "@/components/drawer";
 import Header from "@/layouts/header";
 import Footer from "@/layouts/footer";
 
@@ -19,18 +20,25 @@ const Main: React.FC<MainProps> = ({ children }) => {
     </main>
   );
 };
+const Layout = Object.assign(Container, { Main, Header, Footer });
 
 export const DefaultLayout: React.FC<MainProps> = ({ children }) => {
+  const ContainerWithDrawer = withDrawer(Container);
+  // TODO: Rewrite with swr
+  const navMenus = [
+    { name: "My library", href: "#", badge: 1 },
+    { name: "Ranking", href: "#" },
+    { name: "Quote", href: "#", badge: 2 },
+    { name: "I'm Feeling Lucky", href: "#" },
+  ];
   return (
-    <Container>
+    <ContainerWithDrawer toggleId="mobile-menu" data={navMenus}>
       <Header />
       <Main>{children}</Main>
       <Footer time={2022} author="Zheng Junyi" />
-    </Container>
+    </ContainerWithDrawer>
   );
 };
-
-const Layout = Object.assign(Container, { Main, Header, Footer });
 
 interface ContainerProps {
   children: React.ReactNode;
