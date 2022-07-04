@@ -5,13 +5,10 @@ const Logo: React.FC<LogoProps> = ({ href, src, children }) => {
   return (
     <div className="flex justify-start">
       <Link href={href ?? "/"}>
-        <a className="btn btn-ghost normal-case">
+        <a className="btn gap-1 btn-ghost normal-case">
           <span className="sr-only">{children ?? "Logo"}</span>
-          {src ? (
-            <Image className="h-8 w-auto sm:h-10" src={src} alt="logo" />
-          ) : (
-            <h1 className="text-xl font-bold text-base-content">{children}</h1>
-          )}
+          {src ? <Image src={src} alt="logo" height={24} width={24} /> : null}
+          <h1 className="text-xl font-bold text-base-content">{children}</h1>
         </a>
       </Link>
     </div>

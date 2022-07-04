@@ -3,6 +3,7 @@ import Logo from "@/components/logo";
 import { HiMenu } from "react-icons/hi";
 import Link from "next/link";
 import User from "@/components/user";
+import logoImage from "@/public/logo.svg";
 
 const NavMenus = [
   { name: "My library", href: "#", badge: 1 },
@@ -81,7 +82,7 @@ const Header: React.FC = () => {
             <MobileMenu data={NavMenus} />
           </div>
           <div className="navbar-center sm:navbar-start">
-            <Logo href="/">Bookworm</Logo>
+            <Logo src={logoImage}>Bookworm</Logo>
           </div>
           <div className="navbar-end">
             <Search />

@@ -22,7 +22,9 @@ const Mobile: React.FC<MobileUserProps> = ({ menus, avatar }) => {
             <Link href={menu.href}>
               <a className="justify-between">
                 {menu.name}
-                {menu.badge ? <span className="badge">New</span> : null}
+                {menu.badge ? (
+                  <span className="badge">{menu.badge}</span>
+                ) : null}
               </a>
             </Link>
           </li>
