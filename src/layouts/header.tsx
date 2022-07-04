@@ -41,7 +41,7 @@ const TopNav: React.FC<TopNavProps> = ({ data }) => {
         ))}
       </nav>
       <div className="justify-end">
-        <User menus={userMenus} />
+        <User menus={userMenus} username="Mogeko" />
       </div>
     </div>
   );

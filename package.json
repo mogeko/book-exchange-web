@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build.ssg": "next build && next export",
     "start": "next start",
     "test": "jest --watch",
     "test.cov": "jest --coverage",
