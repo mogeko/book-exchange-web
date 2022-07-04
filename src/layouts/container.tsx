@@ -11,7 +11,7 @@ const ContainerRoot: React.FC<ContainerProps> = ({ children }) => {
 
 const Main: React.FC<MainProps> = ({ children }) => {
   return (
-    <main className="flex-1 max-w-screen-lg w-full mx-auto p-6">
+    <main className="flex-1 max-w-screen-lg w-full mx-auto p-6 md:p-4">
       {children}
     </main>
   );
