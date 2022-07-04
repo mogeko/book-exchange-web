@@ -5,9 +5,9 @@ import Link from "next/link";
 import User from "@/components/user";
 
 const NavMenus = [
-  { name: "My library", href: "#" },
+  { name: "My library", href: "#", badge: 1 },
   { name: "Ranking", href: "#" },
-  { name: "Quote", href: "#" },
+  { name: "Quote", href: "#", badge: 2 },
   { name: "I'm Feeling Lucky", href: "#" },
 ];
 
@@ -25,6 +25,11 @@ const TopNav: React.FC<TopNavProps> = ({ data }) => {
           <Link href={menu.href} key={index}>
             <a className="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus">
               {menu.name}
+              {menu.badge ? (
+                <span className="badge badge-secondary ml-1 badge-xs">
+                  {menu.badge}
+                </span>
+              ) : null}
             </a>
           </Link>
         ))}
@@ -49,7 +54,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ data }) => {
         {data.map((menu, index) => (
           <li key={index}>
             <Link href={menu.href}>
-              <a>{menu.name}</a>
+              <a className="justify-between">
+                {menu.name}
+                {menu.badge ? (
+                  <span className="badge">{menu.badge}</span>
+                ) : null}
+              </a>
             </Link>
           </li>
         ))}

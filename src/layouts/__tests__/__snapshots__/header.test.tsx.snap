@@ -16,6 +16,11 @@ exports[`Header snapshot a header 1`] = `
           href="/#"
         >
           My library
+          <span
+            class="badge badge-secondary ml-1 badge-xs"
+          >
+            1
+          </span>
         </a>
         <a
           class="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus"
@@ -28,6 +33,11 @@ exports[`Header snapshot a header 1`] = `
           href="/#"
         >
           Quote
+          <span
+            class="badge badge-secondary ml-1 badge-xs"
+          >
+            2
+          </span>
         </a>
         <a
           class="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus"
@@ -86,13 +96,20 @@ exports[`Header snapshot a header 1`] = `
             >
               <li>
                 <a
+                  class="justify-between"
                   href="/#"
                 >
                   My library
+                  <span
+                    class="badge"
+                  >
+                    1
+                  </span>
                 </a>
               </li>
               <li>
                 <a
+                  class="justify-between"
                   href="/#"
                 >
                   Ranking
@@ -100,13 +117,20 @@ exports[`Header snapshot a header 1`] = `
               </li>
               <li>
                 <a
+                  class="justify-between"
                   href="/#"
                 >
                   Quote
+                  <span
+                    class="badge"
+                  >
+                    2
+                  </span>
                 </a>
               </li>
               <li>
                 <a
+                  class="justify-between"
                   href="/#"
                 >
                   I'm Feeling Lucky

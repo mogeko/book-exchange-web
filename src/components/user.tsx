@@ -45,7 +45,7 @@ type MobileUserProps = {
 interface UserMenusProps {
   name: string;
   href: string;
-  badge?: string;
+  badge?: string | number;
 }
 
 export default User;
