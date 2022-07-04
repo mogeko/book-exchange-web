@@ -3,6 +3,7 @@
 exports[`Home renders homepage unchanged 1`] = `
 <div>
   <div
+    class="flex flex-col min-h-screen min-w-full w-full"
     id="container"
   >
     <div
@@ -61,10 +62,10 @@ exports[`Home renders homepage unchanged 1`] = `
         </div>
       </div>
       <div
-        class="bg-base-300"
+        class="bg-inherit p-2 md:p-0 md:bg-base-300"
       >
         <header
-          class="navbar max-w-screen-lg m-auto"
+          class="navbar p-0 m-auto rounded-md max-w-screen-lg bg-base-300 md:rounded-none"
         >
           <div
             class="navbar-start sm:hidden"
@@ -290,11 +291,26 @@ exports[`Home renders homepage unchanged 1`] = `
         </header>
       </div>
     </div>
-    <main>
+    <main
+      class="flex-1 max-w-screen-lg w-full mx-auto p-6 md:p-4"
+    >
       <h1>
         welcome to next.js!
       </h1>
     </main>
+    <footer
+      class="footer footer-center p-4 bg-base-300 text-base-content"
+    >
+      <div>
+        <p>
+          Copyright © 
+          2022
+          , All right reserved
+           by Zheng Junyi
+          .
+        </p>
+      </div>
+    </footer>
   </div>
 </div>
 `;

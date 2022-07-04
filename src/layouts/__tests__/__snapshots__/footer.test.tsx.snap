@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer snapshot a footer 1`] = `
+<div>
+  <footer
+    class="footer footer-center p-4 bg-base-300 text-base-content"
+  >
+    <div>
+      <p>
+        Copyright © 
+        1997 - 2022
+        , All right reserved
+         by Zheng Junyi
+        .
+      </p>
+    </div>
+  </footer>
+</div>
+`;
