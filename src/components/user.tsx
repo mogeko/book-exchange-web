@@ -1,8 +1,36 @@
 import Link from "next/link";
 import { HiUser } from "react-icons/hi";
 
-const UserRoot: React.FC<UserProps> = ({ menus }) => {
-  return <a className="btn btn-link btn-xs normal-case">Sign in / Sign up</a>;
+const UserRoot: React.FC<UserProps> = ({ menus, username }) => {
+  return username ? (
+    <div className="dropdown dropdown-end">
+      <label
+        tabIndex={0}
+        className="btn btn-link btn-xs normal-case text-base-content"
+      >
+        Hi!&nbsp;<b>{username}</b>
+      </label>
+      <ul
+        tabIndex={0}
+        className="menu menu-compact dropdown-content shadow bg-base-300 rounded-box w-52 mt-4"
+      >
+        {menus.map((menu, index) => (
+          <li key={index}>
+            <Link href={menu.href}>
+              <a className="justify-between">
+                {menu.name}
+                {menu.badge ? (
+                  <span className="badge">{menu.badge}</span>
+                ) : null}
+              </a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ) : (
+    <a className="btn btn-link btn-xs normal-case">Sign in / Sign up</a>
+  );
 };
 
 const Mobile: React.FC<MobileUserProps> = ({ menus, avatar }) => {
@@ -38,6 +66,7 @@ const User = Object.assign(UserRoot, { Mobile });
 
 type UserProps = {
   menus: UserMenusProps[];
+  username?: string;
 };
 
 type MobileUserProps = {

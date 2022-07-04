@@ -50,11 +50,53 @@ exports[`Header snapshot a header 1`] = `
       <div
         class="justify-end"
       >
-        <a
-          class="btn btn-link btn-xs normal-case"
+        <div
+          class="dropdown dropdown-end"
         >
-          Sign in / Sign up
-        </a>
+          <label
+            class="btn btn-link btn-xs normal-case text-base-content"
+            tabindex="0"
+          >
+            Hi! 
+            <b>
+              Mogeko
+            </b>
+          </label>
+          <ul
+            class="menu menu-compact dropdown-content shadow bg-base-300 rounded-box w-52 mt-4"
+            tabindex="0"
+          >
+            <li>
+              <a
+                class="justify-between"
+                href="/#"
+              >
+                Profile
+                <span
+                  class="badge"
+                >
+                  New
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="justify-between"
+                href="/#"
+              >
+                Settings
+              </a>
+            </li>
+            <li>
+              <a
+                class="justify-between"
+                href="/#"
+              >
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <div
