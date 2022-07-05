@@ -1,4 +1,4 @@
-import useSWR, { SWRResponse } from "swr";
+import useSWR, { type SWRResponse } from "swr";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
