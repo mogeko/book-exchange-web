@@ -37,7 +37,7 @@ describe("User", () => {
   });
 
   it("snapshot a user menu with a user", () => {
-    render(<User username="testUser" />);
-    expect(screen).toMatchSnapshot();
+    const { container } = render(<User username="testUser" />);
+    expect(container).toMatchSnapshot();
   });
 });
