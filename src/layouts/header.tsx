@@ -6,13 +6,6 @@ import logoImage from "@/public/logo.svg";
 import Link from "next/link";
 import useMenus from "@/lib/connect/menus";
 
-// TODO: Rewrite with swr
-const userMenus = [
-  { name: "Profile", href: "#", badge: "New" },
-  { name: "Settings", href: "#" },
-  { name: "Logout", href: "#" },
-];
-
 const TopNavbar: React.FC = () => {
   const { menus, isLoading, isError } = useMenus("/api/menus/root.json");
   if (isLoading) return <div>Loading...</div>;
@@ -37,7 +30,7 @@ const TopNavbar: React.FC = () => {
         ))}
       </nav>
       <div className="justify-end">
-        <User menus={userMenus} username="Mogeko" />
+        <User username="Mogeko" />
       </div>
     </div>
   );
@@ -57,7 +50,7 @@ const Header: React.FC = () => {
           </div>
           <div className="navbar-end">
             <Search />
-            <User.Mobile menus={userMenus} />
+            <User.Mobile />
           </div>
         </header>
       </div>
