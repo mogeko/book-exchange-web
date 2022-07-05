@@ -16,35 +16,12 @@ exports[`Header snapshot a header 1`] = `
           class="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus"
           href="/#"
         >
-          My library
+          testItem
           <span
             class="badge badge-secondary ml-1 badge-xs"
           >
             1
           </span>
-        </a>
-        <a
-          class="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus"
-          href="/#"
-        >
-          Ranking
-        </a>
-        <a
-          class="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus"
-          href="/#"
-        >
-          Quote
-          <span
-            class="badge badge-secondary ml-1 badge-xs"
-          >
-            2
-          </span>
-        </a>
-        <a
-          class="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus"
-          href="/#"
-        >
-          I'm Feeling Lucky
         </a>
       </nav>
       <div
@@ -71,28 +48,12 @@ exports[`Header snapshot a header 1`] = `
                 class="justify-between"
                 href="/#"
               >
-                Profile
+                testItem
                 <span
                   class="badge"
                 >
-                  New
+                  1
                 </span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="justify-between"
-                href="/#"
-              >
-                Settings
-              </a>
-            </li>
-            <li>
-              <a
-                class="justify-between"
-                href="/#"
-              >
-                Logout
               </a>
             </li>
           </ul>
@@ -248,28 +209,12 @@ exports[`Header snapshot a header 1`] = `
                   class="justify-between"
                   href="/#"
                 >
-                  Profile
+                  testItem
                   <span
                     class="badge"
                   >
-                    New
+                    1
                   </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="justify-between"
-                  href="/#"
-                >
-                  Settings
-                </a>
-              </li>
-              <li>
-                <a
-                  class="justify-between"
-                  href="/#"
-                >
-                  Logout
                 </a>
               </li>
             </ul>
@@ -279,4 +224,22 @@ exports[`Header snapshot a header 1`] = `
     </div>
   </div>
 </div>
+`;
+
+exports[`Header snapshot a header 2`] = `
+<nav
+  class="navbar min-h-0 flex-1"
+>
+  <a
+    class="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus"
+    href="/#"
+  >
+    testItem
+    <span
+      class="badge badge-secondary ml-1 badge-xs"
+    >
+      1
+    </span>
+  </a>
+</nav>
 `;

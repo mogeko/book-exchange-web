@@ -1,7 +1,11 @@
+import useMenus from "@/lib/connect/menus";
 import Link from "next/link";
 import { HiUser } from "react-icons/hi";
 
-const UserRoot: React.FC<UserProps> = ({ menus, username }) => {
+const UserRoot: React.FC<UserProps> = ({ username }) => {
+  const { menus, isLoading, isError } = useMenus("/api/menus/user.json");
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error...</div>;
   return username ? (
     <div className="dropdown dropdown-end">
       <label
@@ -14,7 +18,7 @@ const UserRoot: React.FC<UserProps> = ({ menus, username }) => {
         tabIndex={0}
         className="menu menu-compact dropdown-content shadow bg-base-300 rounded-box w-52 mt-4"
       >
-        {menus.map((menu, index) => (
+        {menus?.data.map((menu, index) => (
           <li key={index}>
             <Link href={menu.href}>
               <a className="justify-between">
@@ -33,7 +37,10 @@ const UserRoot: React.FC<UserProps> = ({ menus, username }) => {
   );
 };
 
-const Mobile: React.FC<MobileUserProps> = ({ menus, avatar }) => {
+const Mobile: React.FC<UserProps> = ({ avatar }) => {
+  const { menus, isLoading, isError } = useMenus("/api/menus/user.json");
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error...</div>;
   return (
     <div className="dropdown dropdown-end sm:hidden">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -45,7 +52,7 @@ const Mobile: React.FC<MobileUserProps> = ({ menus, avatar }) => {
         tabIndex={0}
         className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52"
       >
-        {menus.map((menu, index) => (
+        {menus?.data.map((menu, index) => (
           <li key={index}>
             <Link href={menu.href}>
               <a className="justify-between">
@@ -65,18 +72,8 @@ const Mobile: React.FC<MobileUserProps> = ({ menus, avatar }) => {
 const User = Object.assign(UserRoot, { Mobile });
 
 type UserProps = {
-  menus: UserMenusProps[];
   username?: string;
-};
-
-type MobileUserProps = {
   avatar?: string;
-} & UserProps;
-
-interface UserMenusProps {
-  name: string;
-  href: string;
-  badge?: string | number;
-}
+};
 
 export default User;

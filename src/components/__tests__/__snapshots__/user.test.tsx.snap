@@ -50,28 +50,48 @@ exports[`User snapshot a user menu for mobile 1`] = `
           class="justify-between"
           href="/#"
         >
-          Profile
+          testItem
           <span
             class="badge"
           >
-            New
+            1
           </span>
         </a>
       </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`User snapshot a user menu with a user 1`] = `
+<div>
+  <div
+    class="dropdown dropdown-end"
+  >
+    <label
+      class="btn btn-link btn-xs normal-case text-base-content"
+      tabindex="0"
+    >
+      Hi! 
+      <b>
+        testUser
+      </b>
+    </label>
+    <ul
+      class="menu menu-compact dropdown-content shadow bg-base-300 rounded-box w-52 mt-4"
+      tabindex="0"
+    >
       <li>
         <a
           class="justify-between"
           href="/#"
         >
-          Settings
-        </a>
-      </li>
-      <li>
-        <a
-          class="justify-between"
-          href="/#"
-        >
-          Logout
+          testItem
+          <span
+            class="badge"
+          >
+            1
+          </span>
         </a>
       </li>
     </ul>
