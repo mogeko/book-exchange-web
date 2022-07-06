@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Layout, { DefaultLayout } from "@/layouts/layout";
 
-describe("Container", () => {
+describe("Layout", () => {
   it("should render correctly", () => {
     render(
       <Layout>
@@ -12,7 +12,7 @@ describe("Container", () => {
     expect(screen.getByText(/hello, world!/)).toBeInTheDocument();
   });
 
-  it("snapshot a container", () => {
+  it("snapshot a Layput container", () => {
     const { container } = render(
       <Layout>
         <div>hello, world!</div>
