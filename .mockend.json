@@ -15,14 +15,16 @@
         "maxLength": 30
       }
     },
-    "city": [
-      "Tokyo",
-      "Beijing",
-      "Chengdu",
-      "Debrecen",
-      "Budapest",
-      "Berlin"
-    ]
+    "city": {
+      "string": [
+        "Tokyo",
+        "Beijing",
+        "Chengdu",
+        "Debrecen",
+        "Budapest",
+        "Berlin"
+      ]
+    }
   },
   "Book": {
     "title": {
