@@ -56,15 +56,30 @@ exports[`User snapshot a globale menu 1`] = `
       >
         <li>
           <a
-            class="justify-between"
             href="/#"
           >
-            testItem
-            <span
-              class="badge"
-            >
-              1
-            </span>
+            My library
+          </a>
+        </li>
+        <li>
+          <a
+            href="/#"
+          >
+            Ranking
+          </a>
+        </li>
+        <li>
+          <a
+            href="/#"
+          >
+            Quote
+          </a>
+        </li>
+        <li>
+          <a
+            href="/#"
+          >
+            I'm Feeling Lucky
           </a>
         </li>
       </ul>
