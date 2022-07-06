@@ -1,14 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { DrawerButton, withDrawer } from "@/components/drawer";
-import * as menus from "@/lib/connect/menus";
 
 const ExampleDrawer = withDrawer((prop) => <div {...prop} />);
 
-describe("User", () => {
+describe("Drawer", () => {
   it("renders a globale menu", () => {
-    render(<ExampleDrawer toggleId="menu-test">test</ExampleDrawer>);
+    const { container } = render(
+      <ExampleDrawer toggleId="menu-test">test</ExampleDrawer>
+    );
     expect(screen.getByText("My library")).toBeInTheDocument();
+    expect(container.querySelector(".drawer-content div")?.textContent).toEqual(
+      "test"
+    );
   });
 
   it("snapshot a globale menu", () => {
@@ -16,6 +20,9 @@ describe("User", () => {
       <ExampleDrawer toggleId="menu-test">test</ExampleDrawer>
     );
     expect(container).toMatchSnapshot();
+    expect(container.querySelector(".drawer-toggle")).toMatchSnapshot();
+    expect(container.querySelector(".drawer-content")).toMatchSnapshot();
+    expect(container.querySelector(".drawer-side")).toMatchSnapshot();
   });
 
   it("snapshot a DrawerButton", () => {

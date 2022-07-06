@@ -37,13 +37,4 @@ describe("Container", () => {
       })
     ).toBeInTheDocument();
   });
-
-  it("snapshot a layout with Header and Footer", () => {
-    const { container } = render(
-      <DefaultLayout>
-        <div>hello, world!</div>
-      </DefaultLayout>
-    );
-    expect(container).toMatchSnapshot();
-  });
 });
