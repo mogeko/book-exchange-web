@@ -1,11 +1,9 @@
 import useMenus from "@/lib/connect/menus";
+import { menus } from "@/lib/_variable";
 import Link from "next/link";
 import { HiUser } from "react-icons/hi";
 
 const UserRoot: React.FC<UserProps> = ({ username }) => {
-  const { menus, isLoading, isError } = useMenus("/api/menus/user.json");
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error...</div>;
   return username ? (
     <div className="dropdown dropdown-end">
       <label
@@ -18,15 +16,10 @@ const UserRoot: React.FC<UserProps> = ({ username }) => {
         tabIndex={0}
         className="menu menu-compact dropdown-content shadow bg-base-300 rounded-box w-52 mt-4"
       >
-        {menus?.data.map((menu, index) => (
+        {menus.user.map((menu, index) => (
           <li key={index}>
             <Link href={menu.href}>
-              <a className="justify-between">
-                {menu.name}
-                {menu.badge ? (
-                  <span className="badge">{menu.badge}</span>
-                ) : null}
-              </a>
+              <a>{menu.name}</a>
             </Link>
           </li>
         ))}
@@ -38,9 +31,6 @@ const UserRoot: React.FC<UserProps> = ({ username }) => {
 };
 
 const Mobile: React.FC<UserProps> = ({ avatar }) => {
-  const { menus, isLoading, isError } = useMenus("/api/menus/user.json");
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error...</div>;
   return (
     <div className="dropdown dropdown-end sm:hidden">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -52,15 +42,10 @@ const Mobile: React.FC<UserProps> = ({ avatar }) => {
         tabIndex={0}
         className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52"
       >
-        {menus?.data.map((menu, index) => (
+        {menus.user.map((menu, index) => (
           <li key={index}>
             <Link href={menu.href}>
-              <a className="justify-between">
-                {menu.name}
-                {menu.badge ? (
-                  <span className="badge">{menu.badge}</span>
-                ) : null}
-              </a>
+              <a>{menu.name}</a>
             </Link>
           </li>
         ))}

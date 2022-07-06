@@ -5,60 +5,8 @@ exports[`Header snapshot a header 1`] = `
   <div
     class="min-w-full"
   >
-    <div
-      class="hidden h-7 bg-black justify-between sm:flex"
-      data-theme="dracula"
-    >
-      <nav
-        class="navbar min-h-0 flex-1"
-      >
-        <a
-          class="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus"
-          href="/#"
-        >
-          testItem
-          <span
-            class="badge badge-secondary ml-1 badge-xs"
-          >
-            1
-          </span>
-        </a>
-      </nav>
-      <div
-        class="justify-end"
-      >
-        <div
-          class="dropdown dropdown-end"
-        >
-          <label
-            class="btn btn-link btn-xs normal-case text-base-content"
-            tabindex="0"
-          >
-            Hi! 
-            <b>
-              Mogeko
-            </b>
-          </label>
-          <ul
-            class="menu menu-compact dropdown-content shadow bg-base-300 rounded-box w-52 mt-4"
-            tabindex="0"
-          >
-            <li>
-              <a
-                class="justify-between"
-                href="/#"
-              >
-                testItem
-                <span
-                  class="badge"
-                >
-                  1
-                </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div>
+      Error...
     </div>
     <div
       class="bg-inherit p-2 md:p-0 md:bg-base-300"
@@ -206,15 +154,23 @@ exports[`Header snapshot a header 1`] = `
             >
               <li>
                 <a
-                  class="justify-between"
                   href="/#"
                 >
-                  testItem
-                  <span
-                    class="badge"
-                  >
-                    1
-                  </span>
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/#"
+                >
+                  Settings
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/#"
+                >
+                  Logout
                 </a>
               </li>
             </ul>
@@ -226,20 +182,4 @@ exports[`Header snapshot a header 1`] = `
 </div>
 `;
 
-exports[`Header snapshot a header 2`] = `
-<nav
-  class="navbar min-h-0 flex-1"
->
-  <a
-    class="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus"
-    href="/#"
-  >
-    testItem
-    <span
-      class="badge badge-secondary ml-1 badge-xs"
-    >
-      1
-    </span>
-  </a>
-</nav>
-`;
+exports[`Header snapshot a header 2`] = `null`;

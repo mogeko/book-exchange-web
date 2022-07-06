@@ -1,24 +1,16 @@
 import { HiMenu } from "react-icons/hi";
 import Link from "next/link";
-import useMenus from "@/lib/connect/menus";
+import { menus } from "@/lib/_variable";
 
 const DrawerMenu: React.FC<DrawerMenuProps> = ({ toggleId }) => {
-  const { menus, isLoading, isError } = useMenus("/api/menus/root.json");
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error...</div>;
   return (
     <div className="drawer-side">
       <label htmlFor={toggleId} className="drawer-overlay" />
       <ul className="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content">
-        {menus?.data.map((menu, index) => (
+        {menus.root.map((menu, index) => (
           <li key={index}>
             <Link href={menu.href}>
-              <a className="justify-between">
-                {menu.name}
-                {menu.badge ? (
-                  <span className="badge">{menu.badge}</span>
-                ) : null}
-              </a>
+              <a>{menu.name}</a>
             </Link>
           </li>
         ))}

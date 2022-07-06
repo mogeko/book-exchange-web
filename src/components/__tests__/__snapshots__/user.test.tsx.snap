@@ -47,15 +47,23 @@ exports[`User snapshot a user menu for mobile 1`] = `
     >
       <li>
         <a
-          class="justify-between"
           href="/#"
         >
-          testItem
-          <span
-            class="badge"
-          >
-            1
-          </span>
+          Profile
+        </a>
+      </li>
+      <li>
+        <a
+          href="/#"
+        >
+          Settings
+        </a>
+      </li>
+      <li>
+        <a
+          href="/#"
+        >
+          Logout
         </a>
       </li>
     </ul>
@@ -83,15 +91,23 @@ exports[`User snapshot a user menu with a user 1`] = `
     >
       <li>
         <a
-          class="justify-between"
           href="/#"
         >
-          testItem
-          <span
-            class="badge"
-          >
-            1
-          </span>
+          Profile
+        </a>
+      </li>
+      <li>
+        <a
+          href="/#"
+        >
+          Settings
+        </a>
+      </li>
+      <li>
+        <a
+          href="/#"
+        >
+          Logout
         </a>
       </li>
     </ul>
