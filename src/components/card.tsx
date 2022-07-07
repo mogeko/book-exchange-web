@@ -1,34 +1,36 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
-const CardRoot: React.FC<{
-  href?: string;
-  children?: React.ReactNode;
-}> = ({ href, children }) => {
+const Book: React.FC<CardProps> = ({ title, cover, author, id }) => {
   return (
-    <a
-      className="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
-      href={href}
-    >
-      {children}
-      {typeof children}
-    </a>
+    <div className="relative flex flex-col mb-4 w-28">
+      <figure className="flex justify-center items-center">
+        <Link href={`/books/${id}`}>
+          <a className="relative w-full h-[calc(7rem/2*3)]">
+            <Image src={cover} layout="fill" alt={title} />
+          </a>
+        </Link>
+      </figure>
+      <div className="flex flex-col text-sm">
+        <Link href={`/books/${id}`}>
+          <a className="link no-underline text-primary hover:bg-primary hover:text-primary-content focus:bg-primary-focus focus:text-primary-content">
+            <h2 className="truncate">{title}</h2>
+          </a>
+        </Link>
+        <p className="truncate">{author}</p>
+      </div>
+    </div>
   );
 };
 
-const Title: React.FC<{ className?: string; children: React.ReactNode }> = ({
-  className,
-  children,
-}) => {
-  return <h2 className={className ?? "m-0 mb-4 text-[1.5rem]"}>{children}</h2>;
-};
+const Card = { Book };
 
-const Desc: React.FC<{ className?: string; children: React.ReactNode }> = ({
-  className,
-  children,
-}) => {
-  return <p className={className ?? "m-0 text-xl leading-[1.5]"}>{children}</p>;
-};
-
-const Card = Object.assign(CardRoot, { Title, Desc });
+interface CardProps {
+  title: string;
+  cover: string;
+  author: string;
+  id: number | string;
+}
 
 export default Card;

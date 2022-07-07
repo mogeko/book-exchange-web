@@ -1,32 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card renders a Card with a title, a description and a link 1`] = `
+exports[`Card snapshot a book card 1`] = `
 <div>
-  <a
-    class="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
-    href="https://nextjs.org"
+  <div
+    class="relative flex flex-col mb-4 w-28"
   >
-    <h2
-      class="m-0 mb-4 text-[1.5rem]"
+    <figure
+      class="flex justify-center items-center"
     >
-      Title
-    </h2>
-    <p
-      class="m-0 text-xl leading-[1.5]"
+      <a
+        class="relative w-full h-[calc(7rem/2*3)]"
+        href="/books/1"
+      >
+        <span
+          style="box-sizing: border-box; display: block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"
+        >
+          <img
+            alt="This is an example book"
+            data-nimg="fill"
+            decoding="async"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+          />
+          <noscript />
+        </span>
+      </a>
+    </figure>
+    <div
+      class="flex flex-col text-sm"
     >
-      Description
-    </p>
-    object
-  </a>
-</div>
-`;
-
-exports[`Card snapshot an empty Card 1`] = `
-<div>
-  <a
-    class="m-4 p-6 text-left text-inherit no-underline border border-solid border-[#eaeaea] rounded-[10px] max-w-[300px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3] transition-colors"
-  >
-    undefined
-  </a>
+      <a
+        class="link no-underline text-primary hover:bg-primary hover:text-primary-content focus:bg-primary-focus focus:text-primary-content"
+        href="/books/1"
+      >
+        <h2
+          class="truncate"
+        >
+          This is an example book
+        </h2>
+      </a>
+      <p
+        class="truncate"
+      >
+        No One
+      </p>
+    </div>
+  </div>
 </div>
 `;
