@@ -5,8 +5,11 @@ import * as users from "@/lib/connect/users";
 
 const exampleUser = {
   avatar: "https://i.pravatar.cc/150?u=39184",
+  email: "email@example.com",
+  description: "This is an example user",
+  username: "example-user",
+  city: "Budapest",
   id: 1,
-  username: "Wkxapti",
 };
 
 describe("User", () => {
@@ -54,7 +57,7 @@ describe("User", () => {
     jest.spyOn(users, "useUser").mockImplementation(() => res);
 
     render(<User />);
-    expect(screen.getByText("Wkxapti")).toBeInTheDocument();
+    expect(screen.getByText("example-user")).toBeInTheDocument();
     expect(screen.getByText("Profile")).toBeInTheDocument();
     expect(screen.getByText("Logout")).toBeInTheDocument();
   });
