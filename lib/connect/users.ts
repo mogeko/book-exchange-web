@@ -20,6 +20,9 @@ export function useUser(id: string | number) {
 
 interface UserTypes {
   avatar: string;
+  city: string;
+  description: string;
+  email: string;
   id: number;
   username: string;
 }
