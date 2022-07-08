@@ -27,4 +27,10 @@ describe("Card", () => {
 
     expect(container).toMatchSnapshot();
   });
+
+  it("snapshot a book skeleton card", () => {
+    const { container } = render(<Card.BookSkeleton />);
+
+    expect(container).toMatchSnapshot();
+  });
 });

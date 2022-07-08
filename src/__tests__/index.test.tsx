@@ -46,11 +46,12 @@ describe("Home", () => {
   it("renders a home page then loading", () => {
     const res = { books: [], isError: false, isLoading: true };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    render(<Home />);
+    const { container } = render(<Home />);
 
     expect(books.default).toBeCalledWith();
     expect(
       screen.getByRole("heading", { name: /Bookworm/i })
     ).toBeInTheDocument();
+    expect(container.querySelector("div.animate-pulse")).toBeInTheDocument();
   });
 });

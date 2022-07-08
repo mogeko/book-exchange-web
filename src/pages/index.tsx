@@ -18,16 +18,21 @@ const Home: NextPage = () => {
 };
 
 const Popular: React.FC = () => {
+  // const books = undefined;
+  // const isError = false;
+  // const isLoading = true;
   const { books, isError, isLoading } = useBooks();
-  if (isLoading) return <div>Loading...</div>;
   return (
     <div className="flex flex-col">
       <h1>Currently</h1>
       <div className="flex flex-wrap gap-6">
-        {isError && <Alert.Error message="Network Error!" />}
-        {books?.map((book) => (
-          <Card.Book key={book.id} {...book} />
-        ))}
+        {isError ? (
+          <Alert.Error message="Network Error!" />
+        ) : isLoading ? (
+          Array.from({ length: 10 }, (_, i) => <Card.BookSkeleton key={i} />)
+        ) : (
+          books?.map((book) => <Card.Book key={book.id} {...book} />)
+        )}
       </div>
     </div>
   );
