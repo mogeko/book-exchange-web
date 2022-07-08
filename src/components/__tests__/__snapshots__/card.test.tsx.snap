@@ -52,21 +52,17 @@ exports[`Card snapshot a book card 1`] = `
 exports[`Card snapshot a book skeleton card 1`] = `
 <div>
   <div
-    class="animate-pulse relative flex flex-col mb-4 w-28"
+    class="relative flex flex-col mb-4 w-28 animate-pulse"
   >
-    <figure
-      class="flex justify-center items-center h-[calc(7rem/2*3)] rounded bg-base-300 mb-2"
+    <div
+      class="mb-2 w-28 h-[calc(7rem/2*3)] bg-slate-700 rounded"
     />
     <div
-      class="flex flex-col"
-    >
-      <h2
-        class="w-24 h-2 rounded bg-base-300 mb-2"
-      />
-      <p
-        class="w-20 h-2 rounded bg-base-300 mb-2"
-      />
-    </div>
+      class="mb-2 w-24 h-2 bg-slate-700 rounded"
+    />
+    <div
+      class="mb-2 w-20 h-2 bg-slate-700 rounded"
+    />
   </div>
 </div>
 `;

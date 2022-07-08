@@ -1,6 +1,6 @@
+import Skeleton from "@/components/skeleton";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const Book: React.FC<CardProps> = ({ title, cover, author, id }) => {
   return (
@@ -25,13 +25,11 @@ const Book: React.FC<CardProps> = ({ title, cover, author, id }) => {
 };
 
 const BookSkeleton: React.FC = () => (
-  <div className="animate-pulse relative flex flex-col mb-4 w-28">
-    <figure className="flex justify-center items-center h-[calc(7rem/2*3)] rounded bg-base-300 mb-2" />
-    <div className="flex flex-col">
-      <h2 className="w-24 h-2 rounded bg-base-300 mb-2" />
-      <p className="w-20 h-2 rounded bg-base-300 mb-2" />
-    </div>
-  </div>
+  <Skeleton.Pulse className="relative flex flex-col mb-4 w-28">
+    <Skeleton.Square className="mb-2 w-28 h-[calc(7rem/2*3)]" />
+    <Skeleton.Line className="mb-2 w-24" />
+    <Skeleton.Line className="mb-2 w-20" />
+  </Skeleton.Pulse>
 );
 
 const Card = { Book, BookSkeleton };

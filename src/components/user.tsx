@@ -2,6 +2,7 @@ import { useUser } from "@/lib/connect/users";
 import { menus } from "@/lib/_variable";
 import { HiUser } from "react-icons/hi";
 import { VscError, VscLoading } from "react-icons/vsc";
+import Skeleton from "@/components/skeleton";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,7 +14,7 @@ const User: React.FC = () => {
         {isError ? (
           <div className="text-error">Login Error</div>
         ) : isLoading ? (
-          <div className="animate-pulse h-2 w-24 mx-4 bg-base-100 rounded" />
+          <Skeleton.Line className="animate-pulse w-20 mr-4" />
         ) : user ? (
           <div className="btn btn-link btn-xs text-base-content">
             Hi!&nbsp;<b>{user.username}</b>
