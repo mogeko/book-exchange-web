@@ -41,7 +41,15 @@ describe("User", () => {
     jest.spyOn(users, "useUser").mockImplementation(() => res);
 
     const { container } = render(<User />);
-    expect(container.querySelector("div")?.textContent).toEqual("Error...");
+    expect(container.querySelector("div")?.textContent).toEqual("Login Error");
+  });
+
+  it("snapshot user menu when error occurred", () => {
+    const res = { user: undefined, isError: true, isLoading: false };
+    jest.spyOn(users, "useUser").mockImplementation(() => res);
+
+    const { container } = render(<User />);
+    expect(container).toMatchSnapshot();
   });
 
   it("renders user menu is loading", () => {
@@ -49,7 +57,15 @@ describe("User", () => {
     jest.spyOn(users, "useUser").mockImplementation(() => res);
 
     const { container } = render(<User />);
-    expect(container.querySelector("div")?.textContent).toEqual("Loading...");
+    expect(container.querySelector("svg")).toHaveClass("animate-spin");
+  });
+
+  it("snapshot user menu is loading", () => {
+    const res = { user: undefined, isError: false, isLoading: true };
+    jest.spyOn(users, "useUser").mockImplementation(() => res);
+
+    const { container } = render(<User />);
+    expect(container).toMatchSnapshot();
   });
 
   it("renders a user menu with logined", () => {
