@@ -35,4 +35,4 @@ jobs:
         run: pnpm run test.ci
 
       - name: Update test result to Codecov
-        run: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v3
