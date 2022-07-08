@@ -1,3 +1,4 @@
+import Alert from "@/components/alert";
 import Card from "@/components/card";
 import useBooks from "@/lib/connect/books";
 import { DefaultLayout } from "@/layouts/layout";
@@ -18,12 +19,12 @@ const Home: NextPage = () => {
 
 const Popular: React.FC = () => {
   const { books, isError, isLoading } = useBooks();
-  if (isError) return <div>Error...</div>;
   if (isLoading) return <div>Loading...</div>;
   return (
     <div className="flex flex-col">
       <h1>Currently</h1>
       <div className="flex flex-wrap gap-6">
+        {isError && <Alert.Error message="Network Error!" />}
         {books?.map((book) => (
           <Card.Book key={book.id} {...book} />
         ))}

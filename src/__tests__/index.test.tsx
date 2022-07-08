@@ -40,7 +40,7 @@ describe("Home", () => {
     expect(
       screen.getByRole("heading", { name: /Bookworm/i })
     ).toBeInTheDocument();
-    expect(screen.getByText("Error...")).toBeInTheDocument();
+    expect(screen.getByText("Network Error!")).toBeInTheDocument();
   });
 
   it("renders a home page then loading", () => {
