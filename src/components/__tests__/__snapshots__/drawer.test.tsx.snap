@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`User snapshot a DrawerButton 1`] = `
+exports[`Drawer snapshot a DrawerButton 1`] = `
 <div>
   <label
     class="btn btn-ghost btn-circle"
@@ -27,7 +27,7 @@ exports[`User snapshot a DrawerButton 1`] = `
 </div>
 `;
 
-exports[`User snapshot a globale menu 1`] = `
+exports[`Drawer snapshot a globale menu 1`] = `
 <div>
   <div
     class="drawer"
@@ -85,5 +85,66 @@ exports[`User snapshot a globale menu 1`] = `
       </ul>
     </div>
   </div>
+</div>
+`;
+
+exports[`Drawer snapshot a globale menu 2`] = `
+<input
+  class="drawer-toggle"
+  id="menu-test"
+  type="checkbox"
+/>
+`;
+
+exports[`Drawer snapshot a globale menu 3`] = `
+<div
+  class="drawer-content"
+>
+  <div>
+    test
+  </div>
+</div>
+`;
+
+exports[`Drawer snapshot a globale menu 4`] = `
+<div
+  class="drawer-side"
+>
+  <label
+    class="drawer-overlay"
+    for="menu-test"
+  />
+  <ul
+    class="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content"
+  >
+    <li>
+      <a
+        href="/#"
+      >
+        My library
+      </a>
+    </li>
+    <li>
+      <a
+        href="/#"
+      >
+        Ranking
+      </a>
+    </li>
+    <li>
+      <a
+        href="/#"
+      >
+        Quote
+      </a>
+    </li>
+    <li>
+      <a
+        href="/#"
+      >
+        I'm Feeling Lucky
+      </a>
+    </li>
+  </ul>
 </div>
 `;

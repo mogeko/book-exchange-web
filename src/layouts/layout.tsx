@@ -4,10 +4,7 @@ import Footer from "@/layouts/footer";
 
 const Container: React.FC<ContainerProps> = ({ children }) => {
   return (
-    <div
-      className="flex flex-col min-h-screen min-w-full w-full"
-      id="container"
-    >
+    <div className="flex flex-col min-h-screen min-w-full w-full">
       {children}
     </div>
   );
@@ -20,6 +17,7 @@ const Main: React.FC<MainProps> = ({ children }) => {
     </main>
   );
 };
+
 const Layout = Object.assign(Container, { Main, Header, Footer });
 
 const ContainerWithDrawer = withDrawer(Container);

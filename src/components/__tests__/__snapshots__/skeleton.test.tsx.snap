@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Skeleton snapshot a Pulse Circle skeleton 1`] = `
+<div>
+  <div
+    class="animate-pulse bg-slate-700 rounded-full"
+  />
+</div>
+`;
+
+exports[`Skeleton snapshot a Pulse Line skeleton 1`] = `
+<div>
+  <div
+    class="animate-pulse h-2 bg-slate-700 rounded"
+  />
+</div>
+`;
+
+exports[`Skeleton snapshot a Pulse Square skeleton 1`] = `
+<div>
+  <div
+    class="animate-pulse bg-slate-700 rounded"
+  />
+</div>
+`;
+
+exports[`Skeleton snapshot a Pulse container 1`] = `
+<div>
+  <div
+    class="animate-pulse"
+  />
+</div>
+`;

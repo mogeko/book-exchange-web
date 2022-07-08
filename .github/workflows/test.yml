@@ -27,6 +27,12 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Lint check
+        run: pnpm lint
       
       - name: Run test
         run: pnpm run test.ci
+
+      - name: Update test result to Codecov
+        uses: codecov/codecov-action@v3

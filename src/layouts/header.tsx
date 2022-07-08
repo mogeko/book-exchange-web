@@ -3,19 +3,10 @@ import Search from "@/components/search";
 import Logo from "@/components/logo";
 import User from "@/components/user";
 import logoImage from "@/public/logo.svg";
-import useMenus from "@/lib/connect/menus";
 import { menus } from "@/lib/_variable";
 import Link from "next/link";
 
 const TopNavbar: React.FC = () => {
-  const {
-    menus: dmenus,
-    isLoading,
-    isError,
-  } = useMenus("/api/menus/root.json");
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error...</div>;
-
   return (
     <div
       className="hidden h-7 bg-black justify-between sm:flex"
@@ -31,7 +22,7 @@ const TopNavbar: React.FC = () => {
         ))}
       </nav>
       <div className="justify-end">
-        <User username="Mogeko" />
+        <User />
       </div>
     </div>
   );
@@ -51,7 +42,9 @@ const Header: React.FC = () => {
           </div>
           <div className="navbar-end">
             <Search />
-            <User.Mobile />
+            <div className="sm:hidden">
+              <User />
+            </div>
           </div>
         </header>
       </div>
