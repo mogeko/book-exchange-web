@@ -33,3 +33,6 @@ jobs:
       
       - name: Run test
         run: pnpm run test.ci
+
+      - name: Update test result to Codecov
+        run: codecov/codecov-action@v3
