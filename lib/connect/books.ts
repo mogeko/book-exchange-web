@@ -1,6 +1,7 @@
 import useSWR, { type SWRResponse } from "swr";
+import handleQueryParam, { type QueryParamType } from "@/lib/utils/queryTools";
 
-function useBooks(queryParam: QueryParamType = {}) {
+function useBooks(queryParam: QueryParamType<keyof BookTypes> = {}) {
   const query = queryParam
     ? `/books?${handleQueryParam(queryParam)}`
     : "/books";
@@ -12,7 +13,10 @@ function useBooks(queryParam: QueryParamType = {}) {
   };
 }
 
-export function useBook(id: string | number, queryParam: QueryParamType = {}) {
+export function useBook(
+  id: string | number,
+  queryParam: QueryParamType<keyof BookTypes> = {}
+) {
   const query = queryParam
     ? `/books/${id}?${handleQueryParam(queryParam)}`
     : `/books/${id}`;
@@ -24,13 +28,7 @@ export function useBook(id: string | number, queryParam: QueryParamType = {}) {
   };
 }
 
-function handleQueryParam(queryParams: QueryParamType) {
-  return Object.entries(queryParams)
-    .map(([key, value]) => `${key}=${value}`)
-    .join("&");
-}
-
-interface BookTypes {
+export interface BookTypes {
   author: string;
   cover: string;
   description: string;
@@ -39,23 +37,5 @@ interface BookTypes {
   publisher: string;
   title: string;
 }
-
-type QueryParamSuffix =
-  | "eq"
-  | "ne"
-  | "lt"
-  | "gt"
-  | "lte"
-  | "gte"
-  | "contains"
-  | "startsWith"
-  | "endsWith";
-
-type QueryParamType = {
-  [key in `${keyof BookTypes}_${QueryParamSuffix}`]?: number | string;
-} & { [key in `${keyof BookTypes}_order`]?: "asc" | "desc" } & {
-  limit?: number | string;
-  offset?: number | string;
-};
 
 export default useBooks;
