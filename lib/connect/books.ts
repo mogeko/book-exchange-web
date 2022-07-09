@@ -1,7 +1,11 @@
 import useSWR, { type SWRResponse } from "swr";
+import handleQueryParam, { type QueryParamType } from "@/lib/utils/queryTools";
 
-function useBooks() {
-  const { data, error }: SWRResponse<BookTypes[]> = useSWR("/books");
+function useBooks(queryParam: QueryParamType<keyof BookTypes> = {}) {
+  const query = queryParam
+    ? `/books?${handleQueryParam(queryParam)}`
+    : "/books";
+  const { data, error }: SWRResponse<BookTypes[]> = useSWR(query);
   return {
     books: data,
     isLoading: !error && !data,
@@ -9,8 +13,14 @@ function useBooks() {
   };
 }
 
-export function useBook(id: string | number) {
-  const { data, error }: SWRResponse<BookTypes> = useSWR(`/books/${id}`);
+export function useBook(
+  id: string | number,
+  queryParam: QueryParamType<keyof BookTypes> = {}
+) {
+  const query = queryParam
+    ? `/books/${id}?${handleQueryParam(queryParam)}`
+    : `/books/${id}`;
+  const { data, error }: SWRResponse<BookTypes> = useSWR(query);
   return {
     book: data,
     isLoading: !error && !data,
@@ -18,7 +28,7 @@ export function useBook(id: string | number) {
   };
 }
 
-interface BookTypes {
+export interface BookTypes {
   author: string;
   cover: string;
   description: string;

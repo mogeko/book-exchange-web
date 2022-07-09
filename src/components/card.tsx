@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Book: React.FC<CardProps> = ({ title, cover, author, id }) => {
   return (
-    <div className="relative flex flex-col mb-4 w-28">
+    <div className="relative flex flex-col w-28">
       <figure className="flex justify-center items-center">
         <Link href={`/books/${id}`}>
           <a className="relative w-full h-[calc(7rem/2*3)]">

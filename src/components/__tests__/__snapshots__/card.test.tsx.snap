@@ -3,7 +3,7 @@
 exports[`Card snapshot a book card 1`] = `
 <div>
   <div
-    class="relative flex flex-col mb-4 w-28"
+    class="relative flex flex-col w-28"
   >
     <figure
       class="flex justify-center items-center"
