@@ -1,10 +1,8 @@
 name: Build
-on:
-  pull_request:
-  push:
+on: [push, pull_request]
 
 jobs:
-  test:
+  build:
     name: Build Next.js App
     runs-on: ubuntu-latest
     steps:
@@ -25,6 +23,16 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-      
+
       - name: Run build
-        run: pnpm run build
+        run: pnpm build
+
+      - name: Build SSG site
+        run: pnpm build.ssg
+
+      - name: Push SSG site to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref_name == 'master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
