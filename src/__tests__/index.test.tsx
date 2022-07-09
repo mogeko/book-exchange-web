@@ -23,7 +23,7 @@ describe("Home", () => {
     jest.spyOn(books, "default").mockImplementation(() => res);
     render(<Home />);
 
-    expect(books.default).toBeCalledWith();
+    expect(books.default).toBeCalledWith({ limit: 50 });
     expect(
       screen.getByRole("heading", {
         name: /Bookworm/i,
@@ -36,7 +36,7 @@ describe("Home", () => {
     jest.spyOn(books, "default").mockImplementation(() => res);
     render(<Home />);
 
-    expect(books.default).toBeCalledWith();
+    expect(books.default).toBeCalledWith({ limit: 50 });
     expect(
       screen.getByRole("heading", { name: /Bookworm/i })
     ).toBeInTheDocument();
@@ -48,7 +48,7 @@ describe("Home", () => {
     jest.spyOn(books, "default").mockImplementation(() => res);
     const { container } = render(<Home />);
 
-    expect(books.default).toBeCalledWith();
+    expect(books.default).toBeCalledWith({ limit: 50 });
     expect(
       screen.getByRole("heading", { name: /Bookworm/i })
     ).toBeInTheDocument();
