@@ -2,7 +2,7 @@ import { DrawerButton } from "@/components/drawer";
 import Search from "@/components/search";
 import Logo from "@/components/logo";
 import User from "@/components/user";
-import logoImage from "@/public/logo.svg";
+import logoImage from "@/public/images/logo.svg";
 import { menus } from "@/lib/_variable";
 import Link from "next/link";
 
