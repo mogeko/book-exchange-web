@@ -6,6 +6,10 @@ A WebApplication for used book exchange (front-end part).
 
 Demo Site: [https://mogeko.me/book-exchange-web][demo_link]
 
+## License
+
+The code in this project is released under the [MIT License][license_link].
+
 <!-- badges -->
 [test_badge]: https://github.com/mogeko/book-exchange-web/actions/workflows/test.yml/badge.svg
 [build_badge]: https://github.com/mogeko/book-exchange-web/actions/workflows/build.yml/badge.svg
@@ -16,3 +20,4 @@ Demo Site: [https://mogeko.me/book-exchange-web][demo_link]
 [test_link]: https://github.com/mogeko/book-exchange-web/actions/workflows/test.yml
 [build_link]: https://github.com/mogeko/book-exchange-web/actions/workflows/build.yml
 [codecov_link]: https://codecov.io/gh/mogeko/book-exchange-web
+[license_link]: https://github.com/mogeko/book-exchange-web/blob/master/LICENSE
