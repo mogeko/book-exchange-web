@@ -3,15 +3,15 @@
 exports[`Home snapshot a Display 1`] = `
 <div>
   <div
-    class="flex flex-col items-center"
+    class="flex flex-col items-center mb-14"
   >
     <h1
-      class="text-lg w-full p-1"
+      class="text-3xl w-full p-1"
     >
       Example Title
     </h1>
     <div
-      class="flex flex-wrap gap-6 my-4 w-full min-h-[27.5rem]"
+      class="flex flex-wrap gap-6 my-8 w-full"
     >
       <div
         class="relative flex flex-col w-28"
@@ -511,15 +511,15 @@ exports[`Home snapshot a Display 1`] = `
 exports[`Home snapshot a home page then error 1`] = `
 <div>
   <div
-    class="flex flex-col items-center"
+    class="flex flex-col items-center mb-14"
   >
     <h1
-      class="text-lg w-full p-1"
+      class="text-3xl w-full p-1"
     >
       Example Title
     </h1>
     <div
-      class="flex flex-wrap gap-6 my-4 w-full min-h-[27.5rem]"
+      class="flex flex-wrap gap-6 my-8 w-full"
     >
       <div
         class="alert alert-error shadow-lg"
@@ -604,15 +604,15 @@ exports[`Home snapshot a home page then error 1`] = `
 exports[`Home snapshot a home page then loading 1`] = `
 <div>
   <div
-    class="flex flex-col items-center"
+    class="flex flex-col items-center mb-14"
   >
     <h1
-      class="text-lg w-full p-1"
+      class="text-3xl w-full p-1"
     >
       Example Title
     </h1>
     <div
-      class="flex flex-wrap gap-6 my-4 w-full min-h-[27.5rem]"
+      class="flex flex-wrap gap-6 my-8 w-full"
     >
       <div
         class="relative flex flex-col mb-4 w-28 animate-pulse"
@@ -802,15 +802,15 @@ exports[`Home snapshot a home page then loading 1`] = `
 exports[`Home snpashot a Display when limit < 10 1`] = `
 <div>
   <div
-    class="flex flex-col items-center"
+    class="flex flex-col items-center mb-14"
   >
     <h1
-      class="text-lg w-full p-1"
+      class="text-3xl w-full p-1"
     >
       Example Title
     </h1>
     <div
-      class="flex flex-wrap gap-6 my-4 w-full min-h-[27.5rem]"
+      class="flex flex-wrap gap-6 my-8 w-full"
     >
       <div
         class="relative flex flex-col w-28"
