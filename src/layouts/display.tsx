@@ -3,25 +3,19 @@ import Card from "@/components/card";
 import useBooks, { type BookTypes } from "@/lib/connect/books";
 import { type QueryParamType } from "@/lib/utils/queryTools";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
-import React, { useState } from "react";
-
-const usePages = (queryParam: DisplayProps["queryParam"]) => {
-  const { books, isError, isLoading } = useBooks(queryParam);
-  const pages = Array.from(
-    { length: Math.ceil(queryParam.limit / 10) },
-    (_, i) => books?.slice(i * 10, (i + 1) * 10)
-  );
-  return { pages, isError, isLoading };
-};
+import { useState, type MouseEvent } from "react";
 
 const Display: React.FC<DisplayProps> = ({ title, queryParam }) => {
-  const data = usePages(queryParam);
   const [page, setPage] = useState(0);
   return (
     <div className="flex flex-col items-center mb-14">
       <Header>{title}</Header>
-      <Context pageIndex={page} {...data} />
-      <Pagination pageIndex={page} setPage={setPage} {...data} />
+      <Context pageIndex={page} queryParam={queryParam} />
+      <Pagination
+        length={Math.ceil(queryParam.limit / 10)}
+        setIndex={setPage}
+        index={page}
+      />
     </div>
   );
 };
@@ -30,8 +24,12 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
   return <h1 className="text-3xl w-full p-1">{children}</h1>;
 };
 
-const Context: React.FC<ContextProps> = (props) => {
-  const { isError, isLoading, pages, pageIndex } = props;
+const Context: React.FC<ContextProps> = ({ pageIndex, queryParam }) => {
+  const { books, isError, isLoading } = useBooks(queryParam);
+  const pages = Array.from(
+    { length: Math.ceil(queryParam.limit / 10) },
+    (_, i) => books?.slice(i * 10, (i + 1) * 10)
+  );
   return (
     <div className="flex flex-wrap gap-6 my-8 w-full">
       {isError && <Alert.Error message="Network Error!" />}
@@ -42,30 +40,29 @@ const Context: React.FC<ContextProps> = (props) => {
   );
 };
 
-const Pagination: React.FC<PaginationProps> = (props) => {
-  const { pages, setPage, pageIndex } = props;
-  return pages?.length > 1 ? (
+const Pagination: React.FC<PaginationProps> = ({ length, setIndex, index }) => {
+  const gotoPrevPage = () => setIndex(() => Math.max(0, index - 1));
+  const gotoCurrentPage = (e: MouseEvent<HTMLButtonElement>) => {
+    setIndex(Number(e.currentTarget.value));
+  };
+  const gotoNextPage = () => setIndex(() => Math.min(length - 1, index + 1));
+
+  return length > 1 ? (
     <div className="btn-group">
-      <button
-        className="btn btn-xs"
-        onClick={() => setPage((pageIndex) => Math.max(0, pageIndex - 1))}
-      >
+      <button className="btn btn-xs" onClick={gotoPrevPage}>
         <FaCaretLeft />
       </button>
-      {pages.map((_, i) => (
+      {Array.from({ length }, (_, i) => (
         <button
-          className={"btn btn-xs" + (pageIndex === i ? " btn-active" : "")}
-          onClick={(e) => setPage(Number(e.currentTarget.value))}
+          className={"btn btn-xs" + (index === i ? " btn-active" : "")}
+          onClick={gotoCurrentPage}
           key={i}
           value={i}
         >
           {i + 1}
         </button>
       ))}
-      <button
-        className="btn btn-xs"
-        onClick={() => setPage(Math.min(pages.length - 1, pageIndex + 1))}
-      >
+      <button className="btn btn-xs" onClick={gotoNextPage}>
         <FaCaretRight />
       </button>
     </div>
@@ -87,10 +84,15 @@ interface HeaderProps {
 
 type ContextProps = {
   pageIndex: number;
-} & ReturnType<typeof usePages>;
+  queryParam: {
+    limit: number;
+  } & Omit<QueryParamType<keyof BookTypes>, "limit">;
+};
 
 type PaginationProps = {
-  setPage: (value: React.SetStateAction<number>) => void;
-} & ContextProps;
+  setIndex: (value: React.SetStateAction<number>) => void;
+  index: number;
+  length: number;
+};
 
 export default Display;
