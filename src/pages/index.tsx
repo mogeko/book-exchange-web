@@ -8,6 +8,7 @@ const Home: NextPage = () => {
       <div className="flex max-w-[43rem]">
         <div className="flex flex-col w-full">
           <Popular />
+          <UnpopularMasterpiece />
         </div>
       </div>
       <div className="flex w-full"></div>
@@ -17,6 +18,12 @@ const Home: NextPage = () => {
 
 const Popular: React.FC = () => {
   return <Display title="Recently Popular" queryParam={{ limit: 50 }} />;
+};
+
+const UnpopularMasterpiece: React.FC = () => {
+  return (
+    <Display title="Unpopular but Highly Rated" queryParam={{ limit: 5 }} />
+  );
 };
 
 export default Home;

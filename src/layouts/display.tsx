@@ -13,9 +13,9 @@ const Display: React.FC<DisplayProps> = ({ title, queryParam }) => {
   );
   const [page, setPage] = useState(0);
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-lg w-full p-1">{title}</h1>
-      <div className="flex flex-wrap gap-6 my-4 w-full min-h-[27.5rem]">
+    <div className="flex flex-col items-center mb-14">
+      <h1 className="text-3xl w-full p-1">{title}</h1>
+      <div className="flex flex-wrap gap-6 my-8 w-full">
         {isError && <Alert.Error message="Network Error!" />}
         {isLoading
           ? Array.from({ length: 10 }, (_, i) => <Card.BookSkeleton key={i} />)
