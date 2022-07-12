@@ -3,28 +3,17 @@ import Card from "@/components/card";
 import useBooks, { type BookTypes } from "@/lib/connect/books";
 import { type QueryParamType } from "@/lib/utils/queryTools";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
-import { useState, type MouseEvent } from "react";
+import { type MouseEvent } from "react";
 
-const Display: React.FC<DisplayProps> = ({ title, queryParam }) => {
-  const [page, setPage] = useState(0);
-  return (
-    <div className="flex flex-col items-center mb-14">
-      <Header>{title}</Header>
-      <Context pageIndex={page} queryParam={queryParam} />
-      <Pagination
-        length={Math.ceil(queryParam.limit / 10)}
-        setIndex={setPage}
-        index={page}
-      />
-    </div>
-  );
+const DisplayRoot: React.FC<DisplayProps> = ({ children }) => {
+  return <div className="flex flex-col items-center mb-14">{children}</div>;
 };
 
 const Header: React.FC<HeaderProps> = ({ children }) => {
   return <h1 className="text-3xl w-full p-1">{children}</h1>;
 };
 
-const Context: React.FC<ContextProps> = ({ pageIndex, queryParam }) => {
+const GridContext: React.FC<ContextProps> = ({ pageIndex = 0, queryParam }) => {
   const { books, isError, isLoading } = useBooks(queryParam);
   const pages = Array.from(
     { length: Math.ceil(queryParam.limit / 10) },
@@ -71,28 +60,27 @@ const Pagination: React.FC<PaginationProps> = ({ length, setIndex, index }) => {
   );
 };
 
+const Display = Object.assign(DisplayRoot, { Header, GridContext, Pagination });
+
 interface DisplayProps {
-  title: string;
-  queryParam: {
-    limit: number;
-  } & Omit<QueryParamType<keyof BookTypes>, "limit">;
+  children: React.ReactNode;
 }
 
 interface HeaderProps {
   children: React.ReactNode;
 }
 
-type ContextProps = {
-  pageIndex: number;
+interface ContextProps {
+  pageIndex?: number;
   queryParam: {
     limit: number;
   } & Omit<QueryParamType<keyof BookTypes>, "limit">;
-};
+}
 
-type PaginationProps = {
+interface PaginationProps {
   setIndex: (value: React.SetStateAction<number>) => void;
   index: number;
   length: number;
-};
+}
 
 export default Display;
