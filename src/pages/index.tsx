@@ -1,6 +1,7 @@
 import { DefaultLayout } from "@/layouts/layout";
 import Display from "@/layouts/display";
 import type { NextPage } from "next";
+import { useState } from "react";
 
 const Home: NextPage = () => {
   return (
@@ -17,12 +18,22 @@ const Home: NextPage = () => {
 };
 
 const Popular: React.FC = () => {
-  return <Display title="Recently Popular" queryParam={{ limit: 50 }} />;
+  const [page, setPage] = useState(0);
+  return (
+    <Display>
+      <Display.Header>Recently Popular</Display.Header>
+      <Display.GridContext pageIndex={page} queryParam={{ limit: 50 }} />
+      <Display.Pagination index={page} setIndex={setPage} length={5} />
+    </Display>
+  );
 };
 
 const UnpopularMasterpiece: React.FC = () => {
   return (
-    <Display title="Unpopular but Highly Rated" queryParam={{ limit: 5 }} />
+    <Display>
+      <Display.Header>Unpopular but Highly Rated</Display.Header>
+      <Display.GridContext queryParam={{ limit: 5 }} />
+    </Display>
   );
 };
 
