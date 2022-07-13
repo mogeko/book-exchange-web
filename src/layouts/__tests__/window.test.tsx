@@ -90,6 +90,7 @@ describe("Home", () => {
   it("snapshot a Display GridBooks then loading", () => {
     const res = { books: [], isError: false, isLoading: true };
     jest.spyOn(books, "default").mockImplementation(() => res);
+
     const { container } = render(<Window.GridBooks limit={20} />);
 
     expect(container).toMatchSnapshot();
