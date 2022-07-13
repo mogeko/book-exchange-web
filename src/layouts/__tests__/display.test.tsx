@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import * as books from "@/lib/connect/books";
-import Display from "@/layouts/display";
+import Window from "@/layouts/window";
 
 const exampleBook = {
   title: "This is an example book",
@@ -18,11 +18,11 @@ describe("Home", () => {
     jest.resetAllMocks();
   });
 
-  it("renders a Display with Header", () => {
+  it("renders a Display Window with Header", () => {
     render(
-      <Display>
-        <Display.Header>TExample Title</Display.Header>
-      </Display>
+      <Window>
+        <Window.Header>TExample Title</Window.Header>
+      </Window>
     );
 
     expect(
@@ -32,65 +32,65 @@ describe("Home", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders a Display GridContext", () => {
+  it("snapshot a Display Window with Header", () => {
+    const { container } = render(
+      <Window>
+        <Window.Header>TExample Title</Window.Header>
+      </Window>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it("renders a Display GridBooks", () => {
     const exampleBooks = Array.from({ length: 20 }, () => exampleBook);
     const res = { books: exampleBooks, isError: false, isLoading: false };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    const { container } = render(
-      <Display.GridContext queryParam={{ limit: 20 }} />
-    );
+    const { container } = render(<Window.GridBooks limit={20} />);
 
     expect(books.default).toBeCalledWith({ limit: 20 });
     expect(container.querySelectorAll("figure").length).toBe(10);
   });
 
-  it("snapshot a Display GridContext", () => {
+  it("snapshot a Display GridBooks", () => {
     const exampleBooks = Array.from({ length: 20 }, () => exampleBook);
     const res = { books: exampleBooks, isError: false, isLoading: false };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    const { container } = render(
-      <Display.GridContext queryParam={{ limit: 20 }} />
-    );
+    const { container } = render(<Window.GridBooks limit={20} />);
 
     expect(container).toMatchSnapshot();
   });
 
-  it("renders a Display GridContext then error", () => {
+  it("renders a Display GridBooks then error", () => {
     const res = { books: [], isError: true, isLoading: false };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    render(<Display.GridContext queryParam={{ limit: 20 }} />);
+    render(<Window.GridBooks limit={20} />);
 
     expect(books.default).toBeCalledWith({ limit: 20 });
     expect(screen.getByText("Network Error!")).toBeInTheDocument();
   });
 
-  it("snapshot a Display GridContext then error", () => {
+  it("snapshot a Display GridBooks then error", () => {
     const res = { books: [], isError: true, isLoading: false };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    const { container } = render(
-      <Display.GridContext queryParam={{ limit: 20 }} />
-    );
+    const { container } = render(<Window.GridBooks limit={20} />);
 
     expect(container).toMatchSnapshot();
   });
 
-  it("renders a Display GridContext then loading", () => {
+  it("renders a Display GridBooks then loading", () => {
     const res = { books: [], isError: false, isLoading: true };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    const { container } = render(
-      <Display.GridContext queryParam={{ limit: 20 }} />
-    );
+    const { container } = render(<Window.GridBooks limit={20} />);
 
     expect(books.default).toBeCalledWith({ limit: 20 });
     expect(container.querySelector("div.animate-pulse")).toBeInTheDocument();
   });
 
-  it("snapshot a Display GridContext then loading", () => {
+  it("snapshot a Display GridBooks then loading", () => {
     const res = { books: [], isError: false, isLoading: true };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    const { container } = render(
-      <Display.GridContext queryParam={{ limit: 20 }} />
-    );
+    const { container } = render(<Window.GridBooks limit={20} />);
 
     expect(container).toMatchSnapshot();
   });
