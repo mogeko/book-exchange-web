@@ -3,7 +3,7 @@
 exports[`Pagination snapshot a Pagination 1`] = `
 <div>
   <div
-    class="btn-group"
+    class="btn-group mx-auto"
   >
     <button
       class="btn btn-xs"

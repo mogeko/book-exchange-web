@@ -6,7 +6,7 @@ import { type QueryParamType } from "@/lib/utils/queryTools";
 
 const BoxRoot: React.FC<BoxProps> = ({ title, children }) => {
   return (
-    <div className="flex flex-col items-center mb-14">
+    <div className="flex flex-col mb-14">
       {title && <Header>{title}</Header>}
       {children}
     </div>
@@ -14,7 +14,7 @@ const BoxRoot: React.FC<BoxProps> = ({ title, children }) => {
 };
 
 const Header: React.FC<HeaderProps> = ({ children }) => {
-  return <h1 className="text-3xl w-full p-1">{children}</h1>;
+  return <h1 className="text-2xl w-full py-2">{children}</h1>;
 };
 
 const GridBooks: React.FC<ContextProps> = ({ pageIndex = 0, ...query }) => {
@@ -32,7 +32,16 @@ const GridBooks: React.FC<ContextProps> = ({ pageIndex = 0, ...query }) => {
   );
 };
 
-const Box = Object.assign(BoxRoot, { Header, GridBooks, Pagination });
+const SubBox: React.FC<BoxProps> = ({ title, children }) => {
+  return (
+    <div className="flex flex-col items-start">
+      {title && <h2 className="text-lg w-full py-1">{title}</h2>}
+      {children}
+    </div>
+  );
+};
+
+const Box = Object.assign(BoxRoot, { Header, GridBooks, Pagination, SubBox });
 
 interface BoxProps {
   title?: string;
