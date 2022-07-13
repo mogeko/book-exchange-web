@@ -1,9 +1,8 @@
 import Alert from "@/components/alert";
 import Card from "@/components/card";
+import Pagination from "@/components/pagination";
 import useBooks, { type BookTypes } from "@/lib/connect/books";
 import { type QueryParamType } from "@/lib/utils/queryTools";
-import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
-import { type MouseEvent } from "react";
 
 const DisplayRoot: React.FC<DisplayProps> = ({ children }) => {
   return <div className="flex flex-col items-center mb-14">{children}</div>;
@@ -29,37 +28,6 @@ const GridContext: React.FC<ContextProps> = ({ pageIndex = 0, queryParam }) => {
   );
 };
 
-const Pagination: React.FC<PaginationProps> = ({ length, setIndex, index }) => {
-  const gotoPrevPage = () => setIndex(() => Math.max(0, index - 1));
-  const gotoCurrentPage = (e: MouseEvent<HTMLButtonElement>) => {
-    setIndex(Number(e.currentTarget.value));
-  };
-  const gotoNextPage = () => setIndex(() => Math.min(length - 1, index + 1));
-
-  return length > 1 ? (
-    <div className="btn-group">
-      <button className="btn btn-xs" onClick={gotoPrevPage}>
-        <FaCaretLeft />
-      </button>
-      {Array.from({ length }, (_, i) => (
-        <button
-          className={"btn btn-xs" + (index === i ? " btn-active" : "")}
-          onClick={gotoCurrentPage}
-          key={i}
-          value={i}
-        >
-          {i + 1}
-        </button>
-      ))}
-      <button className="btn btn-xs" onClick={gotoNextPage}>
-        <FaCaretRight />
-      </button>
-    </div>
-  ) : (
-    <></>
-  );
-};
-
 const Display = Object.assign(DisplayRoot, { Header, GridContext, Pagination });
 
 interface DisplayProps {
@@ -75,12 +43,6 @@ interface ContextProps {
   queryParam: {
     limit: number;
   } & Omit<QueryParamType<keyof BookTypes>, "limit">;
-}
-
-interface PaginationProps {
-  setIndex: (value: React.SetStateAction<number>) => void;
-  index: number;
-  length: number;
 }
 
 export default Display;

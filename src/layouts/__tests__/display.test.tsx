@@ -1,8 +1,7 @@
-import { fireEvent, render, screen, renderHook } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import * as books from "@/lib/connect/books";
 import Display from "@/layouts/display";
-import { useState } from "react";
 
 const exampleBook = {
   title: "This is an example book",
@@ -91,80 +90,6 @@ describe("Home", () => {
     jest.spyOn(books, "default").mockImplementation(() => res);
     const { container } = render(
       <Display.GridContext queryParam={{ limit: 20 }} />
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it("renders a Display Pagination", () => {
-    const hookResult = renderHook(() => useState(0));
-    const { container } = render(
-      <Display.Pagination
-        index={hookResult.result.current[0]}
-        setIndex={hookResult.result.current[1]}
-        length={3}
-      />
-    );
-
-    expect(container.querySelector("div")).toHaveClass("btn-group");
-  });
-
-  it("render a Display Pagination then lengh <= 1", () => {
-    const hookResult = renderHook(() => useState(0));
-    const { container } = render(
-      <Display.Pagination
-        index={hookResult.result.current[0]}
-        setIndex={hookResult.result.current[1]}
-        length={0}
-      />
-    );
-
-    expect(container.hasChildNodes()).not.toBeTruthy();
-  });
-
-  it("try cleck pages buttons", () => {
-    const hookResult = renderHook(() => useState(0));
-    const { container } = render(
-      <Display.Pagination
-        index={hookResult.result.current[0]}
-        setIndex={hookResult.result.current[1]}
-        length={3}
-      />
-    );
-
-    const buttons = container.querySelectorAll(".btn-group button");
-    expect(buttons.length).toBe(5);
-    expect(buttons[1]).toHaveClass("btn-active");
-    fireEvent.click(buttons[2]);
-    expect(hookResult.result.current[0]).toBe(1);
-  });
-
-  it("try cleck last/next buttons", () => {
-    const hookResult = renderHook(() => useState(0));
-    const { container } = render(
-      <Display.Pagination
-        index={hookResult.result.current[0]}
-        setIndex={hookResult.result.current[1]}
-        length={3}
-      />
-    );
-
-    const buttons = container.querySelectorAll(".btn-group button");
-    expect(buttons?.[1]).toHaveClass("btn-active");
-    fireEvent.click(buttons?.[0] as HTMLButtonElement);
-    expect(hookResult.result.current[0]).toBe(0);
-    fireEvent.click(buttons?.[4] as HTMLButtonElement);
-    expect(hookResult.result.current[0]).toBe(1);
-  });
-
-  it("snapshot a Display Pagination", () => {
-    const hookResult = renderHook(() => useState(0));
-    const { container } = render(
-      <Display.Pagination
-        index={hookResult.result.current[0]}
-        setIndex={hookResult.result.current[1]}
-        length={3}
-      />
     );
 
     expect(container).toMatchSnapshot();
