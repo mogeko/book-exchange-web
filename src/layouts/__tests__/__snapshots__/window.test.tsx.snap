@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home snapshot a Display GridContext 1`] = `
+exports[`Home snapshot a Display GridBooks 1`] = `
 <div>
   <div
     class="flex flex-wrap gap-6 my-8 w-full"
@@ -449,7 +449,7 @@ exports[`Home snapshot a Display GridContext 1`] = `
 </div>
 `;
 
-exports[`Home snapshot a Display GridContext then error 1`] = `
+exports[`Home snapshot a Display GridBooks then error 1`] = `
 <div>
   <div
     class="flex flex-wrap gap-6 my-8 w-full"
@@ -483,7 +483,7 @@ exports[`Home snapshot a Display GridContext then error 1`] = `
 </div>
 `;
 
-exports[`Home snapshot a Display GridContext then loading 1`] = `
+exports[`Home snapshot a Display GridBooks then loading 1`] = `
 <div>
   <div
     class="flex flex-wrap gap-6 my-8 w-full"
@@ -618,6 +618,20 @@ exports[`Home snapshot a Display GridContext then loading 1`] = `
         class="mb-2 w-20 h-2 bg-slate-700 rounded"
       />
     </div>
+  </div>
+</div>
+`;
+
+exports[`Home snapshot a Display Window with Header 1`] = `
+<div>
+  <div
+    class="flex flex-col items-center mb-14"
+  >
+    <h1
+      class="text-3xl w-full p-1"
+    >
+      TExample Title
+    </h1>
   </div>
 </div>
 `;

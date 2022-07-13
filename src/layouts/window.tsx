@@ -4,7 +4,7 @@ import Pagination from "@/components/pagination";
 import useBooks, { type BookTypes } from "@/lib/connect/books";
 import { type QueryParamType } from "@/lib/utils/queryTools";
 
-const DisplayRoot: React.FC<DisplayProps> = ({ children }) => {
+const WindowRoot: React.FC<DisplayProps> = ({ children }) => {
   return <div className="flex flex-col items-center mb-14">{children}</div>;
 };
 
@@ -12,11 +12,10 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
   return <h1 className="text-3xl w-full p-1">{children}</h1>;
 };
 
-const GridContext: React.FC<ContextProps> = ({ pageIndex = 0, queryParam }) => {
-  const { books, isError, isLoading } = useBooks(queryParam);
-  const pages = Array.from(
-    { length: Math.ceil(queryParam.limit / 10) },
-    (_, i) => books?.slice(i * 10, (i + 1) * 10)
+const GridBooks: React.FC<ContextProps> = ({ pageIndex = 0, ...query }) => {
+  const { books, isError, isLoading } = useBooks(query);
+  const pages = Array.from({ length: Math.ceil(query.limit / 10) }, (_, i) =>
+    books?.slice(i * 10, (i + 1) * 10)
   );
   return (
     <div className="flex flex-wrap gap-6 my-8 w-full">
@@ -28,7 +27,7 @@ const GridContext: React.FC<ContextProps> = ({ pageIndex = 0, queryParam }) => {
   );
 };
 
-const Display = Object.assign(DisplayRoot, { Header, GridContext, Pagination });
+const Window = Object.assign(WindowRoot, { Header, GridBooks, Pagination });
 
 interface DisplayProps {
   children: React.ReactNode;
@@ -38,11 +37,9 @@ interface HeaderProps {
   children: React.ReactNode;
 }
 
-interface ContextProps {
+type ContextProps = {
   pageIndex?: number;
-  queryParam: {
-    limit: number;
-  } & Omit<QueryParamType<keyof BookTypes>, "limit">;
-}
+  limit: number;
+} & Omit<QueryParamType<keyof BookTypes>, "limit">;
 
-export default Display;
+export default Window;

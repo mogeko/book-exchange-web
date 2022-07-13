@@ -1,5 +1,5 @@
 import { DefaultLayout } from "@/layouts/layout";
-import Display from "@/layouts/display";
+import Window from "@/layouts/window";
 import type { NextPage } from "next";
 import { useState } from "react";
 
@@ -20,20 +20,20 @@ const Home: NextPage = () => {
 const Popular: React.FC = () => {
   const [page, setPage] = useState(0);
   return (
-    <Display>
-      <Display.Header>Recently Popular</Display.Header>
-      <Display.GridContext pageIndex={page} queryParam={{ limit: 50 }} />
-      <Display.Pagination index={page} setIndex={setPage} length={5} />
-    </Display>
+    <Window>
+      <Window.Header>Recently Popular</Window.Header>
+      <Window.GridBooks pageIndex={page} limit={50} />
+      <Window.Pagination index={page} setIndex={setPage} length={5} />
+    </Window>
   );
 };
 
 const UnpopularMasterpiece: React.FC = () => {
   return (
-    <Display>
-      <Display.Header>Unpopular but Highly Rated</Display.Header>
-      <Display.GridContext queryParam={{ limit: 5 }} />
-    </Display>
+    <Window>
+      <Window.Header>Unpopular but Highly Rated</Window.Header>
+      <Window.GridBooks limit={5} />
+    </Window>
   );
 };
 
