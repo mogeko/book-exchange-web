@@ -4,8 +4,13 @@ import Pagination from "@/components/pagination";
 import useBooks, { type BookTypes } from "@/lib/connect/books";
 import { type QueryParamType } from "@/lib/utils/queryTools";
 
-const WindowRoot: React.FC<DisplayProps> = ({ children }) => {
-  return <div className="flex flex-col items-center mb-14">{children}</div>;
+const BoxRoot: React.FC<BoxProps> = ({ title, children }) => {
+  return (
+    <div className="flex flex-col items-center mb-14">
+      {title && <Header>{title}</Header>}
+      {children}
+    </div>
+  );
 };
 
 const Header: React.FC<HeaderProps> = ({ children }) => {
@@ -27,9 +32,10 @@ const GridBooks: React.FC<ContextProps> = ({ pageIndex = 0, ...query }) => {
   );
 };
 
-const Window = Object.assign(WindowRoot, { Header, GridBooks, Pagination });
+const Box = Object.assign(BoxRoot, { Header, GridBooks, Pagination });
 
-interface DisplayProps {
+interface BoxProps {
+  title?: string;
   children: React.ReactNode;
 }
 
@@ -42,4 +48,4 @@ type ContextProps = {
   limit: number;
 } & Omit<QueryParamType<keyof BookTypes>, "limit">;
 
-export default Window;
+export default Box;
