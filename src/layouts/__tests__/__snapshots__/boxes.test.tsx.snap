@@ -26,7 +26,7 @@ exports[`Home snapshot a GridBooks 1`] = `
         class="flex justify-center items-center"
       >
         <a
-          class="relative w-full h-[calc(7rem/2*3)]"
+          class="relative w-28 h-[calc(7rem/2*3)]"
           href="/books/1"
         >
           <span
@@ -70,7 +70,7 @@ exports[`Home snapshot a GridBooks 1`] = `
         class="flex justify-center items-center"
       >
         <a
-          class="relative w-full h-[calc(7rem/2*3)]"
+          class="relative w-28 h-[calc(7rem/2*3)]"
           href="/books/1"
         >
           <span
@@ -114,7 +114,7 @@ exports[`Home snapshot a GridBooks 1`] = `
         class="flex justify-center items-center"
       >
         <a
-          class="relative w-full h-[calc(7rem/2*3)]"
+          class="relative w-28 h-[calc(7rem/2*3)]"
           href="/books/1"
         >
           <span
@@ -158,7 +158,7 @@ exports[`Home snapshot a GridBooks 1`] = `
         class="flex justify-center items-center"
       >
         <a
-          class="relative w-full h-[calc(7rem/2*3)]"
+          class="relative w-28 h-[calc(7rem/2*3)]"
           href="/books/1"
         >
           <span
@@ -202,7 +202,7 @@ exports[`Home snapshot a GridBooks 1`] = `
         class="flex justify-center items-center"
       >
         <a
-          class="relative w-full h-[calc(7rem/2*3)]"
+          class="relative w-28 h-[calc(7rem/2*3)]"
           href="/books/1"
         >
           <span
@@ -246,7 +246,7 @@ exports[`Home snapshot a GridBooks 1`] = `
         class="flex justify-center items-center"
       >
         <a
-          class="relative w-full h-[calc(7rem/2*3)]"
+          class="relative w-28 h-[calc(7rem/2*3)]"
           href="/books/1"
         >
           <span
@@ -290,7 +290,7 @@ exports[`Home snapshot a GridBooks 1`] = `
         class="flex justify-center items-center"
       >
         <a
-          class="relative w-full h-[calc(7rem/2*3)]"
+          class="relative w-28 h-[calc(7rem/2*3)]"
           href="/books/1"
         >
           <span
@@ -334,7 +334,7 @@ exports[`Home snapshot a GridBooks 1`] = `
         class="flex justify-center items-center"
       >
         <a
-          class="relative w-full h-[calc(7rem/2*3)]"
+          class="relative w-28 h-[calc(7rem/2*3)]"
           href="/books/1"
         >
           <span
@@ -378,7 +378,7 @@ exports[`Home snapshot a GridBooks 1`] = `
         class="flex justify-center items-center"
       >
         <a
-          class="relative w-full h-[calc(7rem/2*3)]"
+          class="relative w-28 h-[calc(7rem/2*3)]"
           href="/books/1"
         >
           <span
@@ -422,7 +422,7 @@ exports[`Home snapshot a GridBooks 1`] = `
         class="flex justify-center items-center"
       >
         <a
-          class="relative w-full h-[calc(7rem/2*3)]"
+          class="relative w-28 h-[calc(7rem/2*3)]"
           href="/books/1"
         >
           <span

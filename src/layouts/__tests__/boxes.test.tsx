@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import * as books from "@/lib/connect/books";
-import Box from "@/layouts/box";
+import Box from "@/layouts/boxes";
 
 const exampleBook = {
   title: "This is an example book",

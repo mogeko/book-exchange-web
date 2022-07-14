@@ -1,9 +1,8 @@
 import { DefaultLayout } from "@/layouts/layout";
-import Box from "@/layouts/box";
-import { tags } from "@/lib/_variable";
+import { TagsCotroller } from "@/pages/tags/[tag]";
+import Box from "@/layouts/boxes";
 import type { NextPage } from "next";
 import { useState } from "react";
-import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -37,24 +36,6 @@ const UnpopularMasterpiece: React.FC = () => {
     <Box>
       <Box.Header>Unpopular but Highly Rated</Box.Header>
       <Box.GridBooks limit={5} />
-    </Box>
-  );
-};
-
-const TagsCotroller: React.FC = () => {
-  return (
-    <Box title="Tags">
-      {tags.map((tag, i) => (
-        <Box.SubBox key={i} title={tag.name}>
-          <div className="flex flex-wrap gap-2">
-            {tag.items?.map((item, j) => (
-              <Link key={j} href={item.href}>
-                <a className="btn btn-xs">{item.name}</a>
-              </Link>
-            ))}
-          </div>
-        </Box.SubBox>
-      ))}
     </Box>
   );
 };
