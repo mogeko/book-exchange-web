@@ -19,17 +19,13 @@ describe("Home", () => {
   });
 
   it("renders a Display Box with Header", () => {
-    render(
+    const { container } = render(
       <Box title="Example Title">
         <></>
       </Box>
     );
 
-    expect(
-      screen.getByRole("heading", {
-        name: /Example Title/i,
-      })
-    ).toBeInTheDocument();
+    expect(container.querySelector("h1")?.textContent).toBe("Example Title");
   });
 
   it("snapshot a Display Box with Header", () => {
@@ -37,6 +33,26 @@ describe("Home", () => {
       <Box title="Example Title">
         <></>
       </Box>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it("renders a SubBox", () => {
+    const { container } = render(
+      <Box.SubBox title="Example SubBox">
+        <></>
+      </Box.SubBox>
+    );
+
+    expect(container.querySelector("h2")?.textContent).toBe("Example SubBox");
+  });
+
+  it("snapshot a SubBox", () => {
+    const { container } = render(
+      <Box.SubBox title="Example SubBox">
+        <></>
+      </Box.SubBox>
     );
 
     expect(container).toMatchSnapshot();
