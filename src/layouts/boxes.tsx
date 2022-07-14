@@ -35,8 +35,8 @@ const GridBooks: React.FC<ContextProps> = ({ pageIndex = 0, ...query }) => {
     <div className="flex flex-wrap gap-6 my-8 w-full">
       {isError && <Alert.Error message="Network Error!" />}
       {isLoading
-        ? Array.from({ length: 10 }, (_, i) => <Card.BookSkeleton key={i} />)
-        : pages[pageIndex]?.map((book, i) => <Card.Book key={i} {...book} />)}
+        ? Array.from({ length: 10 }, (_, i) => <Card.Skeleton key={i} />)
+        : pages[pageIndex]?.map((book, i) => <Card key={i} {...book} />)}
     </div>
   );
 };

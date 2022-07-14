@@ -2,7 +2,7 @@ import Skeleton from "@/components/skeleton";
 import Image from "next/image";
 import Link from "next/link";
 
-const Book: React.FC<CardProps> = ({ title, cover, author, id }) => {
+const CardRoot: React.FC<CardProps> = ({ title, cover, author, id }) => {
   return (
     <div className="relative flex flex-col w-28">
       <figure className="flex justify-center items-center">
@@ -23,6 +23,14 @@ const Book: React.FC<CardProps> = ({ title, cover, author, id }) => {
     </div>
   );
 };
+
+const CardSkeleton: React.FC = () => (
+  <Skeleton.Pulse className="relative flex flex-col mb-4 w-28">
+    <Skeleton.Square className="mb-2 w-28 h-[calc(7rem/2*3)]" />
+    <Skeleton.Line className="mb-2 w-24" />
+    <Skeleton.Line className="mb-2 w-20" />
+  </Skeleton.Pulse>
+);
 
 const LongCardRoot: React.FC<CardProps> = (props) => {
   const { title, cover, author, id, description } = props;
@@ -50,14 +58,6 @@ const LongCardRoot: React.FC<CardProps> = (props) => {
   );
 };
 
-const BookSkeleton: React.FC = () => (
-  <Skeleton.Pulse className="relative flex flex-col mb-4 w-28">
-    <Skeleton.Square className="mb-2 w-28 h-[calc(7rem/2*3)]" />
-    <Skeleton.Line className="mb-2 w-24" />
-    <Skeleton.Line className="mb-2 w-20" />
-  </Skeleton.Pulse>
-);
-
 const LongCardSkeleton: React.FC = () => (
   <Skeleton.Pulse className="relative flex mb-4 w-full gap-3">
     <Skeleton.Square className="mb-2 w-28 h-[calc(7rem/2*3)]" />
@@ -74,8 +74,7 @@ const LongCardSkeleton: React.FC = () => (
   </Skeleton.Pulse>
 );
 
-const Card = { Book, BookSkeleton };
-
+const Card = Object.assign(CardRoot, { Skeleton: CardSkeleton });
 export const LongCard = Object.assign(LongCardRoot, {
   Skeleton: LongCardSkeleton,
 });
