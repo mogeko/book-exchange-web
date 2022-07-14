@@ -1,19 +1,19 @@
 import { DefaultLayout } from "@/layouts/layout";
 import Box from "@/layouts/box";
+import { tags } from "@/lib/_variable";
 import type { NextPage } from "next";
 import { useState } from "react";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
     <DefaultLayout>
-      <div className="flex w-full">
-        <div className="flex flex-1 max-w-[43rem]">
-          <div className="flex flex-col w-full">
-            <Popular />
-            <UnpopularMasterpiece />
-          </div>
+      <div className="flex w-full gap-6 flex-col c-lg:flex-row">
+        <div className="flex basis-5/7 gap-14 max-w-[41rem] flex-col">
+          <Popular />
+          <UnpopularMasterpiece />
         </div>
-        <div className="flex">
+        <div className="flex basis-2/7">
           <TagsCotroller />
         </div>
       </div>
@@ -44,15 +44,17 @@ const UnpopularMasterpiece: React.FC = () => {
 const TagsCotroller: React.FC = () => {
   return (
     <Box title="Tags">
-      <Box.SubBox title="Literature">
-        <></>
-      </Box.SubBox>
-      <Box.SubBox title="Pop">
-        <></>
-      </Box.SubBox>
-      <Box.SubBox title="Civilization">
-        <></>
-      </Box.SubBox>
+      {tags.map((tag, i) => (
+        <Box.SubBox key={i} title={tag.name}>
+          <div className="flex flex-wrap gap-2">
+            {tag.items?.map((item, j) => (
+              <Link key={j} href={item.href}>
+                <a className="btn btn-xs">{item.name}</a>
+              </Link>
+            ))}
+          </div>
+        </Box.SubBox>
+      ))}
     </Box>
   );
 };

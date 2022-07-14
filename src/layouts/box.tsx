@@ -6,7 +6,7 @@ import { type QueryParamType } from "@/lib/utils/queryTools";
 
 const BoxRoot: React.FC<BoxProps> = ({ title, children }) => {
   return (
-    <div className="flex flex-col mb-14">
+    <div className="flex flex-col">
       {title && <Header>{title}</Header>}
       {children}
     </div>
@@ -34,7 +34,7 @@ const GridBooks: React.FC<ContextProps> = ({ pageIndex = 0, ...query }) => {
 
 const SubBox: React.FC<BoxProps> = ({ title, children }) => {
   return (
-    <div className="flex flex-col items-start">
+    <div className="flex flex-col items-start my-2">
       {title && <h2 className="text-lg w-full py-1">{title}</h2>}
       {children}
     </div>
