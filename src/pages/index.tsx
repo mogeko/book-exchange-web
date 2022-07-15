@@ -1,18 +1,21 @@
 import { DefaultLayout } from "@/layouts/layout";
-import Window from "@/layouts/window";
+import { TagsCotroller } from "@/pages/tags/[tag]";
+import Box from "@/layouts/boxes";
 import type { NextPage } from "next";
 import { useState } from "react";
 
 const Home: NextPage = () => {
   return (
     <DefaultLayout>
-      <div className="flex max-w-[43rem]">
-        <div className="flex flex-col w-full">
+      <div className="flex w-full gap-6 flex-col c-lg:flex-row">
+        <div className="flex basis-5/7 gap-14 max-w-[41rem] flex-col">
           <Popular />
           <UnpopularMasterpiece />
         </div>
+        <div className="flex basis-2/7">
+          <TagsCotroller />
+        </div>
       </div>
-      <div className="flex w-full"></div>
     </DefaultLayout>
   );
 };
@@ -20,20 +23,20 @@ const Home: NextPage = () => {
 const Popular: React.FC = () => {
   const [page, setPage] = useState(0);
   return (
-    <Window>
-      <Window.Header>Recently Popular</Window.Header>
-      <Window.GridBooks pageIndex={page} limit={50} />
-      <Window.Pagination index={page} setIndex={setPage} length={5} />
-    </Window>
+    <Box>
+      <Box.Header>Recently Popular</Box.Header>
+      <Box.BooksGrid pageIndex={page} limit={50} />
+      <Box.Pagination index={page} setIndex={setPage} length={5} />
+    </Box>
   );
 };
 
 const UnpopularMasterpiece: React.FC = () => {
   return (
-    <Window>
-      <Window.Header>Unpopular but Highly Rated</Window.Header>
-      <Window.GridBooks limit={5} />
-    </Window>
+    <Box>
+      <Box.Header>Unpopular but Highly Rated</Box.Header>
+      <Box.BooksGrid limit={5} />
+    </Box>
   );
 };
 

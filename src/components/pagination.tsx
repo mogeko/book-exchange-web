@@ -9,7 +9,7 @@ const Pagination: React.FC<PaginationProps> = ({ length, setIndex, index }) => {
   const gotoNextPage = () => setIndex(() => Math.min(length - 1, index + 1));
 
   return length > 1 ? (
-    <div className="btn-group">
+    <div className="btn-group mx-auto">
       <button className="btn btn-xs" onClick={gotoPrevPage}>
         <FaCaretLeft />
       </button>

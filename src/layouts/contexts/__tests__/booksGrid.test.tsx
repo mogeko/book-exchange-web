@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import * as books from "@/lib/connect/books";
-import Window from "@/layouts/window";
+import BooksGrid from "@/layouts/contexts/booksGrid";
 
 const exampleBook = {
   title: "This is an example book",
@@ -13,85 +13,61 @@ const exampleBook = {
   id: 1,
 };
 
-describe("Home", () => {
+describe("booksGrid", () => {
   afterEach(() => {
     jest.resetAllMocks();
   });
 
-  it("renders a Display Window with Header", () => {
-    render(
-      <Window>
-        <Window.Header>TExample Title</Window.Header>
-      </Window>
-    );
-
-    expect(
-      screen.getByRole("heading", {
-        name: /Example Title/i,
-      })
-    ).toBeInTheDocument();
-  });
-
-  it("snapshot a Display Window with Header", () => {
-    const { container } = render(
-      <Window>
-        <Window.Header>TExample Title</Window.Header>
-      </Window>
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it("renders a Display GridBooks", () => {
+  it("renders a BooksGrid", () => {
     const exampleBooks = Array.from({ length: 20 }, () => exampleBook);
     const res = { books: exampleBooks, isError: false, isLoading: false };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    const { container } = render(<Window.GridBooks limit={20} />);
+    const { container } = render(<BooksGrid limit={20} />);
 
     expect(books.default).toBeCalledWith({ limit: 20 });
     expect(container.querySelectorAll("figure").length).toBe(10);
   });
 
-  it("snapshot a Display GridBooks", () => {
+  it("snapshot a BooksGrid", () => {
     const exampleBooks = Array.from({ length: 20 }, () => exampleBook);
     const res = { books: exampleBooks, isError: false, isLoading: false };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    const { container } = render(<Window.GridBooks limit={20} />);
+    const { container } = render(<BooksGrid limit={20} />);
 
     expect(container).toMatchSnapshot();
   });
 
-  it("renders a Display GridBooks then error", () => {
+  it("renders a BooksGrid then error", () => {
     const res = { books: [], isError: true, isLoading: false };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    render(<Window.GridBooks limit={20} />);
+    render(<BooksGrid limit={20} />);
 
     expect(books.default).toBeCalledWith({ limit: 20 });
     expect(screen.getByText("Network Error!")).toBeInTheDocument();
   });
 
-  it("snapshot a Display GridBooks then error", () => {
+  it("snapshot a BooksGrid then error", () => {
     const res = { books: [], isError: true, isLoading: false };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    const { container } = render(<Window.GridBooks limit={20} />);
+    const { container } = render(<BooksGrid limit={20} />);
 
     expect(container).toMatchSnapshot();
   });
 
-  it("renders a Display GridBooks then loading", () => {
+  it("renders a Display BooksGrid then loading", () => {
     const res = { books: [], isError: false, isLoading: true };
     jest.spyOn(books, "default").mockImplementation(() => res);
-    const { container } = render(<Window.GridBooks limit={20} />);
+    const { container } = render(<BooksGrid limit={20} />);
 
     expect(books.default).toBeCalledWith({ limit: 20 });
     expect(container.querySelector("div.animate-pulse")).toBeInTheDocument();
   });
 
-  it("snapshot a Display GridBooks then loading", () => {
+  it("snapshot a BooksGrid then loading", () => {
     const res = { books: [], isError: false, isLoading: true };
     jest.spyOn(books, "default").mockImplementation(() => res);
 
-    const { container } = render(<Window.GridBooks limit={20} />);
+    const { container } = render(<BooksGrid limit={20} />);
 
     expect(container).toMatchSnapshot();
   });

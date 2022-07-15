@@ -18,8 +18,8 @@ type QueryParamSuffix =
 export type QueryParamType<T extends string> = {
   [key in `${T}_${QueryParamSuffix}`]?: number | string;
 } & { [key in `${T}_order`]?: "asc" | "desc" } & {
-  limit?: number | string;
-  offset?: number | string;
+  limit?: number;
+  offset?: number;
 };
 
 export default handleQueryParam;
