@@ -13,12 +13,12 @@ const exampleBook = {
   id: 1,
 };
 
-describe("booksGrid", () => {
+describe("bookGrid", () => {
   afterEach(() => {
     jest.resetAllMocks();
   });
 
-  it("renders a BooksGrid", () => {
+  it("renders a BookGrid", () => {
     const exampleBooks = Array.from({ length: 3 }, () => exampleBook);
     const res = { books: exampleBooks, isError: false, isLoading: false };
     jest.spyOn(books, "default").mockImplementation(() => res);
@@ -28,7 +28,7 @@ describe("booksGrid", () => {
     expect(container.querySelectorAll("figure").length).toBe(3);
   });
 
-  it("snapshot a BooksGrid", () => {
+  it("snapshot a BookGrid", () => {
     const exampleBooks = Array.from({ length: 10 }, () => exampleBook);
     const res = { books: exampleBooks, isError: false, isLoading: false };
     jest.spyOn(books, "default").mockImplementation(() => res);
@@ -37,7 +37,7 @@ describe("booksGrid", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it("renders a BooksGrid then error", () => {
+  it("renders a BookGrid then error", () => {
     const res = { books: [], isError: true, isLoading: false };
     jest.spyOn(books, "default").mockImplementation(() => res);
     render(<BookGrid limit={10} />);
@@ -54,7 +54,7 @@ describe("booksGrid", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it("renders a Display BooksGrid then loading", () => {
+  it("renders a Display BookGrid then loading", () => {
     const res = { books: [], isError: false, isLoading: true };
     jest.spyOn(books, "default").mockImplementation(() => res);
     const { container } = render(<BookGrid limit={10} />);
@@ -63,7 +63,7 @@ describe("booksGrid", () => {
     expect(container.querySelector("div.animate-pulse")).toBeInTheDocument();
   });
 
-  it("snapshot a BooksGrid then loading", () => {
+  it("snapshot a BookGrid then loading", () => {
     const res = { books: [], isError: false, isLoading: true };
     jest.spyOn(books, "default").mockImplementation(() => res);
 

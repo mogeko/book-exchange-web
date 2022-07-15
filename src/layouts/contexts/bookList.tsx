@@ -3,7 +3,7 @@ import Alert from "@/components/alert";
 import { type QueryParamType } from "@/lib/utils/queryTools";
 import useBooks, { type BookTypes } from "@/lib/connect/books";
 
-const BooksList: React.FC<ContextProps> = ({ pageIndex = 0, ...query }) => {
+const BookList: React.FC<DataProps> = ({ pageIndex = 0, ...query }) => {
   const { books, isError, isLoading } = useBooks(query);
   return (
     <div className="flex flex-col">
@@ -15,8 +15,8 @@ const BooksList: React.FC<ContextProps> = ({ pageIndex = 0, ...query }) => {
   );
 };
 
-type ContextProps = {
+type DataProps = {
   pageIndex?: number;
 } & QueryParamType<keyof BookTypes>;
 
-export default BooksList;
+export default BookList;

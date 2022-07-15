@@ -2,7 +2,6 @@ import { DefaultLayout } from "@/layouts/layout";
 import { TagsCotroller } from "@/pages/tags/[tag]";
 import Box from "@/layouts/boxes";
 import type { NextPage } from "next";
-import { useState } from "react";
 
 const Home: NextPage = () => {
   return (
