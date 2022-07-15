@@ -16,6 +16,11 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 const swrConfig = {
   fetcher,
   use: [mockMiddleware],
+  // Disable automatic re-request
+  // https://swr.bootcss.com/docs/revalidation
+  revalidateIfStale: false,
+  revalidateOnFocus: false,
+  revalidateOnReconnect: false,
 };
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
