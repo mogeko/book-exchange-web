@@ -25,7 +25,7 @@ const Popular: React.FC = () => {
   return (
     <Box>
       <Box.Header>Recently Popular</Box.Header>
-      <Box.GridBooks pageIndex={page} limit={50} />
+      <Box.BooksGrid pageIndex={page} limit={50} />
       <Box.Pagination index={page} setIndex={setPage} length={5} />
     </Box>
   );
@@ -35,7 +35,7 @@ const UnpopularMasterpiece: React.FC = () => {
   return (
     <Box>
       <Box.Header>Unpopular but Highly Rated</Box.Header>
-      <Box.GridBooks limit={5} />
+      <Box.BooksGrid limit={5} />
     </Box>
   );
 };

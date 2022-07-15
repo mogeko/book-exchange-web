@@ -27,7 +27,7 @@ const TagView: React.FC = () => {
   return (
     <Box>
       <Box.Header>Tag: {tag}</Box.Header>
-      <Box.ListBooks limit={10} />
+      <Box.BooksList limit={10} />
     </Box>
   );
 };
