@@ -5,10 +5,14 @@ import { type QueryParamType } from "@/lib/utils/queryTools";
 import useBooks, { type BookTypes } from "@/lib/connect/books";
 import { useState } from "react";
 
-const BookGrid: React.FC<DataProps> = ({ pages = 0, offset = 0, ...query }) => {
+const BookGrid: React.FC<DataProps> = ({ pages = 1, offset = 0, ...other }) => {
   const [index, setindex] = useState(0);
-  const _query = { ...query, offset: offset + index * query.limit! };
-  const { books, isError, isLoading } = useBooks(_query);
+  const query = { ...other, offset: offset + index * other.limit! };
+  const { books, isError, isLoading } = useBooks(query);
+  // Cache the next page of books
+  const nextOffset = query.offset + index < pages - 1 ? query.limit! : 0;
+  const _cache = useBooks({ ...other, offset: nextOffset });
+
   return (
     <div className="flex flex-col">
       <div className="flex flex-wrap gap-6 my-8 w-full">

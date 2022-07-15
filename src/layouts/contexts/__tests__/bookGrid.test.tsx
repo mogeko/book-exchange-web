@@ -25,6 +25,7 @@ describe("bookGrid", () => {
     const { container } = render(<BookGrid limit={3} offset={5} />);
 
     expect(books.default).toBeCalledWith({ limit: 3, offset: 5 });
+    expect(books.default).toBeCalledTimes(2);
     expect(container.querySelectorAll("figure").length).toBe(3);
   });
 
