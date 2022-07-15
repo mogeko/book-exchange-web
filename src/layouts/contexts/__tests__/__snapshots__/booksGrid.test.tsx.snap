@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home snapshot a BooksGrid 1`] = `
+exports[`booksGrid snapshot a BooksGrid 1`] = `
 <div>
   <div
     class="flex flex-wrap gap-6 my-8 w-full"
@@ -449,7 +449,7 @@ exports[`Home snapshot a BooksGrid 1`] = `
 </div>
 `;
 
-exports[`Home snapshot a BooksGrid then error 1`] = `
+exports[`booksGrid snapshot a BooksGrid then error 1`] = `
 <div>
   <div
     class="flex flex-wrap gap-6 my-8 w-full"
@@ -483,7 +483,7 @@ exports[`Home snapshot a BooksGrid then error 1`] = `
 </div>
 `;
 
-exports[`Home snapshot a BooksGrid then loading 1`] = `
+exports[`booksGrid snapshot a BooksGrid then loading 1`] = `
 <div>
   <div
     class="flex flex-wrap gap-6 my-8 w-full"

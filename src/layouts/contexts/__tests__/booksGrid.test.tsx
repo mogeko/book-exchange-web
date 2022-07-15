@@ -13,7 +13,7 @@ const exampleBook = {
   id: 1,
 };
 
-describe("Home", () => {
+describe("booksGrid", () => {
   afterEach(() => {
     jest.resetAllMocks();
   });
