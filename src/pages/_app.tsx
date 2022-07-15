@@ -7,7 +7,8 @@ import { SWRConfig, Middleware, SWRHook } from "swr";
 const mockMiddleware: Middleware = (useSWRNext: SWRHook) => {
   return (key, fetcher, config) => {
     const mockHost = "https://mockend.com/mogeko/book-exchange-web/tree/dev";
-    return useSWRNext(mockHost + key, fetcher, config);
+    const query = typeof key === "function" ? key() : key;
+    return useSWRNext(mockHost + query, fetcher, config);
   };
 };
 
