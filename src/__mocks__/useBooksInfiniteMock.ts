@@ -3,6 +3,7 @@ import * as hooks from "@/lib/connect/books";
 const mock = jest.spyOn(hooks, "useBooksInfinite");
 
 const useBooksInfiniteMock = {
+  target: hooks.useBooksInfinite,
   returnResult: () => ({
     success: () => mock.mockImplementation(() => genExampleRes()),
     error: () =>
