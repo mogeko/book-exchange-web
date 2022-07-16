@@ -6,12 +6,13 @@ function useBooks(queryParam: QueryParamProps = {}) {
   const query = queryParam
     ? `/books?${handleQueryParam(queryParam)}`
     : "/books";
-  const { data, error }: SWRResponse<BookTypes[]> = useSWR(query);
+  const { data, error, ...otherRes }: SWRResponse<BookTypes[]> = useSWR(query);
 
   return {
     books: data,
     isLoading: !error && !data,
     isError: error,
+    ...otherRes,
   };
 }
 
@@ -19,32 +20,33 @@ export function useBook(id: string | number, queryParam: QueryParamProps = {}) {
   const query = queryParam
     ? `/books/${id}?${handleQueryParam(queryParam)}`
     : `/books/${id}`;
-  const { data, error }: SWRResponse<BookTypes> = useSWR(query);
+  const { data, error, ...otherRes }: SWRResponse<BookTypes> = useSWR(query);
 
   return {
     book: data,
     isLoading: !error && !data,
     isError: error,
+    ...otherRes,
   };
 }
 
 export function useBooksInfinite(queryParam: QueryParamInfiniteProps) {
   const { offset = 0, ...other } = queryParam;
-  const { data, error, size, setSize }: SWRInfiniteResponse<BookTypes> =
-    useSWRInfinite((index: number, previous: BookTypes[]) => {
+  const opts = { revalidateFirstPage: false };
+  const { data, error, ...otherRes }: SWRInfiniteResponse<BookTypes[]> =
+    useSWRInfinite((index, previous) => {
       if (previous && !previous.length) return null;
       return `/books?${handleQueryParam({
         offset: index * other.limit! + offset!,
         ...other,
       })}`;
-    });
+    }, opts);
 
   return {
-    books: data,
+    data: data,
     isLoading: !error && !data,
     isError: error,
-    setSize,
-    size,
+    ...otherRes,
   };
 }
 

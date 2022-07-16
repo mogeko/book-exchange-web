@@ -6,11 +6,11 @@ import useBooks, { type BookTypes } from "@/lib/connect/books";
 import { useState } from "react";
 
 const BookGrid: React.FC<DataProps> = ({ pages = 1, offset = 0, ...other }) => {
-  const [index, setindex] = useState(0);
+  const [index, setIndex] = useState(0);
   const query = { ...other, offset: offset + index * other.limit! };
   const { books, isError, isLoading } = useBooks(query);
   // Cache the next page of books
-  const nextOffset = query.offset + index < pages - 1 ? query.limit! : 0;
+  const nextOffset = query.offset + (index < pages - 1 ? query.limit! : 0);
   const _cache = useBooks({ ...other, offset: nextOffset });
 
   return (
@@ -21,7 +21,7 @@ const BookGrid: React.FC<DataProps> = ({ pages = 1, offset = 0, ...other }) => {
           ? Array.from({ length: 10 }, (_, i) => <Card.Skeleton key={i} />)
           : books?.map((book, i) => <Card key={i} {...book} />)}
       </div>
-      <Pagination length={pages} index={index} setIndex={setindex} />
+      <Pagination length={pages} index={index} setIndex={setIndex} />
     </div>
   );
 };
