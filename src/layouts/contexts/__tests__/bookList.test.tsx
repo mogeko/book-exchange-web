@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import * as books from "@/lib/connect/books";
 import * as hooks from "@/lib/useOnScreen";
 import BookList from "@/layouts/contexts/bookList";
+import useOnScreenMock from "@/__mocks__/useOnScreenMock";
 
 const exampleBooks = Array.from({ length: 3 }, () =>
   Array.from({ length: 10 }, () => ({
@@ -29,13 +30,16 @@ const exampleRes = {
 const genExampleRes = (res = {}) => Object.assign({}, exampleRes, res);
 
 describe("bookList", () => {
+  beforeEach(() => {
+    useOnScreenMock.not.visiable();
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
 
   it("renders a BookList", () => {
     jest.spyOn(books, "useBooksInfinite").mockImplementation(() => exampleRes);
-    jest.spyOn(hooks, "default").mockImplementation(() => true);
     const { container } = render(<BookList limit={10} offset={20} />);
 
     expect(books.useBooksInfinite).toBeCalledWith({ limit: 10, offset: 20 });
@@ -44,7 +48,6 @@ describe("bookList", () => {
 
   it("snapshot a BookList", () => {
     jest.spyOn(books, "useBooksInfinite").mockImplementation(() => exampleRes);
-    jest.spyOn(hooks, "default").mockImplementation(() => true);
     const { container } = render(<BookList limit={10} offset={20} />);
 
     expect(container).toMatchSnapshot();
