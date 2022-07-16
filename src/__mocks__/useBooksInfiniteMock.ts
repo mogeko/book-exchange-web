@@ -4,22 +4,22 @@ const mock = jest.spyOn(hooks, "useBooksInfinite");
 
 const useBooksInfiniteMock = {
   target: hooks.useBooksInfinite,
-  returnResult: () => ({
-    success: () => mock.mockImplementation(() => genExampleRes()),
+  returnResult: (x = 3, y = 10) => ({
+    success: () => mock.mockImplementation(() => genExampleRes({}, [x, y])),
     error: () =>
       mock.mockImplementation(() =>
-        genExampleRes({ data: undefined, isError: true })
+        genExampleRes({ data: undefined, isError: true }, [x, y])
       ),
     loading: () =>
       mock.mockImplementation(() =>
-        genExampleRes({ data: undefined, isLoading: true })
+        genExampleRes({ data: undefined, isLoading: true }, [x, y])
       ),
   }),
   genExampleBooks,
   genExampleRes,
 };
 
-function genExampleRes(res: Partial<ResType> = {}, [x, y] = [3, 10]) {
+function genExampleRes(res: Partial<ResType> = {}, [x, y] = [3, 10]): ResType {
   const exampleRes = {
     data: genExampleBooks({}, [x, y]),
     isValidating: false,
