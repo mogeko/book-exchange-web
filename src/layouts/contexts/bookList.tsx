@@ -1,8 +1,8 @@
 import { LongCard } from "@/components/card";
 import Alert from "@/components/alert";
 import { type QueryParamType } from "@/lib/utils/queryTools";
-import { useBooksInfinite, type BookTypes } from "@/lib/connect/books";
-import useOnScreen from "@/lib/useOnScreen";
+import { useBooksInfinite, type BookTypes } from "@/lib/hooks/useBooks";
+import useOnScreen from "@/lib/hooks/useOnScreen";
 import { useEffect, useRef } from "react";
 
 const MAX_PAGES = 10;

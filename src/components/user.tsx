@@ -1,4 +1,4 @@
-import { useUser } from "@/lib/connect/users";
+import { useUser } from "@/lib/hooks/useUsers";
 import { menus } from "@/lib/_variable";
 import { HiUser } from "react-icons/hi";
 import { VscError, VscLoading } from "react-icons/vsc";

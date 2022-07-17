@@ -2,7 +2,7 @@ import Card from "@/components/card";
 import Alert from "@/components/alert";
 import Pagination from "@/components/pagination";
 import { type QueryParamType } from "@/lib/utils/queryTools";
-import useBooks, { type BookTypes } from "@/lib/connect/books";
+import useBooks, { type BookTypes } from "@/lib/hooks/useBooks";
 import { useState } from "react";
 
 const BookGrid: React.FC<DataProps> = ({ pages = 1, offset = 0, ...other }) => {

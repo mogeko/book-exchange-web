@@ -1,4 +1,4 @@
-import * as hooks from "@/lib/connect/books";
+import * as hooks from "@/lib/hooks/useBooks";
 
 const mock = jest.spyOn(hooks, "useBooksInfinite");
 

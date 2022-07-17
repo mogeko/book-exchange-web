@@ -1,4 +1,4 @@
-import * as hooks from "@/lib/useOnScreen";
+import * as hooks from "@/lib/hooks/useOnScreen";
 
 const useOnScreenMock = {
   target: hooks.default,

@@ -1,4 +1,4 @@
-import * as hooks from "@/lib/connect/users";
+import * as hooks from "@/lib/hooks/useUsers";
 
 const mock = jest.spyOn(hooks, "useUser");
 
