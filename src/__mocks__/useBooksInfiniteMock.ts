@@ -1,6 +1,7 @@
 import * as hooks from "@/lib/hooks/useBooks";
 
 const mock = jest.spyOn(hooks, "useBooksInfinite");
+const setSizeMock = jest.fn();
 
 const useBooksInfiniteMock = {
   target: hooks.useBooksInfinite,
@@ -17,6 +18,7 @@ const useBooksInfiniteMock = {
   }),
   genExampleBooks,
   genExampleRes,
+  setSizeMock,
 };
 
 function genExampleRes(res: Partial<ResType> = {}, [x, y] = [3, 10]): ResType {
@@ -26,7 +28,7 @@ function genExampleRes(res: Partial<ResType> = {}, [x, y] = [3, 10]): ResType {
     isError: false,
     isLoading: false,
     mutate: jest.fn(),
-    setSize: jest.fn(),
+    setSize: setSizeMock,
     size: 1,
   };
 
