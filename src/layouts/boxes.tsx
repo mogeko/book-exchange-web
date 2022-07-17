@@ -1,5 +1,5 @@
-import BooksGrid from "@/layouts/contexts/booksGrid";
-import BooksList from "@/layouts/contexts/booksList";
+import BookGrid from "@/layouts/contexts/bookGrid";
+import BookList from "@/layouts/contexts/bookList";
 import Pagination from "@/components/pagination";
 
 const BoxRoot: React.FC<BoxProps> = ({ title, children }) => {
@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
   return <h1 className="text-2xl w-full py-2">{children}</h1>;
 };
 
-const Contexts = { BooksGrid, BooksList };
+const Contexts = { BookGrid, BookList };
 const Box = Object.assign(BoxRoot, { SubBox, Header, Pagination, ...Contexts });
 
 interface BoxProps {

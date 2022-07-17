@@ -1,7 +1,9 @@
-function handleQueryParam<T extends string>(queryParams: QueryParamType<T>) {
-  return Object.entries(queryParams)
+function handleQuery<T extends string>(url: string, params: QueryParamType<T>) {
+  if (Object.keys(params).length === 0) return url;
+  const queryParams = Object.entries(params)
     .map(([key, value]) => `${key}=${value}`)
     .join("&");
+  return [url, queryParams].join("?");
 }
 
 type QueryParamSuffix =
@@ -22,4 +24,4 @@ export type QueryParamType<T extends string> = {
   offset?: number;
 };
 
-export default handleQueryParam;
+export default handleQuery;

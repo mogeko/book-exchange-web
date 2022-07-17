@@ -1,24 +1,25 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import * as router from "next/router";
+import useBooksInfiniteMock from "@/__mocks__/useBooksInfiniteMock";
+import useOnScreenMock from "@/__mocks__/useOnScreenMock";
+import useRouterMock from "@/__mocks__/useRouter";
 import Tags from "@/pages/tags/[tag]";
 
-const exampleResult = {
-  query: {
-    tag: "test",
-  },
-};
-
 describe("Tags", () => {
+  beforeEach(() => {
+    useOnScreenMock.not.visiable();
+    useBooksInfiniteMock.returnResult().success();
+    useRouterMock.returnResult({ query: { tag: "test" } });
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
 
   it("renders a Tags", () => {
-    jest.spyOn(router, "useRouter").mockReturnValue(exampleResult as any);
     render(<Tags />);
 
-    expect(router.useRouter).toBeCalledWith();
+    expect(useRouterMock.target).toBeCalledWith();
     expect(screen.getByText("Tag: test")).toBeInTheDocument();
   });
 });
