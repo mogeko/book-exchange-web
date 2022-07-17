@@ -55,7 +55,28 @@
       "regexp": "https://picsum\\.photos/seed/[0-9]{5}/1280/1920/"
     },
     "tags": {
-      "hasMany": "Tag"
+      "string": [
+        "novel",
+        "essays",
+        "poetry",
+        "short-stories",
+        "fairy-tale",
+        "comics",
+        "reasoning",
+        "picture-book",
+        "science-fiction",
+        "youth-romance",
+        "fantasy",
+        "martial-arts",
+        "history",
+        "philosophy",
+        "biography",
+        "design",
+        "film",
+        "architecture",
+        "memoir",
+        "music"
+      ]
     }
   },
   "Tag": {
