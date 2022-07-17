@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { SWRConfig, Middleware, SWRHook } from "swr";
+import { SWRConfig } from "swr";
 
 // ONLY FOR DEVELOPMENT
 // Use middleware to inject the address of the mock server

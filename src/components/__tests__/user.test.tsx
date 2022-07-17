@@ -29,7 +29,9 @@ describe("User", () => {
     useUserMock.returnResult().withLogined();
     render(<User />);
 
-    expect(screen.getByText("example-user")).toBeInTheDocument();
+    expect(
+      screen.getByText(useUserMock.exampleData.username)
+    ).toBeInTheDocument();
     expect(screen.getByText("Profile")).toBeInTheDocument();
     expect(screen.getByText("Logout")).toBeInTheDocument();
   });

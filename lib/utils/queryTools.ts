@@ -17,7 +17,7 @@ type QueryParamSuffix =
   | "startsWith"
   | "endsWith";
 
-export type QueryParamType<T extends string> = {
+export type QueryParamType<T extends string | number> = {
   [key in `${T}_${QueryParamSuffix}`]?: number | string;
 } & { [key in `${T}_order`]?: "asc" | "desc" } & {
   limit?: number;

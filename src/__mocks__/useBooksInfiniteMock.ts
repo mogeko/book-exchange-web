@@ -16,6 +16,7 @@ const useBooksInfiniteMock = {
         genExampleRes({ data: undefined, isLoading: true }, [x, y])
       ),
   }),
+  exampleData: hooks.exampleData,
   genExampleBooks,
   genExampleRes,
   setSizeMock,
@@ -36,19 +37,8 @@ function genExampleRes(res: Partial<ResType> = {}, [x, y] = [3, 10]): ResType {
 }
 
 function genExampleBooks(data: Partial<BookTypes> = {}, [x, y] = [3, 10]) {
-  const defaultData: BookTypes = {
-    title: "This is an example book",
-    cover: "https://picsum.photos/seed/35613/1280/1910/",
-    description: "This is an example book",
-    published: "1010-1-1T23:59:59Z",
-    publisher: "This is an example publisher",
-    tags: "This is an example tag",
-    author: "No One",
-    id: 1,
-  };
-
   return Array.from({ length: x }, () =>
-    Array.from({ length: y }, () => ({ ...defaultData, ...data }))
+    Array.from({ length: y }, () => ({ ...hooks.exampleData, ...data }))
   );
 }
 
