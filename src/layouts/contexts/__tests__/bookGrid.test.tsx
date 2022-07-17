@@ -4,12 +4,15 @@ import useBooksMock from "@/__mocks__/useBooksMock";
 import BookGrid from "@/layouts/contexts/bookGrid";
 
 describe("bookGrid", () => {
+  beforeEach(() => {
+    useBooksMock.returnResult(3).success();
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
 
   it("renders a BookGrid", () => {
-    useBooksMock.returnResult(3).success();
     const { container } = render(<BookGrid limit={3} offset={5} />);
 
     expect(useBooksMock.target).toBeCalledWith({ limit: 3, offset: 5 });
@@ -18,10 +21,15 @@ describe("bookGrid", () => {
   });
 
   it("snapshot a BookGrid", () => {
-    useBooksMock.returnResult(10).success();
     const { container } = render(<BookGrid limit={10} />);
 
     expect(container).toMatchSnapshot();
+  });
+});
+
+describe("bookGrid with abnormal state", () => {
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   it("renders a BookGrid then error", () => {

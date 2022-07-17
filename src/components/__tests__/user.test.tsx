@@ -10,8 +10,8 @@ describe("User", () => {
 
   it("renders a user menu without logined", () => {
     useUserMock.returnResult().withoutLogined();
-
     const { container } = render(<User />);
+
     expect(useUserMock.target).toBeCalledWith(1);
     expect(container.querySelector("a")?.textContent).toEqual(
       "Sign in / Sign up"
@@ -20,15 +20,15 @@ describe("User", () => {
 
   it("snapshot a user menu without logined", () => {
     useUserMock.returnResult().withoutLogined();
-
     const { container } = render(<User />);
+
     expect(container).toMatchSnapshot();
   });
 
   it("renders a user menu with logined", () => {
     useUserMock.returnResult().withLogined();
-
     render(<User />);
+
     expect(screen.getByText("example-user")).toBeInTheDocument();
     expect(screen.getByText("Profile")).toBeInTheDocument();
     expect(screen.getByText("Logout")).toBeInTheDocument();
@@ -36,9 +36,15 @@ describe("User", () => {
 
   it("snapshot a user menu with logined", () => {
     useUserMock.returnResult().withLogined();
-
     const { container } = render(<User />);
+
     expect(container).toMatchSnapshot();
+  });
+});
+
+describe("User with abnormal state", () => {
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   it("renders user menu when error occurred", () => {

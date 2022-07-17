@@ -125,7 +125,7 @@ exports[`User snapshot a user menu without logined 1`] = `
 </div>
 `;
 
-exports[`User snapshot user menu is loading 1`] = `
+exports[`User with abnormal state snapshot user menu is loading 1`] = `
 <div>
   <div
     class="dropdown dropdown-end"
@@ -167,7 +167,7 @@ exports[`User snapshot user menu is loading 1`] = `
 </div>
 `;
 
-exports[`User snapshot user menu when error occurred 1`] = `
+exports[`User with abnormal state snapshot user menu when error occurred 1`] = `
 <div>
   <div
     class="dropdown dropdown-end"
