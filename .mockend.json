@@ -77,6 +77,12 @@
         "memoir",
         "music"
       ]
+    },
+    "rates": {
+      "int": {
+        "min": 0,
+        "max": 100
+      }
     }
   },
   "Tag": {
