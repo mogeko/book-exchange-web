@@ -42,6 +42,7 @@ function genExampleBooks(data: Partial<BookTypes> = {}, [x, y] = [3, 10]) {
     description: "This is an example book",
     published: "1010-1-1T23:59:59Z",
     publisher: "This is an example publisher",
+    tags: "This is an example tag",
     author: "No One",
     id: 1,
   };

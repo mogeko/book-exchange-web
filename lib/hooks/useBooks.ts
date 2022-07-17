@@ -54,6 +54,7 @@ export interface BookTypes {
   published: string;
   publisher: string;
   title: string;
+  tags: string;
 }
 
 type QueryParamProps = QueryParamType<keyof BookTypes>;
