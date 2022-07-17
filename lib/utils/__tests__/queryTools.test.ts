@@ -1,4 +1,4 @@
-import handleQueryParam from "@/lib/utils/queryTools";
+import handleQuery from "@/lib/utils/queryTools";
 
 type exampleType = {
   example: string;
@@ -6,14 +6,14 @@ type exampleType = {
 
 describe("queryTools", () => {
   it("should return a query string", () => {
-    expect(handleQueryParam({ limit: 10, offset: 0 })).toBe(
-      "limit=10&offset=0"
+    expect(handleQuery("/test", { limit: 10, offset: 0 })).toBe(
+      "/test?limit=10&offset=0"
     );
     expect(
-      handleQueryParam<keyof exampleType>({
+      handleQuery<keyof exampleType>("/test", {
         example_eq: "test",
         example_order: "asc",
       })
-    ).toBe("example_eq=test&example_order=asc");
+    ).toBe("/test?example_eq=test&example_order=asc");
   });
 });
