@@ -28,8 +28,8 @@
   },
   "Book": {
     "title": {
-      "loremSentences": {
-        "minLength": 10,
+      "loremWords": {
+        "minLength": 8,
         "maxLength": 20
       }
     },
