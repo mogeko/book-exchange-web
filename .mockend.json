@@ -28,21 +28,21 @@
   },
   "Book": {
     "title": {
-      "loremWords": {
-        "minLength": 5,
+      "loremSentences": {
+        "minLength": 10,
         "maxLength": 20
       }
     },
     "author": {
-      "regexp": "[a-zA-Z]{5,10}"
+      "regexp": "[A-Z][a-z]{5,10} [A-Z][a-z]{5,10}"
     },
     "publisher": {
-      "regexp": "[a-zA-Z]{8,14}"
+      "regexp": "[A-Z][a-z\\ ]{8,20}"
     },
     "description": {
       "loremSentences": {
-        "minLength": 10,
-        "maxLength": 50
+        "minLength": 100,
+        "maxLength": 200
       }
     },
     "published": {
@@ -53,6 +53,43 @@
     },
     "cover": {
       "regexp": "https://picsum\\.photos/seed/[0-9]{5}/1280/1920/"
+    },
+    "tags": {
+      "hasMany": "Tag"
+    }
+  },
+  "Tag": {
+    "literature": {
+      "string": [
+        "novel",
+        "essays",
+        "poetry",
+        "short-stories",
+        "fairy-tale"
+      ]
+    },
+    "pop": {
+      "string": [
+        "comics",
+        "reasoning",
+        "picture-book",
+        "science-fiction",
+        "youth-romance",
+        "fantasy",
+        "martial-arts"
+      ]
+    },
+    "civilization": {
+      "string": [
+        "history",
+        "philosophy",
+        "biography",
+        "design",
+        "film",
+        "architecture",
+        "memoir",
+        "music"
+      ]
     }
   }
 }
