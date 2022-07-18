@@ -26,7 +26,7 @@ export function useUser(
 }
 
 export const exampleData = {
-  avatar: "https://i.pravatar.cc/150?u=39184",
+  avatar: faker.image.avatar(),
   username: faker.internet.userName(),
   description: faker.lorem.paragraph(10),
   email: faker.internet.email(),

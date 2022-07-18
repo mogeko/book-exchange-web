@@ -49,7 +49,7 @@ export function useBooksInfinite(queryParam: QueryParamInfiniteProps) {
 
 export const exampleData = {
   title: faker.word.noun(20),
-  cover: "https://picsum.photos/seed/35613/1280/1910/",
+  cover: faker.image.image(1280, 1910),
   description: faker.lorem.paragraph(10),
   published: faker.date.past().toISOString(),
   publisher: faker.company.companyName(),

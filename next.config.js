@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["i.pravatar.cc", "picsum.photos"],
+    domains: ["loremflickr.com", "cloudflare-ipfs.com"],
   },
   experimental: {
     images: {

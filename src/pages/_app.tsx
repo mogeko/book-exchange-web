@@ -4,7 +4,8 @@ import { SWRConfig } from "swr";
 
 // ONLY FOR DEVELOPMENT
 // Use middleware to inject the address of the mock server
-const mockHost = "https://mockend.com/mogeko/book-exchange-web/tree/dev";
+const mockHost = "https://book-exchange-mock.azurewebsites.net/api/v1";
+// const mockHost = "http://localhost:3001/api/v1"; // Local mock server
 
 const fetcher = (url: string) => fetch(mockHost + url).then((r) => r.json());
 
