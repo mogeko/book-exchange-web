@@ -3,7 +3,7 @@ import handleQuery from "@/lib/utils/queryTools";
 import useSWR, { type SWRResponse } from "swr";
 import { faker } from "@faker-js/faker";
 
-function useBooks(param: ParamForBooksProps = {}) {
+function useBooks(param: ParamProps = {}) {
   const query = handleQuery("/books", param);
   const { data, error, ...otherRes }: SWRResponse<BookTypes[]> = useSWR(query);
 
@@ -15,7 +15,7 @@ function useBooks(param: ParamForBooksProps = {}) {
   };
 }
 
-export function useBook(id: string | number, param: ParamForBookProps = {}) {
+export function useBook(id: string | number, param = {}) {
   const query = handleQuery(`/books/${id}`, param);
   const { data, error, ...otherRes }: SWRResponse<BookTypes> = useSWR(query);
 
@@ -27,14 +27,14 @@ export function useBook(id: string | number, param: ParamForBookProps = {}) {
   };
 }
 
-export function useBooksInfinite(param: ParamForBooksProps) {
-  const { offset = 0, ...other } = param;
+export function useBooksInfinite(param: ParamProps) {
+  const { page = 1, ...other } = param;
   const opts = { revalidateFirstPage: false };
   const { data, error, ...otherRes }: SWRInfiniteResponse<BookTypes[]> =
     useSWRInfinite((index, previous) => {
       if (previous && !previous.length) return null;
       return handleQuery("/books", {
-        offset: index * other.limit! + offset!,
+        page: index + page,
         ...other,
       });
     }, opts);
@@ -61,13 +61,10 @@ export const exampleData = {
 
 export type BookTypes = Partial<typeof exampleData>;
 
-interface ParamForBookProps {
+interface ParamProps {
   limit?: number;
-  offset?: number;
+  page?: number;
+  tags_include?: string | string[];
 }
-
-type ParamForBooksProps = {
-  tag_include?: string;
-} & ParamForBookProps;
 
 export default useBooks;

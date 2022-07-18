@@ -23,7 +23,7 @@ const Popular: React.FC = () => {
   return (
     <Box>
       <Box.Header>Recently Popular</Box.Header>
-      <Box.BookGrid pages={5} limit={10} />
+      <Box.BookGrid maxPages={5} limit={10} />
     </Box>
   );
 };

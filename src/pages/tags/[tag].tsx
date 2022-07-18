@@ -27,7 +27,7 @@ const TagView: React.FC = () => {
   return (
     <Box>
       <Box.Header>Tag: {tag}</Box.Header>
-      <Box.BookList limit={10} tag_include={String(tag)} />
+      {tag && <Box.BookList limit={10} tags_include={tag} />}
     </Box>
   );
 };

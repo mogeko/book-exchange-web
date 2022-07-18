@@ -12,7 +12,7 @@ function useUsers(queryParam: ParamProps = {}) {
   };
 }
 
-export function useUser(id: string | number, queryParam: ParamProps = {}) {
+export function useUser(id: string | number, queryParam = {}) {
   const query = handleQuery(`/users/${id}`, queryParam);
   const { data, error }: SWRResponse<UserType> = useSWR(query);
   return {
@@ -35,7 +35,7 @@ export type UserType = Partial<typeof exampleData>;
 
 interface ParamProps {
   limit?: number;
-  offset?: number;
+  page?: number;
 }
 
 export default useUsers;
