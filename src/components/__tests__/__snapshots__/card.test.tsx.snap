@@ -116,7 +116,7 @@ exports[`Card snapshot a long card 1`] = `
         Hollie
       </p>
       <div
-        class="inline-flex items-center"
+        class="inline-flex items-center text-amber-400"
       >
         <svg
           fill="currentColor"

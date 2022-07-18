@@ -7,8 +7,8 @@ const StarsRate: React.FC<RateProps> = ({ rates }) => {
   };
 
   return (
-    <div className="inline-flex items-center">
-      {genStars(rates).map((x, i) => {
+    <div className="inline-flex items-center text-amber-400">
+      {genStars(rates, [], 5).map((x, i) => {
         if (x >= 20) return <IoIosStar key={i} />;
         if (x >= 10) return <IoIosStarHalf key={i} />;
         return <IoIosStarOutline key={i} />;

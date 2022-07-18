@@ -3,7 +3,7 @@
 exports[`StarsRate snapshot a StarRate when rates = 75 1`] = `
 <div>
   <div
-    class="inline-flex items-center"
+    class="inline-flex items-center text-amber-400"
   >
     <svg
       fill="currentColor"
