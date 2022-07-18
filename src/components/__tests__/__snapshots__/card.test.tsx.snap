@@ -10,13 +10,13 @@ exports[`Card snapshot a book card 1`] = `
     >
       <a
         class="relative w-28 h-[calc(7rem/2*3)]"
-        href="/books/1"
+        href="/books/95"
       >
         <span
           style="box-sizing: border-box; display: block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"
         >
           <img
-            alt="This is an example book"
+            alt="text"
             data-nimg="fill"
             decoding="async"
             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -31,18 +31,18 @@ exports[`Card snapshot a book card 1`] = `
     >
       <a
         class="link no-underline text-primary hover:bg-primary hover:text-primary-content focus:bg-primary-focus focus:text-primary-content"
-        href="/books/1"
+        href="/books/95"
       >
         <h2
           class="truncate"
         >
-          This is an example book
+          text
         </h2>
       </a>
       <p
         class="truncate"
       >
-        No One
+        Hollie
       </p>
     </div>
   </div>
@@ -77,13 +77,13 @@ exports[`Card snapshot a long card 1`] = `
     >
       <a
         class="relative w-28 h-[calc(7rem/2*3)]"
-        href="/books/1"
+        href="/books/95"
       >
         <span
           style="box-sizing: border-box; display: block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"
         >
           <img
-            alt="This is an example book"
+            alt="text"
             data-nimg="fill"
             decoding="async"
             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -101,19 +101,19 @@ exports[`Card snapshot a long card 1`] = `
       >
         <a
           class="link no-underline text-primary hover:bg-primary hover:text-primary-content focus:bg-primary-focus focus:text-primary-content"
-          href="/books/1"
+          href="/books/95"
         >
           <h2
             class="truncate"
           >
-            This is an example book
+            text
           </h2>
         </a>
       </div>
       <p
         class="truncate"
       >
-        No One
+        Hollie
       </p>
       <div
         class="inline-flex items-center"
@@ -186,12 +186,14 @@ exports[`Card snapshot a long card 1`] = `
         <span
           class="text-base ml-2"
         >
-          NaN
+          0.1
         </span>
       </div>
       <p
         class="line-clamp-3 text-ellipsis"
-      />
+      >
+        Quia doloremque dolorum et sed ut. Et dolorem non omnis qui neque velit quis. Similique accusantium officiis adipisci. Dolorum cum et totam eveniet culpa qui quibusdam ad facere. Rerum distinctio atque consequatur amet iure sequi voluptas dolorem. Suscipit non quam. Deserunt omnis sint similique cum aliquid est sunt odio nemo. Inventore est ut ut magnam ea dolores ipsum ea recusandae. Et facere cumque quae fuga dolor ipsa dolor. Unde sit cupiditate. Sint aspernatur ullam a est repellendus ducimus. Maxime id est dolor nobis fuga. Voluptatem veniam maiores aut laborum perferendis harum quo minus.
+      </p>
     </div>
   </div>
 </div>

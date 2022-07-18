@@ -1,29 +1,25 @@
 import { render } from "@testing-library/react";
 import Card, { LongCard } from "@/components/card";
+import useBooksMock from "@/__mocks__/useBooksMock";
 import "@testing-library/jest-dom";
 
-const exampleBook = {
-  title: "This is an example book",
-  cover: "https://picsum.photos/seed/35613/1280/1920/",
-  author: "No One",
-  id: 1,
-};
+const { exampleData } = useBooksMock;
 
 describe("Card", () => {
   it("renders a book card correctly", () => {
-    const { container } = render(<Card {...exampleBook} />);
+    const { container } = render(<Card {...exampleData} />);
 
     expect(container.querySelector("figure a")).toHaveAttribute(
       "href",
-      `/books/${exampleBook.id}`
+      `/books/${exampleData.id}`
     );
     expect(container.querySelector("figure img")).toBeInTheDocument();
-    expect(container.querySelector("h2")?.textContent).toBe(exampleBook.title);
-    expect(container.querySelector("p")?.textContent).toBe(exampleBook.author);
+    expect(container.querySelector("h2")?.textContent).toBe(exampleData.title);
+    expect(container.querySelector("p")?.textContent).toBe(exampleData.author);
   });
 
   it("snapshot a book card", () => {
-    const { container } = render(<Card {...exampleBook} />);
+    const { container } = render(<Card {...exampleData} />);
 
     expect(container).toMatchSnapshot();
   });
@@ -35,19 +31,19 @@ describe("Card", () => {
   });
 
   it("render a long card", () => {
-    const { container } = render(<LongCard {...exampleBook} />);
+    const { container } = render(<LongCard {...exampleData} />);
 
     expect(container.querySelector("figure a")).toHaveAttribute(
       "href",
-      `/books/${exampleBook.id}`
+      `/books/${exampleData.id}`
     );
     expect(container.querySelector("figure img")).toBeInTheDocument();
-    expect(container.querySelector("h2")?.textContent).toBe(exampleBook.title);
-    expect(container.querySelector("p")?.textContent).toBe(exampleBook.author);
+    expect(container.querySelector("h2")?.textContent).toBe(exampleData.title);
+    expect(container.querySelector("p")?.textContent).toBe(exampleData.author);
   });
 
   it("snapshot a long card", () => {
-    const { container } = render(<LongCard {...exampleBook} />);
+    const { container } = render(<LongCard {...exampleData} />);
 
     expect(container).toMatchSnapshot();
   });
