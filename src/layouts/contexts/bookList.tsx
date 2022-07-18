@@ -1,7 +1,6 @@
 import { LongCard } from "@/components/card";
 import Alert from "@/components/alert";
-import { type QueryParamType } from "@/lib/utils/queryTools";
-import { useBooksInfinite, type BookTypes } from "@/lib/hooks/useBooks";
+import { useBooksInfinite } from "@/lib/hooks/useBooks";
 import useOnScreen from "@/lib/hooks/useOnScreen";
 import { useEffect, useRef } from "react";
 
@@ -42,6 +41,6 @@ const BookList: React.FC<DataProps> = ({ pages = 1, offset = 0, ...other }) => {
 
 type DataProps = {
   pages?: number;
-} & QueryParamType<keyof BookTypes>;
+} & Parameters<typeof useBooksInfinite>[0];
 
 export default BookList;

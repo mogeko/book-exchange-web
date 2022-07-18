@@ -1,8 +1,8 @@
-import handleQuery, { type QueryParamType } from "@/lib/utils/queryTools";
+import handleQuery from "@/lib/utils/queryTools";
 import useSWR, { type SWRResponse } from "swr";
 import { faker } from "@faker-js/faker";
 
-function useUsers(queryParam: QueryParamType<keyof UserType> = {}) {
+function useUsers(queryParam: ParamProps = {}) {
   const query = handleQuery("/users", queryParam);
   const { data, error }: SWRResponse<UserType[]> = useSWR(query);
   return {
@@ -12,10 +12,7 @@ function useUsers(queryParam: QueryParamType<keyof UserType> = {}) {
   };
 }
 
-export function useUser(
-  id: string | number,
-  queryParam: QueryParamType<keyof UserType> = {}
-) {
+export function useUser(id: string | number, queryParam: ParamProps = {}) {
   const query = handleQuery(`/users/${id}`, queryParam);
   const { data, error }: SWRResponse<UserType> = useSWR(query);
   return {
@@ -35,5 +32,10 @@ export const exampleData = {
 };
 
 export type UserType = Partial<typeof exampleData>;
+
+interface ParamProps {
+  limit?: number;
+  offset?: number;
+}
 
 export default useUsers;

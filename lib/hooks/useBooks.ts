@@ -1,10 +1,10 @@
 import useSWRInfinite, { type SWRInfiniteResponse } from "swr/infinite";
-import handleQuery, { type QueryParamType } from "@/lib/utils/queryTools";
+import handleQuery from "@/lib/utils/queryTools";
 import useSWR, { type SWRResponse } from "swr";
 import { faker } from "@faker-js/faker";
 
-function useBooks(queryParam: QueryParamProps = {}) {
-  const query = handleQuery("/books", queryParam);
+function useBooks(param: ParamForBooksProps = {}) {
+  const query = handleQuery("/books", param);
   const { data, error, ...otherRes }: SWRResponse<BookTypes[]> = useSWR(query);
 
   return {
@@ -15,8 +15,8 @@ function useBooks(queryParam: QueryParamProps = {}) {
   };
 }
 
-export function useBook(id: string | number, queryParam: QueryParamProps = {}) {
-  const query = handleQuery(`/books/${id}`, queryParam);
+export function useBook(id: string | number, param: ParamForBookProps = {}) {
+  const query = handleQuery(`/books/${id}`, param);
   const { data, error, ...otherRes }: SWRResponse<BookTypes> = useSWR(query);
 
   return {
@@ -27,8 +27,8 @@ export function useBook(id: string | number, queryParam: QueryParamProps = {}) {
   };
 }
 
-export function useBooksInfinite(queryParam: QueryParamInfiniteProps) {
-  const { offset = 0, ...other } = queryParam;
+export function useBooksInfinite(param: ParamForBooksProps) {
+  const { offset = 0, ...other } = param;
   const opts = { revalidateFirstPage: false };
   const { data, error, ...otherRes }: SWRInfiniteResponse<BookTypes[]> =
     useSWRInfinite((index, previous) => {
@@ -53,7 +53,7 @@ export const exampleData = {
   description: faker.lorem.paragraph(10),
   published: faker.date.past().toISOString(),
   publisher: faker.company.companyName(),
-  tags: faker.lorem.words(1),
+  tags: [faker.lorem.words(1), faker.lorem.words(2)],
   author: faker.name.firstName(),
   rates: faker.datatype.number(100),
   id: faker.datatype.number(100),
@@ -61,10 +61,13 @@ export const exampleData = {
 
 export type BookTypes = Partial<typeof exampleData>;
 
-type QueryParamProps = QueryParamType<keyof BookTypes>;
+interface ParamForBookProps {
+  limit?: number;
+  offset?: number;
+}
 
-type QueryParamInfiniteProps = {
-  limit: number;
-} & Omit<QueryParamProps, "limit">;
+type ParamForBooksProps = {
+  tag_include?: string;
+} & ParamForBookProps;
 
 export default useBooks;
