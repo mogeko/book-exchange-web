@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
-import Card, { LongCard } from "@/components/card";
-import useBooksMock from "@/__mocks__/useBooksMock";
 import "@testing-library/jest-dom";
+import useBooksMock from "@/__mocks__/useBooksMock";
+import Card, { LongCard } from "@/components/card";
 
 const { exampleData } = useBooksMock;
 

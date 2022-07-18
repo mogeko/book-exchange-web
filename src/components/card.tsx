@@ -1,6 +1,6 @@
 import { type BookTypes } from "@/lib/hooks/useBooks";
 import Skeleton from "@/components/skeleton";
-import Rate from "@/components/rate";
+import StarsRate from "@/components/stars";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -54,7 +54,7 @@ const LongCardRoot: React.FC<CardProps> = (props) => {
           </Link>
         </div>
         <p className="truncate">{author}</p>
-        <Rate rates={rates!} />
+        <StarsRate rates={rates!} />
         <p className="line-clamp-3 text-ellipsis">{description}</p>
       </div>
     </div>
