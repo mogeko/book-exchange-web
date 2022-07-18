@@ -4,3 +4,7 @@
 // Used for src/__tests__/testing-library.js
 // Learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom/extend-expect";
+import { faker } from "@faker-js/faker";
+
+// Set Seeds for Faker JS
+faker.seed(26136);

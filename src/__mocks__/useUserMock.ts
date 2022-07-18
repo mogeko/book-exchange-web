@@ -17,6 +17,7 @@ const useUserMock = {
         genExampleRes({ user: undefined, isLoading: true })
       ),
   }),
+  exampleData: hooks.exampleData,
   genExampleRes,
   genExampleUser,
 };
@@ -34,16 +35,7 @@ function genExampleRes(res: Partial<ResType> = {}): ResType {
 }
 
 function genExampleUser(data: Partial<UserType> = {}) {
-  const defaultData = {
-    avatar: "https://i.pravatar.cc/150?u=39184",
-    email: "email@example.com",
-    description: "This is an example user",
-    username: "example-user",
-    city: "Budapest",
-    id: 1,
-  };
-
-  return { ...defaultData, ...data };
+  return { ...hooks.exampleData, ...data };
 }
 
 type ResType = ReturnType<typeof hooks.useUser>;

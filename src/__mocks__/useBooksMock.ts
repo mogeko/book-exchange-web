@@ -15,6 +15,7 @@ const useBooksMock = {
         genExampleRes({ books: undefined, isLoading: true }, x)
       ),
   }),
+  exampleData: hooks.exampleData,
   genExampleBooks,
   genExampleRes,
 };
@@ -32,17 +33,7 @@ function genExampleRes(res: Partial<ResType> = {}, x = 10): ResType {
 }
 
 function genExampleBooks(data: Partial<BookTypes> = {}, x = 10) {
-  const defaultData: BookTypes = {
-    title: "This is an example book",
-    cover: "https://picsum.photos/seed/35613/1280/1910/",
-    description: "This is an example book",
-    published: "1010-1-1T23:59:59Z",
-    publisher: "This is an example publisher",
-    author: "No One",
-    id: 1,
-  };
-
-  return Array.from({ length: x }, () => ({ ...defaultData, ...data }));
+  return Array.from({ length: x }, () => ({ ...hooks.exampleData, ...data }));
 }
 
 type ResType = ReturnType<typeof hooks.default>;

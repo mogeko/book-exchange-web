@@ -44,7 +44,7 @@ const UserAvatar: React.FC = () => {
   if (isError) return <VscError className="w-6 h-6 text-error" />;
   if (isLoading) return <VscLoading className="animate-spin w-6 h-6" />;
   if (!user) return <HiUser className="h-6 w-6" aria-hidden="true" />;
-  return <Image src={user.avatar} width={24} height={24} alt="User avatar" />;
+  return <Image src={user.avatar!} width={24} height={24} alt="User avatar" />;
 };
 
 const UserMenu: React.FC = () => {

@@ -1,4 +1,6 @@
+import { type BookTypes } from "@/lib/hooks/useBooks";
 import Skeleton from "@/components/skeleton";
+import Rate from "@/components/rate";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,7 +10,7 @@ const CardRoot: React.FC<CardProps> = ({ title, cover, author, id }) => {
       <figure className="flex justify-center items-center">
         <Link href={`/books/${id}`}>
           <a className="relative w-28 h-[calc(7rem/2*3)]">
-            <Image src={cover} layout="fill" alt={title} />
+            <Image src={cover!} layout="fill" alt={title} />
           </a>
         </Link>
       </figure>
@@ -33,17 +35,17 @@ const CardSkeleton: React.FC = () => (
 );
 
 const LongCardRoot: React.FC<CardProps> = (props) => {
-  const { title, cover, author, id, description } = props;
+  const { title, cover, author, id, description, rates } = props;
   return (
     <div className="flex py-4 gap-3">
       <figure className="flex justify-center items-center">
         <Link href={`/books/${id}`}>
           <a className="relative w-28 h-[calc(7rem/2*3)]">
-            <Image src={cover} layout="fill" alt={title} />
+            <Image src={cover!} layout="fill" alt={title} />
           </a>
         </Link>
       </figure>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 h-[calc(7rem/2*3)]">
         <div className="inline-flex justify-start">
           <Link href={`/books/${id}`}>
             <a className="link no-underline text-primary hover:bg-primary hover:text-primary-content focus:bg-primary-focus focus:text-primary-content">
@@ -52,7 +54,8 @@ const LongCardRoot: React.FC<CardProps> = (props) => {
           </Link>
         </div>
         <p className="truncate">{author}</p>
-        <p className="truncate">{description}</p>
+        <Rate rates={rates!} />
+        <p className="line-clamp-3 text-ellipsis">{description}</p>
       </div>
     </div>
   );
@@ -79,12 +82,6 @@ export const LongCard = Object.assign(LongCardRoot, {
   Skeleton: LongCardSkeleton,
 });
 
-interface CardProps {
-  title: string;
-  cover: string;
-  author: string;
-  id: number | string;
-  description?: string;
-}
+type CardProps = BookTypes;
 
 export default Card;
