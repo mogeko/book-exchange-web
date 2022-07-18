@@ -16,6 +16,7 @@ const swrConfig = {
   revalidateIfStale: false,
   revalidateOnFocus: false,
   revalidateOnReconnect: false,
+  revalidateFirstPage: false,
 };
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {

@@ -1,11 +1,15 @@
-import useSWRInfinite, { type SWRInfiniteResponse } from "swr/infinite";
 import handleQuery from "@/lib/utils/queryTools";
-import useSWR, { type SWRResponse } from "swr";
+import useSWRInfinite, {
+  type SWRInfiniteResponse,
+  type SWRInfiniteConfiguration,
+} from "swr/infinite";
+import useSWR, { type SWRResponse, type SWRConfiguration } from "swr";
 import { faker } from "@faker-js/faker";
 
-function useBooks(param: ParamProps = {}) {
+function useBooks(param: ParamProps = {}, opts: SWRConfiguration = {}) {
   const query = handleQuery("/books", param);
-  const { data, error, ...otherRes }: SWRResponse<BookTypes[]> = useSWR(query);
+  const res: SWRResponse<BookTypes[]> = useSWR(query, opts);
+  const { data, error, ...otherRes } = res;
 
   return {
     books: data,
@@ -15,9 +19,10 @@ function useBooks(param: ParamProps = {}) {
   };
 }
 
-export function useBook(id: string | number, param = {}) {
+export function useBook(id: number, param = {}, opts: SWRConfiguration = {}) {
   const query = handleQuery(`/books/${id}`, param);
-  const { data, error, ...otherRes }: SWRResponse<BookTypes> = useSWR(query);
+  const res: SWRResponse<BookTypes> = useSWR(query, opts);
+  const { data, error, ...otherRes } = res;
 
   return {
     book: data,
@@ -27,17 +32,18 @@ export function useBook(id: string | number, param = {}) {
   };
 }
 
-export function useBooksInfinite(param: ParamProps) {
-  const { page = 1, ...other } = param;
-  const opts = { revalidateFirstPage: false };
-  const { data, error, ...otherRes }: SWRInfiniteResponse<BookTypes[]> =
-    useSWRInfinite((index, previous) => {
+export function useBooksInfinite(
+  { page = 1, ...other }: ParamProps = { page: 1 },
+  opts: SWRInfiniteConfiguration = {}
+) {
+  const res: SWRInfiniteResponse<BookTypes[]> = useSWRInfinite(
+    (index, previous) => {
       if (previous && !previous.length) return null;
-      return handleQuery("/books", {
-        page: index + page,
-        ...other,
-      });
-    }, opts);
+      return handleQuery("/books", { page: index + page, ...other });
+    },
+    opts
+  );
+  const { data, error, ...otherRes } = res;
 
   return {
     data: data,

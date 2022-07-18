@@ -1,24 +1,30 @@
 import handleQuery from "@/lib/utils/queryTools";
-import useSWR, { type SWRResponse } from "swr";
+import useSWR, { type SWRResponse, type SWRConfiguration } from "swr";
 import { faker } from "@faker-js/faker";
 
-function useUsers(queryParam: ParamProps = {}) {
-  const query = handleQuery("/users", queryParam);
-  const { data, error }: SWRResponse<UserType[]> = useSWR(query);
+function useUsers(param: ParamProps = {}, opts: SWRConfiguration = {}) {
+  const query = handleQuery("/users", param);
+  const res: SWRResponse<UserType[]> = useSWR(query, opts);
+  const { data, error, ...otherRes } = res;
+
   return {
     users: data,
     isLoading: !error && !data,
     isError: error,
+    ...otherRes,
   };
 }
 
-export function useUser(id: string | number, queryParam = {}) {
-  const query = handleQuery(`/users/${id}`, queryParam);
-  const { data, error }: SWRResponse<UserType> = useSWR(query);
+export function useUser(id: number, param = {}, opts: SWRConfiguration = {}) {
+  const query = handleQuery(`/users/${id}`, param);
+  const res: SWRResponse<UserType> = useSWR(query, opts);
+  const { data, error, ...otherRes } = res;
+
   return {
     user: data,
     isLoading: !error && !data,
     isError: error,
+    ...otherRes,
   };
 }
 
