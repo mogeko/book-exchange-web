@@ -1,5 +1,5 @@
-import Alert from "@/components/alert";
-import Skeleton from "@/components/skeleton";
+import Alert from "@/components/base/alert";
+import Skeleton from "@/components/base/skeleton";
 import useTags from "@/lib/hooks/useTags";
 import Box from "@/layouts/boxes";
 import Link from "next/link";

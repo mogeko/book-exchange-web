@@ -1,5 +1,5 @@
-import Card from "@/components/card";
-import Alert from "@/components/alert";
+import Card from "@/components/base/card";
+import Alert from "@/components/base/alert";
 import Pagination from "@/components/pagination";
 import useBooks from "@/lib/hooks/useBooks";
 import { useState } from "react";

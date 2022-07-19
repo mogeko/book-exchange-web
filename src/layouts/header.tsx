@@ -1,6 +1,6 @@
-import { DrawerButton } from "@/components/drawer";
+import { DrawerButton } from "@/components/base/drawer";
 import Search from "@/components/search";
-import Logo from "@/components/logo";
+import Logo from "@/components/base/logo";
 import User from "@/components/user";
 import logoImage from "@/public/images/logo.svg";
 import { menus } from "@/lib/_variable";

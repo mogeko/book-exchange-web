@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { exampleData } from "@/__mocks__/useBooksMock";
-import Card, { LongCard } from "@/components/card";
+import Card, { LongCard } from "@/components/base/card";
 
 describe("Card", () => {
   it("renders a book card correctly", () => {

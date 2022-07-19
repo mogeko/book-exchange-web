@@ -2,7 +2,7 @@ import { useUser } from "@/lib/hooks/useUsers";
 import { menus } from "@/lib/_variable";
 import { HiUser } from "react-icons/hi";
 import { VscError, VscLoading } from "react-icons/vsc";
-import Skeleton from "@/components/skeleton";
+import Skeleton from "@/components/base/skeleton";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Logo from "@/components/logo";
+import Logo from "@/components/base/logo";
 import logoImage from "@/public/logo.svg";
 
 describe("Logo", () => {

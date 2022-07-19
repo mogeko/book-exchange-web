@@ -1,5 +1,5 @@
-import { LongCard } from "@/components/card";
-import Alert from "@/components/alert";
+import { LongCard } from "@/components/base/card";
+import Alert from "@/components/base/alert";
 import { useBooksInfinite } from "@/lib/hooks/useBooks";
 import useOnScreen from "@/lib/hooks/useOnScreen";
 import { useEffect, useRef } from "react";

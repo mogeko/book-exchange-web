@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import useBooksMock from "@/__mocks__/useBooksMock";
-import BookGrid from "@/layouts/contexts/bookGrid";
+import BookGrid from "@/components/contexts/bookGrid";
 
 describe("bookGrid", () => {
   beforeEach(() => {

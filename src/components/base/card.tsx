@@ -1,5 +1,5 @@
 import { type BookTypes } from "@/lib/hooks/useBooks";
-import Skeleton from "@/components/skeleton";
+import Skeleton from "@/components/base/skeleton";
 import StarsRate from "@/components/stars";
 import Image from "next/image";
 import Link from "next/link";
