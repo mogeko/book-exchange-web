@@ -1,30 +1,54 @@
 import * as hooks from "@/lib/hooks/useBooks";
+import { faker } from "@faker-js/faker";
 
 const mock = jest.spyOn(hooks, "useBooksInfinite");
 const setSizeMock = jest.fn();
 
 const useBooksInfiniteMock = {
   target: hooks.useBooksInfinite,
-  returnResult: (x = 3, y = 10) => ({
-    success: () => mock.mockImplementation(() => genExampleRes({}, [x, y])),
+  returnResult: (pages = 3) => ({
+    success: () =>
+      mock.mockImplementation((param) =>
+        genExampleRes({}, [pages, param!.limit!])
+      ),
     error: () =>
-      mock.mockImplementation(() =>
-        genExampleRes({ data: undefined, isError: true }, [x, y])
+      mock.mockImplementation((param) =>
+        genExampleRes({ data: undefined, isError: true }, [
+          pages,
+          param!.limit!,
+        ])
       ),
     loading: () =>
-      mock.mockImplementation(() =>
-        genExampleRes({ data: undefined, isLoading: true }, [x, y])
+      mock.mockImplementation((param) =>
+        genExampleRes({ data: undefined, isLoading: true }, [
+          pages,
+          param!.limit!,
+        ])
       ),
   }),
-  exampleData: hooks.exampleData,
-  genExampleBooks,
   genExampleRes,
   setSizeMock,
 };
 
+export const exampleData: BookTypes = {
+  title: faker.word.noun(20),
+  cover: faker.image.image(1280, 1910),
+  description: faker.lorem.paragraph(10),
+  published: faker.date.past().toISOString(),
+  publisher: faker.company.companyName(),
+  tags: Array.from({ length: faker.datatype.number({ min: 2, max: 8 }) }, () =>
+    faker.lorem.words(2)
+  ),
+  author: faker.name.firstName(),
+  rates: faker.datatype.number(100),
+  id: faker.datatype.number(100),
+};
+
 function genExampleRes(res: Partial<ResType> = {}, [x, y] = [3, 10]): ResType {
   const exampleRes = {
-    data: genExampleBooks({}, [x, y]),
+    data: Array.from({ length: x }, () =>
+      Array.from({ length: y }, () => exampleData)
+    ),
     isValidating: false,
     isError: false,
     isLoading: false,
@@ -34,12 +58,6 @@ function genExampleRes(res: Partial<ResType> = {}, [x, y] = [3, 10]): ResType {
   };
 
   return { ...exampleRes, ...res };
-}
-
-function genExampleBooks(data: Partial<BookTypes> = {}, [x, y] = [3, 10]) {
-  return Array.from({ length: x }, () =>
-    Array.from({ length: y }, () => ({ ...hooks.exampleData, ...data }))
-  );
 }
 
 type ResType = ReturnType<typeof hooks.useBooksInfinite>;

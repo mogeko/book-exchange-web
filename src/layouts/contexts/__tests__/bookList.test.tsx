@@ -6,7 +6,7 @@ import BookList from "@/layouts/contexts/bookList";
 
 describe("bookList", () => {
   beforeEach(() => {
-    useBooksInfiniteMock.returnResult(4, 7).success();
+    useBooksInfiniteMock.returnResult(4).success();
     useOnScreenMock.not.visiable();
   });
 
@@ -19,7 +19,7 @@ describe("bookList", () => {
     const mockTarget = useBooksInfiniteMock.target;
 
     expect(mockTarget).toBeCalledWith({ limit: 10, page: 2 });
-    expect(container.querySelectorAll("figure").length).toBe(28);
+    expect(container.querySelectorAll("figure").length).toBe(40);
   });
 
   it("snapshot a BookList", () => {

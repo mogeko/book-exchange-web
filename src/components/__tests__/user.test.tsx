@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import useUserMock from "@/__mocks__/useUserMock";
+import useUserMock, { exampleData } from "@/__mocks__/useUserMock";
 import User from "@/components/user";
 
 describe("User", () => {
@@ -29,9 +29,7 @@ describe("User", () => {
     useUserMock.returnResult().withLogined();
     render(<User />);
 
-    expect(
-      screen.getByText(useUserMock.exampleData.username)
-    ).toBeInTheDocument();
+    expect(screen.getByText(exampleData.username)).toBeInTheDocument();
     expect(screen.getByText("Profile")).toBeInTheDocument();
     expect(screen.getByText("Logout")).toBeInTheDocument();
   });

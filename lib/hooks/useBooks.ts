@@ -4,7 +4,6 @@ import useSWRInfinite, {
   type SWRInfiniteConfiguration,
 } from "swr/infinite";
 import useSWR, { type SWRResponse, type SWRConfiguration } from "swr";
-import { faker } from "@faker-js/faker";
 
 function useBooks(param: ParamProps = {}, opts: SWRConfiguration = {}) {
   const query = handleQuery("/books", param);
@@ -53,19 +52,17 @@ export function useBooksInfinite(
   };
 }
 
-export const exampleData = {
-  title: faker.word.noun(20),
-  cover: faker.image.image(1280, 1910),
-  description: faker.lorem.paragraph(10),
-  published: faker.date.past().toISOString(),
-  publisher: faker.company.companyName(),
-  tags: [faker.lorem.words(1), faker.lorem.words(2)],
-  author: faker.name.firstName(),
-  rates: faker.datatype.number(100),
-  id: faker.datatype.number(100),
-};
-
-export type BookTypes = Partial<typeof exampleData>;
+export interface BookTypes {
+  title: string;
+  cover: string;
+  description: string;
+  published: string;
+  publisher: string;
+  tags: string[];
+  author: string;
+  rates: number;
+  id: number;
+}
 
 interface ParamProps {
   limit?: number;

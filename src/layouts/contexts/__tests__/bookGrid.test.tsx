@@ -5,7 +5,7 @@ import BookGrid from "@/layouts/contexts/bookGrid";
 
 describe("bookGrid", () => {
   beforeEach(() => {
-    useBooksMock.returnResult(3).success();
+    useBooksMock.returnResult().success();
   });
 
   afterEach(() => {
@@ -33,7 +33,7 @@ describe("bookGrid with abnormal state", () => {
   });
 
   it("renders a BookGrid then error", () => {
-    useBooksMock.returnResult(10).error();
+    useBooksMock.returnResult().error();
     render(<BookGrid limit={10} page={1} />);
 
     expect(useBooksMock.target).toBeCalledWith({ limit: 10, page: 1 });
@@ -41,14 +41,14 @@ describe("bookGrid with abnormal state", () => {
   });
 
   it("snapshot a BooksGrid then error", () => {
-    useBooksMock.returnResult(10).error();
+    useBooksMock.returnResult().error();
     const { container } = render(<BookGrid limit={10} page={1} />);
 
     expect(container).toMatchSnapshot();
   });
 
   it("renders a Display BookGrid then loading", () => {
-    useBooksMock.returnResult(10).loading();
+    useBooksMock.returnResult().loading();
     const { container } = render(<BookGrid limit={10} page={1} />);
 
     expect(useBooksMock.target).toBeCalledWith({ limit: 10, page: 1 });
@@ -56,7 +56,7 @@ describe("bookGrid with abnormal state", () => {
   });
 
   it("snapshot a BookGrid then loading", () => {
-    useBooksMock.returnResult(10).loading();
+    useBooksMock.returnResult().loading();
     const { container } = render(<BookGrid limit={10} page={1} />);
 
     expect(container).toMatchSnapshot();
