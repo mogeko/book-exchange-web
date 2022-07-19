@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Home from "@/pages/index";
-import useTagsMock from "@/__mocks__/useTagsMock";
+import * as tagsCotroller from "@/layouts/tagsCotroller";
 
 describe("Home", () => {
   beforeAll(() => {
-    useTagsMock.returnResult.success();
+    jest.spyOn(tagsCotroller, "default").mockImplementation(() => <></>);
   });
 
   afterAll(() => {
@@ -15,6 +15,7 @@ describe("Home", () => {
   it("renders a home page", () => {
     render(<Home />);
 
+    expect(tagsCotroller.default).toBeCalled();
     expect(
       screen.getByRole("heading", {
         name: /Bookworm/i,

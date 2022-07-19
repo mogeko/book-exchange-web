@@ -13,7 +13,7 @@ describe("bookGrid", () => {
   });
 
   it("renders a BookGrid", () => {
-    const { container } = render(<BookGrid limit={3} page={5} />);
+    const { container } = render(<BookGrid maxPages={2} limit={3} page={5} />);
 
     expect(useBooksMock.target).toBeCalledWith({ limit: 3, page: 5 });
     expect(useBooksMock.target).toBeCalledTimes(2);
