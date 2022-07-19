@@ -3,7 +3,7 @@ import useSWR, { type SWRResponse, type SWRConfiguration } from "swr";
 
 function useUsers(param: ParamProps = {}, opts: SWRConfiguration = {}) {
   const query = handleQuery("/users", param);
-  const res: SWRResponse<UserType[]> = useSWR(query, opts);
+  const res: SWRResponse<UsersType> = useSWR(query, opts);
   const { data, error, ...otherRes } = res;
 
   return {
@@ -27,18 +27,23 @@ export function useUser(id: number, param = {}, opts: SWRConfiguration = {}) {
   };
 }
 
-export type UserType = {
-  avatar: string;
-  username: string;
-  description: string;
-  email: string;
-  city: string;
-  id: number;
-};
-
 interface ParamProps {
   limit?: number;
   page?: number;
 }
+
+export type UsersType = {
+  uid: string;
+  avatar: string;
+  username: string;
+  fullname: string;
+  description: string;
+  email: string;
+}[];
+
+export type UserType = {
+  city: string;
+  birthdate: string;
+} & UsersType[0];
 
 export default useUsers;

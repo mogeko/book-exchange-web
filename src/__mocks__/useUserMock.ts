@@ -27,7 +27,7 @@ export const exampleData: UserType = {
   description: faker.lorem.paragraph(10),
   email: faker.internet.email(),
   city: faker.address.city(),
-  id: faker.datatype.number(10),
+  uid: faker.datatype.number(10),
 };
 
 function genExampleRes(res: Partial<ResType> = {}): ResType {

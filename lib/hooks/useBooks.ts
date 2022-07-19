@@ -7,7 +7,7 @@ import useSWR, { type SWRResponse, type SWRConfiguration } from "swr";
 
 function useBooks(param: ParamProps = {}, opts: SWRConfiguration = {}) {
   const query = handleQuery("/books", param);
-  const res: SWRResponse<BookTypes[]> = useSWR(query, opts);
+  const res: SWRResponse<BooksType> = useSWR(query, opts);
   const { data, error, ...otherRes } = res;
 
   return {
@@ -20,7 +20,7 @@ function useBooks(param: ParamProps = {}, opts: SWRConfiguration = {}) {
 
 export function useBook(id: number, param = {}, opts: SWRConfiguration = {}) {
   const query = handleQuery(`/books/${id}`, param);
-  const res: SWRResponse<BookTypes> = useSWR(query, opts);
+  const res: SWRResponse<BookType> = useSWR(query, opts);
   const { data, error, ...otherRes } = res;
 
   return {
@@ -35,7 +35,7 @@ export function useBooksInfinite(
   { page = 1, ...other }: ParamProps = { page: 1 },
   opts: SWRInfiniteConfiguration = {}
 ) {
-  const res: SWRInfiniteResponse<BookTypes[]> = useSWRInfinite(
+  const res: SWRInfiniteResponse<BooksType> = useSWRInfinite(
     (index, previous) => {
       if (previous && !previous.length) return null;
       return handleQuery("/books", { page: index + page, ...other });
@@ -52,22 +52,27 @@ export function useBooksInfinite(
   };
 }
 
-export interface BookTypes {
-  title: string;
-  cover: string;
-  description: string;
-  published: string;
-  publisher: string;
-  tags: string[];
-  author: string;
-  rates: number;
-  id: number;
-}
-
 interface ParamProps {
   limit?: number;
   page?: number;
   tags_include?: string | string[];
 }
+
+export type BooksType = {
+  id: `bk${number}`;
+  title: string;
+  cover: string;
+  short_desc: string;
+  tags: string[];
+  author: string;
+  rates: number;
+}[];
+
+export type BookType = {
+  long_desc: string;
+  digest: string;
+  published: string;
+  publisher: string;
+} & BooksType[0];
 
 export default useBooks;

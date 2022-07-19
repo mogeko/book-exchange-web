@@ -20,16 +20,16 @@ const useBooksMock = {
   genExampleRes,
 };
 
-export const exampleData: BookTypes = {
+export const exampleData: BookType = {
+  id: `bk${faker.datatype.number(100)}`,
   title: faker.word.noun(20),
   cover: faker.image.image(1280, 1910),
-  description: faker.lorem.paragraph(10),
-  published: faker.date.past().toISOString(),
-  publisher: faker.company.companyName(),
-  tags: [faker.lorem.words(1), faker.lorem.words(2)],
+  short_desc: faker.lorem.paragraph(10),
+  tags: Array.from({ length: faker.datatype.number({ min: 2, max: 8 }) }, () =>
+    faker.lorem.words(2)
+  ),
   author: faker.name.firstName(),
   rates: faker.datatype.number(100),
-  id: faker.datatype.number(100),
 };
 
 function genExampleRes(res: Partial<ResType> = {}, limit = 10): ResType {
@@ -45,6 +45,6 @@ function genExampleRes(res: Partial<ResType> = {}, limit = 10): ResType {
 }
 
 type ResType = ReturnType<typeof hooks.default>;
-type BookTypes = hooks.BookTypes;
+type BookType = hooks.BooksType[0];
 
 export default useBooksMock;

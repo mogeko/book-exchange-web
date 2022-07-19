@@ -14,10 +14,10 @@ function useTags(param: ParamProps = {}, opts: SWRConfiguration = {}) {
   };
 }
 
+type ParamProps = {};
+
 export interface TagsType {
   [tagsGroup: string]: string[];
 }
-
-type ParamProps = {};
 
 export default useTags;

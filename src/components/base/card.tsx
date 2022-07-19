@@ -1,4 +1,4 @@
-import { type BookTypes } from "@/lib/hooks/useBooks";
+import { type BooksType } from "@/lib/hooks/useBooks";
 import Skeleton from "@/components/base/skeleton";
 import StarsRate from "@/components/stars";
 import Image from "next/image";
@@ -35,7 +35,7 @@ const CardSkeleton: React.FC = () => (
 );
 
 const LongCardRoot: React.FC<CardProps> = (props) => {
-  const { title, cover, author, id, description, rates } = props;
+  const { title, cover, author, id, short_desc, rates } = props;
   return (
     <div className="flex py-4 gap-3">
       <figure className="flex justify-center items-center">
@@ -55,7 +55,7 @@ const LongCardRoot: React.FC<CardProps> = (props) => {
         </div>
         <p className="truncate">{author}</p>
         <StarsRate rates={rates!} />
-        <p className="line-clamp-3 text-ellipsis">{description}</p>
+        <p className="line-clamp-3 text-ellipsis">{short_desc}</p>
       </div>
     </div>
   );
@@ -82,6 +82,6 @@ export const LongCard = Object.assign(LongCardRoot, {
   Skeleton: LongCardSkeleton,
 });
 
-type CardProps = BookTypes;
+type CardProps = BooksType[0];
 
 export default Card;

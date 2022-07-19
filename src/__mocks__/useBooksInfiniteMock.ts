@@ -1,5 +1,5 @@
 import * as hooks from "@/lib/hooks/useBooks";
-import { faker } from "@faker-js/faker";
+import { exampleData } from "./useBooksMock";
 
 const mock = jest.spyOn(hooks, "useBooksInfinite");
 const setSizeMock = jest.fn();
@@ -30,20 +30,6 @@ const useBooksInfiniteMock = {
   setSizeMock,
 };
 
-export const exampleData: BookTypes = {
-  title: faker.word.noun(20),
-  cover: faker.image.image(1280, 1910),
-  description: faker.lorem.paragraph(10),
-  published: faker.date.past().toISOString(),
-  publisher: faker.company.companyName(),
-  tags: Array.from({ length: faker.datatype.number({ min: 2, max: 8 }) }, () =>
-    faker.lorem.words(2)
-  ),
-  author: faker.name.firstName(),
-  rates: faker.datatype.number(100),
-  id: faker.datatype.number(100),
-};
-
 function genExampleRes(res: Partial<ResType> = {}, [x, y] = [3, 10]): ResType {
   const exampleRes = {
     data: Array.from({ length: x }, () =>
@@ -61,6 +47,6 @@ function genExampleRes(res: Partial<ResType> = {}, [x, y] = [3, 10]): ResType {
 }
 
 type ResType = ReturnType<typeof hooks.useBooksInfinite>;
-type BookTypes = hooks.BookTypes;
+type BookType = hooks.BooksType[0];
 
 export default useBooksInfiniteMock;
