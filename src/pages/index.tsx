@@ -1,5 +1,5 @@
+import TagsCotroller from "@/layouts/tagsCotroller";
 import { DefaultLayout } from "@/layouts/layout";
-import { TagsCotroller } from "@/pages/tags/[tag]";
 import Box from "@/layouts/boxes";
 import type { NextPage } from "next";
 

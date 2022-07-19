@@ -20,7 +20,7 @@ exports[`Home snapshot a SubBox 1`] = `
     class="flex flex-col items-start my-2"
   >
     <h2
-      class="text-lg w-full py-1"
+      class="text-lg capitalize w-full my-2"
     >
       Example SubBox
     </h2>

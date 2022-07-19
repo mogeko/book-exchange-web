@@ -35,7 +35,7 @@ export const exampleData = Array.from(
   return target;
 }, {});
 
-type TagType = Partial<typeof exampleData>;
+export type TagType = Partial<typeof exampleData>;
 
 type ParamProps = {};
 

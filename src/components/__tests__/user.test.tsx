@@ -51,29 +51,29 @@ describe("User with abnormal state", () => {
 
   it("renders user menu when error occurred", () => {
     useUserMock.returnResult().error();
-
     const { container } = render(<User />);
+
     expect(container.querySelector("div")?.textContent).toEqual("Login Error");
   });
 
   it("snapshot user menu when error occurred", () => {
     useUserMock.returnResult().error();
-
     const { container } = render(<User />);
+
     expect(container).toMatchSnapshot();
   });
 
   it("renders user menu is loading", () => {
     useUserMock.returnResult().loading();
-
     const { container } = render(<User />);
+
     expect(container.querySelector("svg")).toHaveClass("animate-spin");
   });
 
   it("snapshot user menu is loading", () => {
     useUserMock.returnResult().loading();
-
     const { container } = render(<User />);
+
     expect(container).toMatchSnapshot();
   });
 });

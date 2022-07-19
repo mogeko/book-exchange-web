@@ -1,9 +1,8 @@
+import TagsCotroller from "@/layouts/tagsCotroller";
 import { DefaultLayout } from "@/layouts/layout";
 import Box from "@/layouts/boxes";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import useTags from "@/lib/hooks/useTags";
 
 const Tags: NextPage = () => {
   return (
@@ -31,41 +30,5 @@ const TagView: React.FC = () => {
     </Box>
   );
 };
-
-export const TagsCotroller: React.FC = () => {
-  const { tags, isLoading, isError } = useTags();
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error...</p>;
-  return (
-    <Box title="Tags">
-      {Object.entries(tags!).map((items, i) => (
-        <Box.SubBox key={i} title={items[0]}>
-          <div className="flex flex-wrap gap-2">
-            {items[1]?.map((item, j) => (
-              <TagItem
-                name={item.replace("-", " ")}
-                href={`/tags/${item}`}
-                key={j}
-              />
-            ))}
-          </div>
-        </Box.SubBox>
-      ))}
-    </Box>
-  );
-};
-
-const TagItem: React.FC<TagProps> = ({ size, name, href }) => {
-  return (
-    <Link href={href!}>
-      <a className={`btn btn-${size ?? "xs"} normal-case`}>{name}</a>
-    </Link>
-  );
-};
-
-type TagProps = {
-  name: string;
-  size?: "xs" | "sm" | "md" | "lg";
-} & Omit<Parameters<typeof Link>[0], "children">;
 
 export default Tags;

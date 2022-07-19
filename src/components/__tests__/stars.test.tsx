@@ -23,3 +23,19 @@ describe("StarsRate", () => {
     expect(container).toMatchSnapshot();
   });
 });
+
+describe("StarsRate with abnormal state", () => {
+  it("render a StarsRate when rates = -1", () => {
+    const { container } = render(<StarsRate rates={-1} />);
+
+    expect(container.querySelectorAll("svg")).toHaveLength(5);
+    expect(container.querySelector("span")?.textContent).toBe("0.0");
+  });
+
+  it("render a StarsRate when rates = 101", () => {
+    const { container } = render(<StarsRate rates={101} />);
+
+    expect(container.querySelectorAll("svg")).toHaveLength(5);
+    expect(container.querySelector("span")?.textContent).toBe("10.0");
+  });
+});

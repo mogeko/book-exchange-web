@@ -8,12 +8,14 @@ const StarsRate: React.FC<RateProps> = ({ rates }) => {
 
   return (
     <div className="inline-flex items-center text-amber-400">
-      {genStars(rates, [], 5).map((x, i) => {
+      {genStars(rates).map((x, i) => {
         if (x >= 20) return <IoIosStar key={i} />;
         if (x >= 10) return <IoIosStarHalf key={i} />;
         return <IoIosStarOutline key={i} />;
       })}
-      <span className="text-base ml-2">{Number(rates / 10).toFixed(1)}</span>
+      <span className="text-base ml-2">
+        {Math.min(Math.max(0, rates / 10), 10).toFixed(1)}
+      </span>
     </div>
   );
 };
