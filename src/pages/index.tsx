@@ -1,5 +1,5 @@
+import TagsCotroller from "@/layouts/tagsCotroller";
 import { DefaultLayout } from "@/layouts/layout";
-import { TagsCotroller } from "@/pages/tags/[tag]";
 import Box from "@/layouts/boxes";
 import type { NextPage } from "next";
 
@@ -23,7 +23,7 @@ const Popular: React.FC = () => {
   return (
     <Box>
       <Box.Header>Recently Popular</Box.Header>
-      <Box.BookGrid pages={5} limit={10} />
+      <Box.BookGrid maxPages={5} limit={10} />
     </Box>
   );
 };

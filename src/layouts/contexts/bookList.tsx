@@ -1,20 +1,18 @@
 import { LongCard } from "@/components/card";
 import Alert from "@/components/alert";
-import { type QueryParamType } from "@/lib/utils/queryTools";
-import { useBooksInfinite, type BookTypes } from "@/lib/hooks/useBooks";
+import { useBooksInfinite } from "@/lib/hooks/useBooks";
 import useOnScreen from "@/lib/hooks/useOnScreen";
 import { useEffect, useRef } from "react";
 
 const MAX_PAGES = 10;
 
-const BookList: React.FC<DataProps> = ({ pages = 1, offset = 0, ...other }) => {
-  const query = { ...other, limit: other.limit!, offset };
+const BookList: React.FC<ParamProps> = (query) => {
   const { data, size, setSize, ...state } = useBooksInfinite(query);
   const bottomRef = useRef<HTMLDivElement>(null);
   const isVisiable = useOnScreen(bottomRef);
 
   useEffect(() => {
-    if (isVisiable && !state.isValidating && size <= MAX_PAGES) {
+    if (isVisiable && !state.isValidating && size < MAX_PAGES) {
       setSize(size + 1);
     }
   }, [isVisiable, state, size, setSize]);
@@ -40,8 +38,6 @@ const BookList: React.FC<DataProps> = ({ pages = 1, offset = 0, ...other }) => {
   );
 };
 
-type DataProps = {
-  pages?: number;
-} & QueryParamType<keyof BookTypes>;
+type ParamProps = Parameters<typeof useBooksInfinite>[0];
 
 export default BookList;

@@ -1,28 +1,40 @@
 import * as hooks from "@/lib/hooks/useBooks";
+import { faker } from "@faker-js/faker";
 
 const mock = jest.spyOn(hooks, "default");
 
 const useBooksMock = {
   target: hooks.default,
-  returnResult: (x = 10) => ({
-    success: () => mock.mockImplementation(() => genExampleRes({}, x)),
+  returnResult: () => ({
+    success: () =>
+      mock.mockImplementation((param) => genExampleRes({}, param!.limit)),
     error: () =>
-      mock.mockImplementation(() =>
-        genExampleRes({ books: undefined, isError: true }, x)
+      mock.mockImplementation((param) =>
+        genExampleRes({ books: undefined, isError: true }, param!.limit)
       ),
     loading: () =>
-      mock.mockImplementation(() =>
-        genExampleRes({ books: undefined, isLoading: true }, x)
+      mock.mockImplementation((param) =>
+        genExampleRes({ books: undefined, isLoading: true }, param!.limit)
       ),
   }),
-  exampleData: hooks.exampleData,
-  genExampleBooks,
   genExampleRes,
 };
 
-function genExampleRes(res: Partial<ResType> = {}, x = 10): ResType {
+export const exampleData: BookTypes = {
+  title: faker.word.noun(20),
+  cover: faker.image.image(1280, 1910),
+  description: faker.lorem.paragraph(10),
+  published: faker.date.past().toISOString(),
+  publisher: faker.company.companyName(),
+  tags: [faker.lorem.words(1), faker.lorem.words(2)],
+  author: faker.name.firstName(),
+  rates: faker.datatype.number(100),
+  id: faker.datatype.number(100),
+};
+
+function genExampleRes(res: Partial<ResType> = {}, limit = 10): ResType {
   const exampleRes = {
-    books: genExampleBooks({}, x),
+    books: Array.from({ length: limit }, () => exampleData),
     isValidating: false,
     isError: false,
     isLoading: false,
@@ -30,10 +42,6 @@ function genExampleRes(res: Partial<ResType> = {}, x = 10): ResType {
   };
 
   return { ...exampleRes, ...res };
-}
-
-function genExampleBooks(data: Partial<BookTypes> = {}, x = 10) {
-  return Array.from({ length: x }, () => ({ ...hooks.exampleData, ...data }));
 }
 
 type ResType = ReturnType<typeof hooks.default>;

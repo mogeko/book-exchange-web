@@ -1,4 +1,5 @@
 import * as hooks from "@/lib/hooks/useUsers";
+import { faker } from "@faker-js/faker";
 
 const mock = jest.spyOn(hooks, "useUser");
 
@@ -17,14 +18,21 @@ const useUserMock = {
         genExampleRes({ user: undefined, isLoading: true })
       ),
   }),
-  exampleData: hooks.exampleData,
   genExampleRes,
-  genExampleUser,
+};
+
+export const exampleData: UserType = {
+  avatar: faker.image.avatar(),
+  username: faker.internet.userName(),
+  description: faker.lorem.paragraph(10),
+  email: faker.internet.email(),
+  city: faker.address.city(),
+  id: faker.datatype.number(10),
 };
 
 function genExampleRes(res: Partial<ResType> = {}): ResType {
   const exampleRes = {
-    user: genExampleUser({}),
+    user: exampleData,
     isValidating: false,
     isError: false,
     isLoading: false,
@@ -32,10 +40,6 @@ function genExampleRes(res: Partial<ResType> = {}): ResType {
   };
 
   return { ...exampleRes, ...res };
-}
-
-function genExampleUser(data: Partial<UserType> = {}) {
-  return { ...hooks.exampleData, ...data };
 }
 
 type ResType = ReturnType<typeof hooks.useUser>;

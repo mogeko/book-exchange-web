@@ -1,25 +1,30 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import useBooksInfiniteMock from "@/__mocks__/useBooksInfiniteMock";
-import useOnScreenMock from "@/__mocks__/useOnScreenMock";
 import useRouterMock from "@/__mocks__/useRouter";
+import useOnScreenMock from "@/__mocks__/useOnScreenMock";
+import useBooksInfiniteMock from "@/__mocks__/useBooksInfiniteMock";
+import * as tagsCotroller from "@/layouts/tagsCotroller";
 import Tags from "@/pages/tags/[tag]";
 
 describe("Tags", () => {
-  beforeEach(() => {
+  beforeAll(() => {
+    useRouterMock.returnResult({ query: { tag: "test" } });
     useOnScreenMock.not.visiable();
     useBooksInfiniteMock.returnResult().success();
-    useRouterMock.returnResult({ query: { tag: "test" } });
+    jest.spyOn(tagsCotroller, "default").mockImplementation(() => <></>);
   });
 
-  afterEach(() => {
-    jest.resetAllMocks();
+  afterAll(() => {
+    jest.clearAllMocks();
   });
 
   it("renders a Tags", () => {
     render(<Tags />);
 
     expect(useRouterMock.target).toBeCalledWith();
-    expect(screen.getByText("Tag: test")).toBeInTheDocument();
+    expect(tagsCotroller.default).toBeCalled();
+    expect(
+      screen.getByRole("heading", { name: /Tag: test/i })
+    ).toBeInTheDocument();
   });
 });

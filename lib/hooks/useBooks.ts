@@ -1,11 +1,14 @@
-import useSWRInfinite, { type SWRInfiniteResponse } from "swr/infinite";
-import handleQuery, { type QueryParamType } from "@/lib/utils/queryTools";
-import useSWR, { type SWRResponse } from "swr";
-import { faker } from "@faker-js/faker";
+import handleQuery from "@/lib/utils/queryTools";
+import useSWRInfinite, {
+  type SWRInfiniteResponse,
+  type SWRInfiniteConfiguration,
+} from "swr/infinite";
+import useSWR, { type SWRResponse, type SWRConfiguration } from "swr";
 
-function useBooks(queryParam: QueryParamProps = {}) {
-  const query = handleQuery("/books", queryParam);
-  const { data, error, ...otherRes }: SWRResponse<BookTypes[]> = useSWR(query);
+function useBooks(param: ParamProps = {}, opts: SWRConfiguration = {}) {
+  const query = handleQuery("/books", param);
+  const res: SWRResponse<BookTypes[]> = useSWR(query, opts);
+  const { data, error, ...otherRes } = res;
 
   return {
     books: data,
@@ -15,9 +18,10 @@ function useBooks(queryParam: QueryParamProps = {}) {
   };
 }
 
-export function useBook(id: string | number, queryParam: QueryParamProps = {}) {
-  const query = handleQuery(`/books/${id}`, queryParam);
-  const { data, error, ...otherRes }: SWRResponse<BookTypes> = useSWR(query);
+export function useBook(id: number, param = {}, opts: SWRConfiguration = {}) {
+  const query = handleQuery(`/books/${id}`, param);
+  const res: SWRResponse<BookTypes> = useSWR(query, opts);
+  const { data, error, ...otherRes } = res;
 
   return {
     book: data,
@@ -27,17 +31,18 @@ export function useBook(id: string | number, queryParam: QueryParamProps = {}) {
   };
 }
 
-export function useBooksInfinite(queryParam: QueryParamInfiniteProps) {
-  const { offset = 0, ...other } = queryParam;
-  const opts = { revalidateFirstPage: false };
-  const { data, error, ...otherRes }: SWRInfiniteResponse<BookTypes[]> =
-    useSWRInfinite((index, previous) => {
+export function useBooksInfinite(
+  { page = 1, ...other }: ParamProps = { page: 1 },
+  opts: SWRInfiniteConfiguration = {}
+) {
+  const res: SWRInfiniteResponse<BookTypes[]> = useSWRInfinite(
+    (index, previous) => {
       if (previous && !previous.length) return null;
-      return handleQuery("/books", {
-        offset: index * other.limit! + offset!,
-        ...other,
-      });
-    }, opts);
+      return handleQuery("/books", { page: index + page, ...other });
+    },
+    opts
+  );
+  const { data, error, ...otherRes } = res;
 
   return {
     data: data,
@@ -47,24 +52,22 @@ export function useBooksInfinite(queryParam: QueryParamInfiniteProps) {
   };
 }
 
-export const exampleData = {
-  title: faker.word.noun(20),
-  cover: faker.image.image(1280, 1910),
-  description: faker.lorem.paragraph(10),
-  published: faker.date.past().toISOString(),
-  publisher: faker.company.companyName(),
-  tags: faker.lorem.words(1),
-  author: faker.name.firstName(),
-  rates: faker.datatype.number(100),
-  id: faker.datatype.number(100),
-};
+export interface BookTypes {
+  title: string;
+  cover: string;
+  description: string;
+  published: string;
+  publisher: string;
+  tags: string[];
+  author: string;
+  rates: number;
+  id: number;
+}
 
-export type BookTypes = Partial<typeof exampleData>;
-
-type QueryParamProps = QueryParamType<keyof BookTypes>;
-
-type QueryParamInfiniteProps = {
-  limit: number;
-} & Omit<QueryParamProps, "limit">;
+interface ParamProps {
+  limit?: number;
+  page?: number;
+  tags_include?: string | string[];
+}
 
 export default useBooks;

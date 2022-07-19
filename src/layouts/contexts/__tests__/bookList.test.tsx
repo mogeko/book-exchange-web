@@ -6,7 +6,7 @@ import BookList from "@/layouts/contexts/bookList";
 
 describe("bookList", () => {
   beforeEach(() => {
-    useBooksInfiniteMock.returnResult(4, 7).success();
+    useBooksInfiniteMock.returnResult(4).success();
     useOnScreenMock.not.visiable();
   });
 
@@ -15,11 +15,11 @@ describe("bookList", () => {
   });
 
   it("renders a BookList", () => {
-    const { container } = render(<BookList limit={10} offset={20} />);
+    const { container } = render(<BookList limit={10} page={2} />);
     const mockTarget = useBooksInfiniteMock.target;
 
-    expect(mockTarget).toBeCalledWith({ limit: 10, offset: 20 });
-    expect(container.querySelectorAll("figure").length).toBe(28);
+    expect(mockTarget).toBeCalledWith({ limit: 10, page: 2 });
+    expect(container.querySelectorAll("figure").length).toBe(40);
   });
 
   it("snapshot a BookList", () => {
@@ -41,7 +41,7 @@ describe("bookList with IntersectionObserver", () => {
   });
 
   it("renders a BookList when the screen touches the bottom", () => {
-    render(<BookList limit={10} offset={20} />);
+    render(<BookList limit={10} page={20} />);
 
     expect(useBooksInfiniteMock.setSizeMock).toBeCalledTimes(1);
     expect(useBooksInfiniteMock.setSizeMock).toBeCalledWith(2);
@@ -59,28 +59,28 @@ describe("BookList with abnormal state", () => {
 
   it("renders a BookList then error", () => {
     useBooksInfiniteMock.returnResult().error();
-    render(<BookList limit={10} offset={20} />);
+    render(<BookList limit={10} page={2} />);
 
     expect(screen.getByText("Network Error!")).toBeInTheDocument();
   });
 
   it("snapshot a BookList then error", () => {
     useBooksInfiniteMock.returnResult().error();
-    const { container } = render(<BookList limit={10} offset={20} />);
+    const { container } = render(<BookList limit={10} page={2} />);
 
     expect(container).toMatchSnapshot();
   });
 
   it("renders a Display BookList then loading", () => {
     useBooksInfiniteMock.returnResult().loading();
-    const { container } = render(<BookList limit={10} offset={20} />);
+    const { container } = render(<BookList limit={10} page={2} />);
 
     expect(container.querySelector("div.animate-pulse")).toBeInTheDocument();
   });
 
   it("snapshot a BookList then loading", () => {
     useBooksInfiniteMock.returnResult().loading();
-    const { container } = render(<BookList limit={10} offset={20} />);
+    const { container } = render(<BookList limit={10} page={2} />);
 
     expect(container).toMatchSnapshot();
   });

@@ -5,7 +5,7 @@ import BookGrid from "@/layouts/contexts/bookGrid";
 
 describe("bookGrid", () => {
   beforeEach(() => {
-    useBooksMock.returnResult(3).success();
+    useBooksMock.returnResult().success();
   });
 
   afterEach(() => {
@@ -13,9 +13,9 @@ describe("bookGrid", () => {
   });
 
   it("renders a BookGrid", () => {
-    const { container } = render(<BookGrid limit={3} offset={5} />);
+    const { container } = render(<BookGrid maxPages={2} limit={3} page={5} />);
 
-    expect(useBooksMock.target).toBeCalledWith({ limit: 3, offset: 5 });
+    expect(useBooksMock.target).toBeCalledWith({ limit: 3, page: 5 });
     expect(useBooksMock.target).toBeCalledTimes(2);
     expect(container.querySelectorAll("figure").length).toBe(3);
   });
@@ -33,31 +33,31 @@ describe("bookGrid with abnormal state", () => {
   });
 
   it("renders a BookGrid then error", () => {
-    useBooksMock.returnResult(10).error();
-    render(<BookGrid limit={10} />);
+    useBooksMock.returnResult().error();
+    render(<BookGrid limit={10} page={1} />);
 
-    expect(useBooksMock.target).toBeCalledWith({ limit: 10, offset: 0 });
+    expect(useBooksMock.target).toBeCalledWith({ limit: 10, page: 1 });
     expect(screen.getByText("Network Error!")).toBeInTheDocument();
   });
 
   it("snapshot a BooksGrid then error", () => {
-    useBooksMock.returnResult(10).error();
-    const { container } = render(<BookGrid limit={10} />);
+    useBooksMock.returnResult().error();
+    const { container } = render(<BookGrid limit={10} page={1} />);
 
     expect(container).toMatchSnapshot();
   });
 
   it("renders a Display BookGrid then loading", () => {
-    useBooksMock.returnResult(10).loading();
-    const { container } = render(<BookGrid limit={10} />);
+    useBooksMock.returnResult().loading();
+    const { container } = render(<BookGrid limit={10} page={1} />);
 
-    expect(useBooksMock.target).toBeCalledWith({ limit: 10, offset: 0 });
+    expect(useBooksMock.target).toBeCalledWith({ limit: 10, page: 1 });
     expect(container.querySelector("div.animate-pulse")).toBeInTheDocument();
   });
 
   it("snapshot a BookGrid then loading", () => {
-    useBooksMock.returnResult(10).loading();
-    const { container } = render(<BookGrid limit={10} />);
+    useBooksMock.returnResult().loading();
+    const { container } = render(<BookGrid limit={10} page={1} />);
 
     expect(container).toMatchSnapshot();
   });
