@@ -1,4 +1,4 @@
-function handleQuery<T extends {}>(url: string, params: T) {
+function handleQuery<T extends {}>(url: `/${string}`, params: T) {
   if (Object.keys(params).length === 0) return url;
   const queryParams = Object.entries(params)
     .filter(([_, value]) => value)
