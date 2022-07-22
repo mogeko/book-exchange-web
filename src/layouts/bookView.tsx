@@ -56,7 +56,7 @@ export const BookInfo: React.FC<BookInfoProps> = ({ title, cover, mate }) => (
           return (
             <div key={i} className="inline-flex gap-1 text-base">
               <span className="capitalize">{itemName}:</span>
-              <span>{new Date(value).setFullYear()}</span>
+              <span>{new Date(value).getFullYear()}</span>
             </div>
           );
         }
