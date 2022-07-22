@@ -1,4 +1,4 @@
-import useQuery from "@/lib/utils/useQuery";
+import useQuery from "@/lib/hooks/useQuery";
 import { type SWRConfiguration } from "swr";
 
 function useUsers(param: ParamProps = {}, opts?: OptsType<UsersType>) {

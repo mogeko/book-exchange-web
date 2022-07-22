@@ -1,5 +1,6 @@
-import handleQuery, { type XOR } from "@/lib/utils/queryTools";
-import useQuery, { useQueryInfinite } from "@/lib/utils/useQuery";
+import useQuery, { useQueryInfinite } from "@/lib/hooks/useQuery";
+import handleQuery from "@/lib/utils/queryTools";
+import { type XOR } from "@/lib/utils/typeTools";
 import { type SWRInfiniteConfiguration } from "swr/infinite";
 import { type SWRConfiguration } from "swr";
 
