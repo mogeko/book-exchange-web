@@ -1,16 +1,12 @@
 import useQuery from "@/lib/hooks/useQuery";
 import { type SWRConfiguration } from "swr";
 
-function useTags(param: ParamProps = {}, opts?: OptsType) {
-  return useQuery<TagsType>("/tags", param, opts);
+function useTags(opts?: SWRConfiguration<TagsType>) {
+  return useQuery<TagsType>("/tags", {}, opts);
 }
-
-type ParamProps = {};
 
 export interface TagsType {
   [tagsGroup: string]: string[];
 }
-
-type OptsType = SWRConfiguration<TagsType>;
 
 export default useTags;

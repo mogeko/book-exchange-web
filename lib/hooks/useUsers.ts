@@ -1,12 +1,12 @@
 import useQuery from "@/lib/hooks/useQuery";
 import { type SWRConfiguration } from "swr";
 
-function useUsers(param: ParamProps = {}, opts?: OptsType<UsersType>) {
+function useUsers(param: ParamProps = {}, opts?: SWRConfiguration<UsersType>) {
   return useQuery<UsersType>("/users", param, opts);
 }
 
-export function useUser(uid?: string, param = {}, opts?: OptsType<UserType>) {
-  return useQuery<UserType>(`/users/${uid}`, param, opts);
+export function useUser(uid?: string, opts?: SWRConfiguration<UserType>) {
+  return useQuery<UserType>(`/users/${uid}`, {}, opts);
 }
 
 interface ParamProps {
@@ -27,7 +27,5 @@ export type UserType = {
   city: string;
   birthdate: string;
 } & UsersType[0];
-
-type OptsType<D = any, E = any> = SWRConfiguration<D, E>;
 
 export default useUsers;

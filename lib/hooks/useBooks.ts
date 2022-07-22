@@ -4,12 +4,12 @@ import { type XOR } from "@/lib/utils/typeTools";
 import { type SWRInfiniteConfiguration } from "swr/infinite";
 import { type SWRConfiguration } from "swr";
 
-function useBooks(param: ParamProps = {}, opts?: OptsType<BooksType>) {
+function useBooks(param: ParamProps = {}, opts?: SWRConfiguration<BooksType>) {
   return useQuery<BooksType>("/books", param, opts);
 }
 
-export function useBook(id?: string, param = {}, opts?: OptsType<BookType>) {
-  return useQuery<BookType>(`/books/${id}`, param, opts);
+export function useBook(id?: string, opts?: SWRConfiguration<BookType>) {
+  return useQuery<BookType>(`/books/${id}`, {}, opts);
 }
 
 export function useBooksInfinite(
@@ -55,7 +55,5 @@ export type BookType = {
     digest?: string;
   };
 } & BooksType[0];
-
-type OptsType<D = any, E = any> = SWRConfiguration<D, E>;
 
 export default useBooks;
