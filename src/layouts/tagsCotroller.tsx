@@ -1,11 +1,11 @@
-import Alert from "@/components/alert";
-import Skeleton from "@/components/skeleton";
+import Alert from "@/components/base/alert";
+import Skeleton from "@/components/base/skeleton";
 import useTags from "@/lib/hooks/useTags";
 import Box from "@/layouts/boxes";
 import Link from "next/link";
 
 const TagsCotroller: React.FC = () => {
-  const { tags, isLoading, isError } = useTags();
+  const { data, isLoading, isError } = useTags();
 
   if (isError) return <Alert.Error message="Network Error!" />;
   return (
@@ -13,7 +13,7 @@ const TagsCotroller: React.FC = () => {
       {isLoading ? (
         <TagSkeleton />
       ) : (
-        Object.entries(tags!).map((items, i) => (
+        Object.entries(data!).map((items, i) => (
           <Box.SubBox key={i} title={items[0]}>
             <div className="flex flex-wrap gap-2">
               {items[1]?.map((item, j) => (

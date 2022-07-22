@@ -1,4 +1,4 @@
-import { withDrawer } from "@/components/drawer";
+import { withDrawer } from "@/components/base/drawer";
 import Header from "@/layouts/header";
 import Footer from "@/layouts/footer";
 

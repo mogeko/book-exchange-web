@@ -1,5 +1,6 @@
 import TagsCotroller from "@/layouts/tagsCotroller";
 import { DefaultLayout } from "@/layouts/layout";
+import BookList from "@/components/contexts/bookList";
 import Box from "@/layouts/boxes";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
@@ -26,7 +27,7 @@ const TagView: React.FC = () => {
   return (
     <Box>
       <Box.Header>Tag: {tag}</Box.Header>
-      {tag && <Box.BookList limit={10} tags_include={tag} />}
+      {tag && <BookList limit={10} tags_include={tag} />}
     </Box>
   );
 };

@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Skeleton from "@/components/skeleton";
+import Skeleton from "@/components/base/skeleton";
 
 describe("Skeleton", () => {
   it("Create a Pulse Line skeleton", () => {

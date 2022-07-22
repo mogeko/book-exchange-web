@@ -1,6 +1,7 @@
 import TagsCotroller from "@/layouts/tagsCotroller";
-import { DefaultLayout } from "@/layouts/layout";
+import BookGrid from "@/components/contexts/bookGrid";
 import Box from "@/layouts/boxes";
+import { DefaultLayout } from "@/layouts/layout";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
@@ -19,20 +20,20 @@ const Home: NextPage = () => {
   );
 };
 
-const Popular: React.FC = () => {
+export const Popular: React.FC = () => {
   return (
     <Box>
       <Box.Header>Recently Popular</Box.Header>
-      <Box.BookGrid maxPages={5} limit={10} />
+      <BookGrid maxPages={5} limit={10} />
     </Box>
   );
 };
 
-const UnpopularMasterpiece: React.FC = () => {
+export const UnpopularMasterpiece: React.FC = () => {
   return (
     <Box>
       <Box.Header>Unpopular but Highly Rated</Box.Header>
-      <Box.BookGrid limit={5} />
+      <BookGrid limit={5} />
     </Box>
   );
 };

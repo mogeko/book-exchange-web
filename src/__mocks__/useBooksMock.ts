@@ -10,31 +10,35 @@ const useBooksMock = {
       mock.mockImplementation((param) => genExampleRes({}, param!.limit)),
     error: () =>
       mock.mockImplementation((param) =>
-        genExampleRes({ books: undefined, isError: true }, param!.limit)
+        genExampleRes({ data: undefined, isError: true }, param!.limit)
       ),
     loading: () =>
       mock.mockImplementation((param) =>
-        genExampleRes({ books: undefined, isLoading: true }, param!.limit)
+        genExampleRes({ data: undefined, isLoading: true }, param!.limit)
       ),
   }),
   genExampleRes,
 };
 
-export const exampleData: BookTypes = {
+export const exampleData: BookType = {
+  id: `bk${faker.datatype.number(100)}`,
   title: faker.word.noun(20),
   cover: faker.image.image(1280, 1910),
-  description: faker.lorem.paragraph(10),
-  published: faker.date.past().toISOString(),
-  publisher: faker.company.companyName(),
-  tags: [faker.lorem.words(1), faker.lorem.words(2)],
-  author: faker.name.firstName(),
+  tags: Array.from({ length: faker.datatype.number({ min: 2, max: 8 }) }, () =>
+    faker.lorem.words(2)
+  ),
   rates: faker.datatype.number(100),
-  id: faker.datatype.number(100),
+  mate: {
+    author: faker.name.firstName(),
+  },
+  desc: {
+    short_desc: faker.lorem.paragraph(10),
+  },
 };
 
 function genExampleRes(res: Partial<ResType> = {}, limit = 10): ResType {
   const exampleRes = {
-    books: Array.from({ length: limit }, () => exampleData),
+    data: Array.from({ length: limit }, () => exampleData),
     isValidating: false,
     isError: false,
     isLoading: false,
@@ -45,6 +49,6 @@ function genExampleRes(res: Partial<ResType> = {}, limit = 10): ResType {
 }
 
 type ResType = ReturnType<typeof hooks.default>;
-type BookTypes = hooks.BookTypes;
+type BookType = hooks.BooksType[0];
 
 export default useBooksMock;

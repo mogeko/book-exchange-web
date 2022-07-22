@@ -1,44 +1,31 @@
-import handleQuery from "@/lib/utils/queryTools";
-import useSWR, { type SWRResponse, type SWRConfiguration } from "swr";
+import useQuery from "@/lib/hooks/useQuery";
+import { type SWRConfiguration } from "swr";
 
-function useUsers(param: ParamProps = {}, opts: SWRConfiguration = {}) {
-  const query = handleQuery("/users", param);
-  const res: SWRResponse<UserType[]> = useSWR(query, opts);
-  const { data, error, ...otherRes } = res;
-
-  return {
-    users: data,
-    isLoading: !error && !data,
-    isError: error,
-    ...otherRes,
-  };
+function useUsers(param: ParamProps = {}, opts?: SWRConfiguration<UsersType>) {
+  return useQuery<UsersType>("/users", param, opts);
 }
 
-export function useUser(id: number, param = {}, opts: SWRConfiguration = {}) {
-  const query = handleQuery(`/users/${id}`, param);
-  const res: SWRResponse<UserType> = useSWR(query, opts);
-  const { data, error, ...otherRes } = res;
-
-  return {
-    user: data,
-    isLoading: !error && !data,
-    isError: error,
-    ...otherRes,
-  };
+export function useUser(uid?: string, opts?: SWRConfiguration<UserType>) {
+  return useQuery<UserType>(`/users/${uid}`, {}, opts);
 }
-
-export type UserType = {
-  avatar: string;
-  username: string;
-  description: string;
-  email: string;
-  city: string;
-  id: number;
-};
 
 interface ParamProps {
   limit?: number;
   page?: number;
 }
+
+export type UsersType = {
+  uid: `${number}`;
+  avatar: string;
+  username: string;
+  fullname: string;
+  description: string;
+  email: string;
+}[];
+
+export type UserType = {
+  city: string;
+  birthdate: string;
+} & UsersType[0];
 
 export default useUsers;

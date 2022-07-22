@@ -9,11 +9,11 @@ const useTagsMock = {
     success: () => mock.mockImplementation(() => genExampleRes()),
     error: () =>
       mock.mockImplementation(() =>
-        genExampleRes({ tags: undefined, isError: true })
+        genExampleRes({ data: undefined, isError: true })
       ),
     loading: () =>
       mock.mockImplementation(() =>
-        genExampleRes({ tags: undefined, isLoading: true })
+        genExampleRes({ data: undefined, isLoading: true })
       ),
   },
   genExampleRes,
@@ -32,7 +32,7 @@ export const exampleData: TagTypes = Array.from(
 
 function genExampleRes(res: Partial<ResType> = {}): ResType {
   const exampleRes = {
-    tags: exampleData,
+    data: exampleData,
     isValidating: false,
     isError: false,
     isLoading: false,

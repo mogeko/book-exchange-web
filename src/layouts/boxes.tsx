@@ -1,7 +1,3 @@
-import BookGrid from "@/layouts/contexts/bookGrid";
-import BookList from "@/layouts/contexts/bookList";
-import Pagination from "@/components/pagination";
-
 const BoxRoot: React.FC<BoxProps> = ({ title, children }) => {
   return (
     <div className="flex flex-col">
@@ -24,8 +20,7 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
   return <h1 className="text-2xl w-full py-2">{children}</h1>;
 };
 
-const Contexts = { BookGrid, BookList };
-const Box = Object.assign(BoxRoot, { SubBox, Header, Pagination, ...Contexts });
+const Box = Object.assign(BoxRoot, { SubBox, Header });
 
 interface BoxProps {
   title?: string;
