@@ -13,7 +13,9 @@ describe("Card", () => {
     );
     expect(container.querySelector("figure img")).toBeInTheDocument();
     expect(container.querySelector("h2")?.textContent).toBe(exampleData.title);
-    expect(container.querySelector("p")?.textContent).toBe(exampleData.author);
+    expect(container.querySelector("p")?.textContent).toBe(
+      exampleData.mate.author
+    );
   });
 
   it("snapshot a book card", () => {
@@ -37,7 +39,9 @@ describe("Card", () => {
     );
     expect(container.querySelector("figure img")).toBeInTheDocument();
     expect(container.querySelector("h2")?.textContent).toBe(exampleData.title);
-    expect(container.querySelector("p")?.textContent).toBe(exampleData.author);
+    expect(container.querySelector("p")?.textContent).toBe(
+      exampleData.mate.author
+    );
   });
 
   it("snapshot a long card", () => {

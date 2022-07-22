@@ -24,12 +24,16 @@ export const exampleData: BookType = {
   id: `bk${faker.datatype.number(100)}`,
   title: faker.word.noun(20),
   cover: faker.image.image(1280, 1910),
-  short_desc: faker.lorem.paragraph(10),
   tags: Array.from({ length: faker.datatype.number({ min: 2, max: 8 }) }, () =>
     faker.lorem.words(2)
   ),
-  author: faker.name.firstName(),
   rates: faker.datatype.number(100),
+  mate: {
+    author: faker.name.firstName(),
+  },
+  desc: {
+    short_desc: faker.lorem.paragraph(10),
+  },
 };
 
 function genExampleRes(res: Partial<ResType> = {}, limit = 10): ResType {

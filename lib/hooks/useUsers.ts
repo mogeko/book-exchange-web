@@ -14,8 +14,8 @@ function useUsers(param: ParamProps = {}, opts: SWRConfiguration = {}) {
   };
 }
 
-export function useUser(id: number, param = {}, opts: SWRConfiguration = {}) {
-  const query = handleQuery(`/users/${id}`, param);
+export function useUser(uid?: string, param = {}, opts: SWRConfiguration = {}) {
+  const query = uid ? handleQuery(`/users/${uid}`, param) : null;
   const res: SWRResponse<UserType> = useSWR(query, opts);
   const { data, error, ...otherRes } = res;
 
@@ -33,7 +33,7 @@ interface ParamProps {
 }
 
 export type UsersType = {
-  uid: string;
+  uid: `${number}`;
   avatar: string;
   username: string;
   fullname: string;

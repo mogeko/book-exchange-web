@@ -1,4 +1,4 @@
-import handleQuery from "@/lib/utils/queryTools";
+import handleQuery, { type XOR } from "@/lib/utils/queryTools";
 import useSWRInfinite, {
   type SWRInfiniteResponse,
   type SWRInfiniteConfiguration,
@@ -18,8 +18,8 @@ function useBooks(param: ParamProps = {}, opts: SWRConfiguration = {}) {
   };
 }
 
-export function useBook(id: number, param = {}, opts: SWRConfiguration = {}) {
-  const query = handleQuery(`/books/${id}`, param);
+export function useBook(id?: string, param = {}, opts: SWRConfiguration = {}) {
+  const query = id ? handleQuery(`/books/${id}`, param) : null;
   const res: SWRResponse<BookType> = useSWR(query, opts);
   const { data, error, ...otherRes } = res;
 
@@ -62,17 +62,28 @@ export type BooksType = {
   id: `bk${number}`;
   title: string;
   cover: string;
-  short_desc: string;
   tags: string[];
-  author: string;
   rates: number;
+  mate: {
+    author: string;
+  };
+  desc?: {
+    short_desc?: string;
+  };
 }[];
 
 export type BookType = {
-  long_desc: string;
-  digest: string;
-  published: string;
-  publisher: string;
+  mate: {
+    publisher?: string;
+    subtitle?: string;
+    language?: string;
+    publication_date?: string;
+    isbn?: `${number}-${number}`;
+  } & XOR<{ paperback?: number }, { hardcover?: number }>;
+  desc?: {
+    long_desc?: string;
+    digest?: string;
+  };
 } & BooksType[0];
 
 export default useBooks;

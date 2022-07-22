@@ -4,7 +4,7 @@ import StarsRate from "@/components/stars";
 import Image from "next/image";
 import Link from "next/link";
 
-const CardRoot: React.FC<CardProps> = ({ title, cover, author, id }) => {
+const CardRoot: React.FC<CardProps> = ({ title, cover, mate, id }) => {
   return (
     <div className="relative flex flex-col w-28">
       <figure className="flex justify-center items-center">
@@ -20,7 +20,7 @@ const CardRoot: React.FC<CardProps> = ({ title, cover, author, id }) => {
             <h2 className="truncate">{title}</h2>
           </a>
         </Link>
-        <p className="truncate">{author}</p>
+        <p className="truncate">{mate.author}</p>
       </div>
     </div>
   );
@@ -35,7 +35,7 @@ const CardSkeleton: React.FC = () => (
 );
 
 const LongCardRoot: React.FC<CardProps> = (props) => {
-  const { title, cover, author, id, short_desc, rates } = props;
+  const { title, cover, mate, desc, id, rates } = props;
   return (
     <div className="flex py-4 gap-3">
       <figure className="flex justify-center items-center">
@@ -53,9 +53,9 @@ const LongCardRoot: React.FC<CardProps> = (props) => {
             </a>
           </Link>
         </div>
-        <p className="truncate">{author}</p>
+        <p className="truncate">{mate.author}</p>
         <StarsRate rates={rates!} />
-        <p className="line-clamp-3 text-ellipsis">{short_desc}</p>
+        <p className="line-clamp-3 text-ellipsis">{desc?.short_desc}</p>
       </div>
     </div>
   );

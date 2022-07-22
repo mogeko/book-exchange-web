@@ -47,6 +47,5 @@ function genExampleRes(res: Partial<ResType> = {}, [x, y] = [3, 10]): ResType {
 }
 
 type ResType = ReturnType<typeof hooks.useBooksInfinite>;
-type BookType = hooks.BooksType[0];
 
 export default useBooksInfiniteMock;
