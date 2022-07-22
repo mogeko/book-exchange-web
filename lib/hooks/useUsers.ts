@@ -1,30 +1,12 @@
-import handleQuery from "@/lib/utils/queryTools";
-import useSWR, { type SWRResponse, type SWRConfiguration } from "swr";
+import useQuery from "@/lib/utils/useQuery";
+import { type SWRConfiguration } from "swr";
 
-function useUsers(param: ParamProps = {}, opts: SWRConfiguration = {}) {
-  const query = handleQuery("/users", param);
-  const res: SWRResponse<UsersType> = useSWR(query, opts);
-  const { data, error, ...otherRes } = res;
-
-  return {
-    users: data,
-    isLoading: !error && !data,
-    isError: error,
-    ...otherRes,
-  };
+function useUsers(param: ParamProps = {}, opts?: OptsType<UsersType>) {
+  return useQuery<UsersType>("/users", param, opts);
 }
 
-export function useUser(uid?: string, param = {}, opts: SWRConfiguration = {}) {
-  const query = uid ? handleQuery(`/users/${uid}`, param) : null;
-  const res: SWRResponse<UserType> = useSWR(query, opts);
-  const { data, error, ...otherRes } = res;
-
-  return {
-    user: data,
-    isLoading: !error && !data,
-    isError: error,
-    ...otherRes,
-  };
+export function useUser(uid?: string, param = {}, opts?: OptsType<UserType>) {
+  return useQuery<UserType>(`/users/${uid}`, param, opts);
 }
 
 interface ParamProps {
@@ -45,5 +27,7 @@ export type UserType = {
   city: string;
   birthdate: string;
 } & UsersType[0];
+
+type OptsType<D = any, E = any> = SWRConfiguration<D, E>;
 
 export default useUsers;

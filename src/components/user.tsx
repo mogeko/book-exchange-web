@@ -23,10 +23,10 @@ const User: React.FC = () => {
 };
 
 const UserBar: React.FC = () => {
-  const { user, isError, isLoading } = useUser("1");
+  const { data, isError, isLoading } = useUser("1");
   if (isError) return <div className="text-error">Login Error</div>;
   if (isLoading) return <Skeleton.Line className="animate-pulse w-20 mr-4" />;
-  if (!user)
+  if (!data)
     return (
       <Link href="#">
         <a className="btn btn-link btn-xs">Sign in / Sign up</a>
@@ -34,13 +34,13 @@ const UserBar: React.FC = () => {
     );
   return (
     <div className="btn btn-link btn-xs text-base-content">
-      Hi!&nbsp;<b>{user.username}</b>
+      Hi!&nbsp;<b>{data.username}</b>
     </div>
   );
 };
 
 const UserAvatar: React.FC = () => {
-  const { user, isError, isLoading } = useUser("1");
+  const { data: user, isError, isLoading } = useUser("1");
   if (isError) return <VscError className="w-6 h-6 text-error" />;
   if (isLoading) return <VscLoading className="animate-spin w-6 h-6" />;
   if (!user) return <HiUser className="h-6 w-6" aria-hidden="true" />;
@@ -48,7 +48,7 @@ const UserAvatar: React.FC = () => {
 };
 
 const UserMenu: React.FC = () => {
-  const { user } = useUser("1");
+  const { data: user } = useUser("1");
   return user ? (
     <ul
       tabIndex={0}

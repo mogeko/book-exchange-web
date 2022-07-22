@@ -15,21 +15,21 @@ const BookPage: NextPage = () => {
 
 const BookView: React.FC = () => {
   const { query } = useRouter();
-  const { book, isError, isLoading } = useBook(query.id as string);
+  const { data, isError, isLoading } = useBook(query.id as string);
 
   if (isError) return <p>Error!</p>;
   if (isLoading) return <p>Loading...</p>;
   return (
     <Box>
-      <Box.Header>{book?.title}</Box.Header>
+      <Box.Header>{data?.title}</Box.Header>
       <div className="my-4 flex w-full gap-3">
         <figure className="flex items-center justify-center">
           <div className="relative w-32 h-48">
-            <Image src={book?.cover!} layout="fill" alt={book?.title} />
+            <Image src={data?.cover!} layout="fill" alt={data?.title} />
           </div>
         </figure>
         <div className="flex flex-col">
-          {Object.entries(book?.mate ?? {}).map(([itemName, value], i) => {
+          {Object.entries(data?.mate ?? {}).map(([itemName, value], i) => {
             if (itemName === "paperback" || itemName === "hardcover") {
               return (
                 <div key={i} className="inline-flex gap-1 text-base">

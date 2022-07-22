@@ -8,31 +8,33 @@ const useUserMock = {
   returnResult: () => ({
     withLogined: () => mock.mockImplementation(() => genExampleRes({})),
     withoutLogined: () =>
-      mock.mockImplementation(() => genExampleRes({ user: undefined })),
+      mock.mockImplementation(() => genExampleRes({ data: undefined })),
     error: () =>
       mock.mockImplementation(() =>
-        genExampleRes({ user: undefined, isError: true })
+        genExampleRes({ data: undefined, isError: true })
       ),
     loading: () =>
       mock.mockImplementation(() =>
-        genExampleRes({ user: undefined, isLoading: true })
+        genExampleRes({ data: undefined, isLoading: true })
       ),
   }),
   genExampleRes,
 };
 
 export const exampleData: UserType = {
+  uid: `${faker.datatype.number(10)!}`,
   avatar: faker.image.avatar(),
   username: faker.internet.userName(),
+  fullname: `${faker.name.firstName()} ${faker.name.lastName()}`,
   description: faker.lorem.paragraph(10),
   email: faker.internet.email(),
   city: faker.address.city(),
-  uid: faker.datatype.number(10),
+  birthdate: faker.date.birthdate().toUTCString(),
 };
 
 function genExampleRes(res: Partial<ResType> = {}): ResType {
   const exampleRes = {
-    user: exampleData,
+    data: exampleData,
     isValidating: false,
     isError: false,
     isLoading: false,

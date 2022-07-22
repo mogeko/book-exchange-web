@@ -7,7 +7,7 @@ import { useState } from "react";
 const BookGrid: React.FC<DataProps> = ({ maxPages = 1, page, ...other }) => {
   const [index, setIndex] = useState(0);
   const query = { page: page ?? 1 + index, ...other };
-  const { books, isError, isLoading } = useBooks(query);
+  const { data, isError, isLoading } = useBooks(query);
   // Cache the next page of books
   useBooks({ page: query.page + (index < maxPages - 1 ? 1 : 0), ...other });
 
@@ -17,7 +17,7 @@ const BookGrid: React.FC<DataProps> = ({ maxPages = 1, page, ...other }) => {
         {isError && <Alert.Error message="Network Error!" />}
         {isLoading
           ? Array.from({ length: 10 }, (_, i) => <Card.Skeleton key={i} />)
-          : books?.map((book, i) => <Card key={i} {...book} />)}
+          : data?.map((book, i) => <Card key={i} {...book} />)}
       </div>
       <Pagination length={maxPages} index={index} setIndex={setIndex} />
     </div>

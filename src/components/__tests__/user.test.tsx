@@ -12,7 +12,7 @@ describe("User", () => {
     useUserMock.returnResult().withoutLogined();
     const { container } = render(<User />);
 
-    expect(useUserMock.target).toBeCalledWith(1);
+    expect(useUserMock.target).toBeCalledWith("1");
     expect(container.querySelector("a")?.textContent).toEqual(
       "Sign in / Sign up"
     );

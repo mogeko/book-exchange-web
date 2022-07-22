@@ -10,11 +10,11 @@ const useBooksMock = {
       mock.mockImplementation((param) => genExampleRes({}, param!.limit)),
     error: () =>
       mock.mockImplementation((param) =>
-        genExampleRes({ books: undefined, isError: true }, param!.limit)
+        genExampleRes({ data: undefined, isError: true }, param!.limit)
       ),
     loading: () =>
       mock.mockImplementation((param) =>
-        genExampleRes({ books: undefined, isLoading: true }, param!.limit)
+        genExampleRes({ data: undefined, isLoading: true }, param!.limit)
       ),
   }),
   genExampleRes,
@@ -38,7 +38,7 @@ export const exampleData: BookType = {
 
 function genExampleRes(res: Partial<ResType> = {}, limit = 10): ResType {
   const exampleRes = {
-    books: Array.from({ length: limit }, () => exampleData),
+    data: Array.from({ length: limit }, () => exampleData),
     isValidating: false,
     isError: false,
     isLoading: false,

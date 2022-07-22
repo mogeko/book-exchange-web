@@ -1,17 +1,8 @@
-import handleQuery from "@/lib/utils/queryTools";
-import useSWR, { type SWRResponse, type SWRConfiguration } from "swr";
+import useQuery from "@/lib/utils/useQuery";
+import { type SWRConfiguration } from "swr";
 
-function useTags(param: ParamProps = {}, opts: SWRConfiguration = {}) {
-  const query = handleQuery("/tags", param);
-  const res: SWRResponse<TagsType> = useSWR(query, opts);
-  const { data, error, ...otherRes } = res;
-
-  return {
-    tags: data,
-    isLoading: !error && !data,
-    isError: error,
-    ...otherRes,
-  };
+function useTags(param: ParamProps = {}, opts?: OptsType) {
+  return useQuery<TagsType>("/tags", param, opts);
 }
 
 type ParamProps = {};
@@ -19,5 +10,7 @@ type ParamProps = {};
 export interface TagsType {
   [tagsGroup: string]: string[];
 }
+
+type OptsType = SWRConfiguration<TagsType>;
 
 export default useTags;

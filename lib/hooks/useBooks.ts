@@ -1,55 +1,24 @@
 import handleQuery, { type XOR } from "@/lib/utils/queryTools";
-import useSWRInfinite, {
-  type SWRInfiniteResponse,
-  type SWRInfiniteConfiguration,
-} from "swr/infinite";
-import useSWR, { type SWRResponse, type SWRConfiguration } from "swr";
+import useQuery, { useQueryInfinite } from "@/lib/utils/useQuery";
+import { type SWRInfiniteConfiguration } from "swr/infinite";
+import { type SWRConfiguration } from "swr";
 
-function useBooks(param: ParamProps = {}, opts: SWRConfiguration = {}) {
-  const query = handleQuery("/books", param);
-  const res: SWRResponse<BooksType> = useSWR(query, opts);
-  const { data, error, ...otherRes } = res;
-
-  return {
-    books: data,
-    isLoading: !error && !data,
-    isError: error,
-    ...otherRes,
-  };
+function useBooks(param: ParamProps = {}, opts?: OptsType<BooksType>) {
+  return useQuery<BooksType>("/books", param, opts);
 }
 
-export function useBook(id?: string, param = {}, opts: SWRConfiguration = {}) {
-  const query = id ? handleQuery(`/books/${id}`, param) : null;
-  const res: SWRResponse<BookType> = useSWR(query, opts);
-  const { data, error, ...otherRes } = res;
-
-  return {
-    book: data,
-    isLoading: !error && !data,
-    isError: error,
-    ...otherRes,
-  };
+export function useBook(id?: string, param = {}, opts?: OptsType<BookType>) {
+  return useQuery<BookType>(`/books/${id}`, param, opts);
 }
 
 export function useBooksInfinite(
   { page = 1, ...other }: ParamProps = { page: 1 },
-  opts: SWRInfiniteConfiguration = {}
+  opts: SWRInfiniteConfiguration<BooksType> = {}
 ) {
-  const res: SWRInfiniteResponse<BooksType> = useSWRInfinite(
-    (index, previous) => {
-      if (previous && !previous.length) return null;
-      return handleQuery("/books", { page: index + page, ...other });
-    },
-    opts
-  );
-  const { data, error, ...otherRes } = res;
-
-  return {
-    data: data,
-    isLoading: !error && !data,
-    isError: error,
-    ...otherRes,
-  };
+  return useQueryInfinite<BooksType>((index, previous) => {
+    if (previous && !previous.length) return null;
+    return handleQuery("/books", { page: index + page, ...other });
+  }, opts);
 }
 
 interface ParamProps {
@@ -85,5 +54,7 @@ export type BookType = {
     digest?: string;
   };
 } & BooksType[0];
+
+type OptsType<D = any, E = any> = SWRConfiguration<D, E>;
 
 export default useBooks;
