@@ -32,7 +32,7 @@ export const exampleData: BookType = {
     author: faker.name.firstName(),
   },
   desc: {
-    short_desc: faker.lorem.paragraph(10),
+    text: faker.lorem.paragraph(10),
   },
 };
 

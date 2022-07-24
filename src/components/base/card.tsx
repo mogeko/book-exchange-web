@@ -55,7 +55,7 @@ const LongCardRoot: React.FC<CardProps> = (props) => {
         </div>
         <p className="truncate">{mate.author}</p>
         <StarsRate rates={rates!} />
-        <p className="line-clamp-3 text-ellipsis">{desc?.short_desc}</p>
+        <p className="line-clamp-3 text-ellipsis">{desc?.text}</p>
       </div>
     </div>
   );

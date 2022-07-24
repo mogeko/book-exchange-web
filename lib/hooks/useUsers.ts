@@ -6,7 +6,7 @@ function useUsers(param: ParamProps = {}, opts?: SWRConfiguration<UsersType>) {
 }
 
 export function useUser(uid?: string, opts?: SWRConfiguration<UserType>) {
-  return useQuery<UserType>(`/users/${uid}`, {}, opts);
+  return useQuery<UserType>(uid ? `/users/${uid}` : null, {}, opts);
 }
 
 interface ParamProps {
