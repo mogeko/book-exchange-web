@@ -1,4 +1,5 @@
 import * as hooks from "@/lib/hooks/useTags";
+import { genExampleRes } from "@/__mocks__/useQueryMock";
 import { faker } from "@faker-js/faker";
 
 const mock = jest.spyOn(hooks, "default");
@@ -6,15 +7,12 @@ const mock = jest.spyOn(hooks, "default");
 const useTagsMock = {
   target: hooks.default,
   returnResult: {
-    success: () => mock.mockImplementation(() => genExampleRes()),
+    success: () =>
+      mock.mockImplementation(() => genExampleRes({ data: exampleData })),
     error: () =>
-      mock.mockImplementation(() =>
-        genExampleRes({ data: undefined, isError: true })
-      ),
+      mock.mockImplementation(() => genExampleRes({ isError: true })),
     loading: () =>
-      mock.mockImplementation(() =>
-        genExampleRes({ data: undefined, isLoading: true })
-      ),
+      mock.mockImplementation(() => genExampleRes({ isLoading: true })),
   },
   genExampleRes,
 };
@@ -29,18 +27,6 @@ export const exampleData: TagTypes = Array.from(
   );
   return target;
 }, {});
-
-function genExampleRes(res: Partial<ResType> = {}): ResType {
-  const exampleRes = {
-    data: exampleData,
-    isValidating: false,
-    isError: false,
-    isLoading: false,
-    mutate: jest.fn(),
-  };
-
-  return { ...exampleRes, ...res };
-}
 
 type ResType = ReturnType<typeof hooks.default>;
 type TagTypes = hooks.TagsType;
