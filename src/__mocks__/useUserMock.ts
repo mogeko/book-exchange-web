@@ -1,4 +1,5 @@
 import * as hooks from "@/lib/hooks/useUsers";
+import { genExampleRes } from "@/__mocks__/useQueryMock";
 import { faker } from "@faker-js/faker";
 
 const mock = jest.spyOn(hooks, "useUser");
@@ -6,19 +7,14 @@ const mock = jest.spyOn(hooks, "useUser");
 const useUserMock = {
   target: hooks.useUser,
   returnResult: () => ({
-    withLogined: () => mock.mockImplementation(() => genExampleRes({})),
-    withoutLogined: () =>
-      mock.mockImplementation(() => genExampleRes({ data: undefined })),
+    withLogined: () =>
+      mock.mockImplementation(() => genExampleRes({ data: exampleData })),
+    withoutLogined: () => mock.mockImplementation(() => genExampleRes({})),
     error: () =>
-      mock.mockImplementation(() =>
-        genExampleRes({ data: undefined, isError: true })
-      ),
+      mock.mockImplementation(() => genExampleRes({ isError: true })),
     loading: () =>
-      mock.mockImplementation(() =>
-        genExampleRes({ data: undefined, isLoading: true })
-      ),
+      mock.mockImplementation(() => genExampleRes({ isLoading: true })),
   }),
-  genExampleRes,
 };
 
 export const exampleData: UserType = {
@@ -32,19 +28,6 @@ export const exampleData: UserType = {
   birthdate: faker.date.birthdate().toUTCString(),
 };
 
-function genExampleRes(res: Partial<ResType> = {}): ResType {
-  const exampleRes = {
-    data: exampleData,
-    isValidating: false,
-    isError: false,
-    isLoading: false,
-    mutate: jest.fn(),
-  };
-
-  return { ...exampleRes, ...res };
-}
-
-type ResType = ReturnType<typeof hooks.useUser>;
 type UserType = hooks.UserType;
 
 export default useUserMock;

@@ -1,4 +1,5 @@
 import * as hooks from "@/lib/hooks/useBooks";
+import { genExampleRes } from "@/__mocks__/useQueryMock";
 import { faker } from "@faker-js/faker";
 
 const mock = jest.spyOn(hooks, "default");
@@ -7,17 +8,16 @@ const useBooksMock = {
   target: hooks.default,
   returnResult: () => ({
     success: () =>
-      mock.mockImplementation((param) => genExampleRes({}, param!.limit)),
+      mock.mockImplementation((param) =>
+        genExampleRes({
+          data: Array.from({ length: param?.limit! }, () => exampleData),
+        })
+      ),
     error: () =>
-      mock.mockImplementation((param) =>
-        genExampleRes({ data: undefined, isError: true }, param!.limit)
-      ),
+      mock.mockImplementation(() => genExampleRes({ isError: true })),
     loading: () =>
-      mock.mockImplementation((param) =>
-        genExampleRes({ data: undefined, isLoading: true }, param!.limit)
-      ),
+      mock.mockImplementation((param) => genExampleRes({ isLoading: true })),
   }),
-  genExampleRes,
 };
 
 export const exampleData: BookType = {
@@ -36,19 +36,6 @@ export const exampleData: BookType = {
   },
 };
 
-function genExampleRes(res: Partial<ResType> = {}, limit = 10): ResType {
-  const exampleRes = {
-    data: Array.from({ length: limit }, () => exampleData),
-    isValidating: false,
-    isError: false,
-    isLoading: false,
-    mutate: jest.fn(),
-  };
-
-  return { ...exampleRes, ...res };
-}
-
-type ResType = ReturnType<typeof hooks.default>;
 type BookType = hooks.BooksType[0];
 
 export default useBooksMock;
