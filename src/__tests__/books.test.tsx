@@ -1,7 +1,24 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import useBookMock, { exampleData } from "@/__mocks__/useBookMock";
-import { BookView } from "@/pages/books/[id]";
+import useRouterMock from "@/__mocks__/useRouter";
+import BookPage, { BookView } from "@/pages/books/[id]";
+
+describe("Books Page", () => {
+  beforeEach(() => {
+    useRouterMock.returnResult({ query: { id: exampleData.id } });
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it("renders a Books Page", () => {
+    render(<BookPage />);
+
+    expect(useRouterMock.target).toBeCalledWith();
+  });
+});
 
 describe("BookView", () => {
   beforeEach(() => {
