@@ -9,7 +9,7 @@ function useBooks(param: ParamProps = {}, opts?: SWRConfiguration<BooksType>) {
 }
 
 export function useBook(id?: string, opts?: SWRConfiguration<BookType>) {
-  return useQuery<BookType>(`/books/${id}`, {}, opts);
+  return useQuery<BookType>(id ? `/books/${id}` : null, {}, opts);
 }
 
 export function useBooksInfinite(
@@ -38,7 +38,7 @@ export type BooksType = {
     author: string;
   };
   desc?: {
-    short_desc?: string;
+    text: string;
   };
 }[];
 
@@ -51,8 +51,11 @@ export type BookType = {
     isbn?: `${number}-${number}`;
   } & XOR<{ paperback?: number }, { hardcover?: number }>;
   desc?: {
-    long_desc?: string;
-    digest?: string;
+    is_folded: boolean;
+  };
+  digest?: {
+    text: string;
+    is_folded: boolean;
   };
 } & BooksType[0];
 

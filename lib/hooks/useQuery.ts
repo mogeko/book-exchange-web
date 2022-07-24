@@ -5,12 +5,12 @@ import useSWRInfinite, {
   type SWRInfiniteResponse,
 } from "swr/infinite";
 
-function useQuery<T, U = {}>(
-  url: `/${string}`,
-  param: U,
+function useQuery<T>(
+  url: `/${string}` | null,
+  param = {},
   opts: SWRConfiguration<T> = {}
 ) {
-  const query = handleQuery(url, param);
+  const query = url ? handleQuery(url, param) : null;
   const res: SWRResponse<T> = useSWR(query, opts);
   const { data, error, ...otherRes } = res;
 

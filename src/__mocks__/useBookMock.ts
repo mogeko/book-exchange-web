@@ -29,8 +29,12 @@ export const exampleData: BookType = {
     paperback: faker.datatype.number({ min: 100, max: 1000 }),
   },
   desc: {
-    digest: faker.lorem.paragraph(50),
-    long_desc: faker.lorem.paragraph(50),
+    text: faker.lorem.paragraph(50),
+    is_folded: faker.datatype.boolean(),
+  },
+  digest: {
+    text: faker.lorem.paragraph(50),
+    is_folded: faker.datatype.boolean(),
   },
 };
 
