@@ -77,7 +77,7 @@ exports[`Drawer snapshot a globale menu 1`] = `
         </li>
         <li>
           <a
-            href="/#"
+            href="/random"
           >
             I'm Feeling Lucky
           </a>
@@ -140,7 +140,7 @@ exports[`Drawer snapshot a globale menu 4`] = `
     </li>
     <li>
       <a
-        href="/#"
+        href="/random"
       >
         I'm Feeling Lucky
       </a>

@@ -3,7 +3,7 @@ export const menus = {
     { name: "My library", href: "#" },
     { name: "Ranking", href: "#" },
     { name: "Quote", href: "#" },
-    { name: "I'm Feeling Lucky", href: "#" },
+    { name: "I'm Feeling Lucky", href: "/random" },
   ],
   user: [
     { name: "Profile", href: "#" },
