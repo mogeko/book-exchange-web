@@ -16,7 +16,7 @@ const useBooksMock = {
     error: () =>
       mock.mockImplementation(() => genExampleRes({ isError: true })),
     loading: () =>
-      mock.mockImplementation((param) => genExampleRes({ isLoading: true })),
+      mock.mockImplementation(() => genExampleRes({ isLoading: true })),
   }),
 };
 

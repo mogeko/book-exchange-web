@@ -56,27 +56,46 @@ exports[`Drawer snapshot a globale menu 1`] = `
       >
         <li>
           <a
+            class="justify-between"
             href="/#"
           >
             My library
+            <span
+              class="badge"
+            >
+              90
+            </span>
           </a>
         </li>
         <li>
           <a
+            class="justify-between"
             href="/#"
           >
             Ranking
+            <span
+              class="badge"
+            >
+              13
+            </span>
           </a>
         </li>
         <li>
           <a
+            class="justify-between"
             href="/#"
           >
             Quote
+            <span
+              class="badge"
+            >
+              84
+            </span>
           </a>
         </li>
         <li>
           <a
+            class="justify-between"
             href="/random"
           >
             I'm Feeling Lucky
@@ -119,27 +138,46 @@ exports[`Drawer snapshot a globale menu 4`] = `
   >
     <li>
       <a
+        class="justify-between"
         href="/#"
       >
         My library
+        <span
+          class="badge"
+        >
+          90
+        </span>
       </a>
     </li>
     <li>
       <a
+        class="justify-between"
         href="/#"
       >
         Ranking
+        <span
+          class="badge"
+        >
+          13
+        </span>
       </a>
     </li>
     <li>
       <a
+        class="justify-between"
         href="/#"
       >
         Quote
+        <span
+          class="badge"
+        >
+          84
+        </span>
       </a>
     </li>
     <li>
       <a
+        class="justify-between"
         href="/random"
       >
         I'm Feeling Lucky

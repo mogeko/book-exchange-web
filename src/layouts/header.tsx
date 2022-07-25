@@ -1,3 +1,4 @@
+import useBadge from "@/lib/hooks/useBadges";
 import { DrawerButton } from "@/components/base/drawer";
 import Search from "@/components/search";
 import Logo from "@/components/base/logo";
@@ -7,6 +8,7 @@ import { menus } from "@/lib/_variable";
 import Link from "next/link";
 
 const TopNavbar: React.FC = () => {
+  const { menus: badges } = useBadge("1");
   return (
     <div
       className="hidden h-7 bg-black justify-between sm:flex"
@@ -15,8 +17,13 @@ const TopNavbar: React.FC = () => {
       <nav className="navbar min-h-0 flex-1">
         {menus.root.map((menu, index) => (
           <Link href={menu.href} key={index}>
-            <a className="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus">
+            <a className="btn btn-link btn-xs gap-1 text-gray-400 hover:text-primary focus:text-primary-focus">
               {menu.name}
+              {badges[index] && (
+                <span className="badge badge-xs badge-primary">
+                  {badges[index]}
+                </span>
+              )}
             </a>
           </Link>
         ))}

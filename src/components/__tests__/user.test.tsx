@@ -1,9 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import useUserMock, { exampleData } from "@/__mocks__/useUserMock";
+import useBadgeMock from "@/__mocks__/useBadgesMock";
 import User from "@/components/user";
 
 describe("User", () => {
+  beforeEach(() => {
+    useBadgeMock.returnResult();
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
@@ -43,6 +48,10 @@ describe("User", () => {
 });
 
 describe("User with abnormal state", () => {
+  beforeEach(() => {
+    useBadgeMock.returnResult();
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
