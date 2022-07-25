@@ -1,20 +1,22 @@
-import useQuery, { useQueryInfinite } from "@/lib/hooks/useQuery";
+import useQuery, {
+  useQueryInfinite,
+  type Opts,
+  type OptsInfinite,
+} from "@/lib/hooks/useQuery";
 import handleQuery from "@/lib/utils/queryTools";
 import { type XOR } from "@/lib/utils/typeTools";
-import { type SWRInfiniteConfiguration } from "swr/infinite";
-import { type SWRConfiguration } from "swr";
 
-function useBooks(param: ParamProps = {}, opts?: SWRConfiguration<BooksType>) {
+function useBooks(param: ParamProps = {}, opts?: Opts<BooksType>) {
   return useQuery<BooksType>("/books", param, opts);
 }
 
-export function useBook(id?: string, opts?: SWRConfiguration<BookType>) {
+export function useBook(id?: string, opts?: Opts<BookType>) {
   return useQuery<BookType>(id ? `/books/${id}` : null, {}, opts);
 }
 
 export function useBooksInfinite(
   { page = 1, ...other }: ParamProps = { page: 1 },
-  opts: SWRInfiniteConfiguration<BooksType> = {}
+  opts: OptsInfinite<BooksType> = {}
 ) {
   return useQueryInfinite<BooksType>((index, previous) => {
     if (previous && !previous.length) return null;

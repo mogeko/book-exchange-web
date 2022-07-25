@@ -1,7 +1,6 @@
-import useQuery from "@/lib/hooks/useQuery";
-import { type SWRConfiguration } from "swr";
+import useQuery, { type Opts } from "@/lib/hooks/useQuery";
 
-function useTags(opts?: SWRConfiguration<TagsType>) {
+function useTags(opts?: Opts<TagsType>) {
   return useQuery<TagsType>("/tags", {}, opts);
 }
 
