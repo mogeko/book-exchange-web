@@ -55,20 +55,33 @@ exports[`User snapshot a user menu with logined 1`] = `
     >
       <li>
         <a
+          class="justify-between"
           href="/#"
         >
           Profile
+          <span
+            class="badge"
+          >
+            18
+          </span>
         </a>
       </li>
       <li>
         <a
+          class="justify-between"
           href="/#"
         >
           Settings
+          <span
+            class="badge"
+          >
+            69
+          </span>
         </a>
       </li>
       <li>
         <a
+          class="justify-between"
           href="/#"
         >
           Logout
@@ -121,6 +134,45 @@ exports[`User snapshot a user menu without logined 1`] = `
         </svg>
       </div>
     </label>
+    <ul
+      class="menu menu-compact dropdown-content shadow bg-base-300 rounded-box w-52 mt-3 p-2 sm:mt-4 sm:p-0"
+      tabindex="0"
+    >
+      <li>
+        <a
+          class="justify-between"
+          href="/#"
+        >
+          Profile
+          <span
+            class="badge"
+          >
+            18
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="justify-between"
+          href="/#"
+        >
+          Settings
+          <span
+            class="badge"
+          >
+            69
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="justify-between"
+          href="/#"
+        >
+          Logout
+        </a>
+      </li>
+    </ul>
   </div>
 </div>
 `;

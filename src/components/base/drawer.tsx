@@ -1,8 +1,10 @@
 import { HiMenu } from "react-icons/hi";
 import Link from "next/link";
 import { menus } from "@/lib/_variable";
+import useBadge from "@/lib/hooks/useBadges";
 
 const DrawerMenu: React.FC<DrawerMenuProps> = ({ toggleId }) => {
+  const { menus: badges } = useBadge("1");
   return (
     <div className="drawer-side">
       <label htmlFor={toggleId} className="drawer-overlay" />
@@ -10,7 +12,12 @@ const DrawerMenu: React.FC<DrawerMenuProps> = ({ toggleId }) => {
         {menus.root.map((menu, index) => (
           <li key={index}>
             <Link href={menu.href}>
-              <a>{menu.name}</a>
+              <a className="justify-between">
+                {menu.name}
+                {badges[index] && (
+                  <span className="badge">{badges[index]}</span>
+                )}
+              </a>
             </Link>
           </li>
         ))}
