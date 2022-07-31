@@ -1,13 +1,8 @@
-import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import useBadgeMock from "@/__mocks__/useBadgesMock";
+import { render, screen } from "@/lib/utils/testUtils";
 import Header from "@/layouts/header";
 
 describe("Header", () => {
-  beforeEach(() => {
-    useBadgeMock.returnResult();
-  });
-
   afterEach(() => {
     jest.resetAllMocks();
   });

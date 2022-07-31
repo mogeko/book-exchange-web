@@ -4,26 +4,15 @@ import type { AppProps } from "next/app";
 import { SWRConfig } from "swr";
 import "@/styles/globals.css";
 
-// ONLY FOR DEVELOPMENT
-// Use middleware to inject the address of the mock server
-const mockHost = "https://book-exchange-mock.azurewebsites.net/api/v1";
-// const mockHost = "http://localhost:3001/api/v1"; // Local mock server
-
 // Setup MSW for development and demo environment
 if (
   process.env.NODE_ENV === "development" ||
   process.env.NEXT_PUBLIC_DEMO === "true"
 ) {
-  if (typeof window === "undefined") {
-    const { server } = require("@/lib/mocks/server");
-    server.listen();
-  } else {
-    const { worker } = require("@/lib/mocks/browser");
-    worker.start();
-  }
+  require("@/lib/mocks/init");
 }
 
-const fetcher = (url: string) => fetch(mockHost + url).then((r) => r.json());
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 const swrConfig = {
   fetcher,

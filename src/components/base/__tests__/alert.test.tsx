@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { render } from "@/lib/utils/testUtils";
 import Alert from "@/components/base/alert";
 
 describe("Alert", () => {
