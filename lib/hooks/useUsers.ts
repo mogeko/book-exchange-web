@@ -1,11 +1,10 @@
-import useQuery from "@/lib/hooks/useQuery";
-import { type SWRConfiguration } from "swr";
+import useQuery, { type Opts } from "@/lib/hooks/useQuery";
 
-function useUsers(param: ParamProps = {}, opts?: SWRConfiguration<UsersType>) {
+function useUsers(param: ParamProps = {}, opts?: Opts<UsersType>) {
   return useQuery<UsersType>("/users", param, opts);
 }
 
-export function useUser(uid?: string, opts?: SWRConfiguration<UserType>) {
+export function useUser(uid?: string, opts?: Opts<UserType>) {
   return useQuery<UserType>(uid ? `/users/${uid}` : null, {}, opts);
 }
 

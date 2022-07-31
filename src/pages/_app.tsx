@@ -1,6 +1,8 @@
-import "@/styles/globals.css";
+import MenusProvider from "@/layouts/providers/menusProvider";
 import type { AppProps } from "next/app";
 import { SWRConfig } from "swr";
+import "@/styles/globals.css";
+import MessageProvider from "@/layouts/providers/msgProvider";
 
 // ONLY FOR DEVELOPMENT
 // Use middleware to inject the address of the mock server
@@ -19,12 +21,26 @@ const swrConfig = {
   revalidateFirstPage: false,
 };
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+const App: React.FC<AppProps> = ({ Component, pageProps }) => {
+  return (
+    <WrapProvider>
+      <Component {...pageProps} />
+    </WrapProvider>
+  );
+};
+
+export const WrapProvider: React.FC<WrapProviderProps> = ({ children }) => {
   return (
     <SWRConfig value={swrConfig}>
-      <Component {...pageProps} />
+      <MessageProvider>
+        <MenusProvider>{children}</MenusProvider>
+      </MessageProvider>
     </SWRConfig>
   );
 };
 
-export default MyApp;
+interface WrapProviderProps {
+  children: React.ReactNode;
+}
+
+export default App;

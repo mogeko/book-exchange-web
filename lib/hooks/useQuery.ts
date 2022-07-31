@@ -1,18 +1,14 @@
 import handleQuery from "@/lib/utils/queryTools";
-import useSWR, { type SWRResponse, type SWRConfiguration } from "swr";
-import useSWRInfinite, {
-  type SWRInfiniteConfiguration,
-  type SWRInfiniteResponse,
-} from "swr/infinite";
+import useSWR, { type SWRConfiguration } from "swr";
+import useSWRInfinite, { type SWRInfiniteConfiguration } from "swr/infinite";
 
-function useQuery<T>(
+function useQuery<T, E = any>(
   url: `/${string}` | null,
   param = {},
-  opts: SWRConfiguration<T> = {}
+  opts: SWRConfiguration<T, E> = {}
 ) {
   const query = url ? handleQuery(url, param) : null;
-  const res: SWRResponse<T> = useSWR(query, opts);
-  const { data, error, ...otherRes } = res;
+  const { data, error, ...otherRes } = useSWR<T, E>(query, opts);
 
   return {
     data: data,
@@ -22,12 +18,11 @@ function useQuery<T>(
   };
 }
 
-export function useQueryInfinite<T>(
+export function useQueryInfinite<T, E = any>(
   getKey: (index: number, previous: T | null) => string | null,
-  opts: SWRInfiniteConfiguration<T> = {}
+  opts: SWRInfiniteConfiguration<T, E> = {}
 ) {
-  const res: SWRInfiniteResponse<T> = useSWRInfinite(getKey, opts);
-  const { data, error, ...otherRes } = res;
+  const { data, error, ...otherRes } = useSWRInfinite<T, E>(getKey, opts);
 
   return {
     data: data,
@@ -37,27 +32,7 @@ export function useQueryInfinite<T>(
   };
 }
 
-export type Query<T = any, U = any> = (
-  url: `/${string}`,
-  param: U,
-  opts?: SWRConfiguration<T>
-) => {
-  isLoading: boolean;
-  isError: boolean;
-} & SWRResponse<T>;
-
-export type QueryProps<T = any, U = any> = Parameters<Query<T, U>>;
-export type QueryReturn<T = any> = ReturnType<Query<T>>;
-
-export type QueryInfinite<T = any> = (
-  getKey: (index: number, previous: T | null) => string | null,
-  opts?: SWRInfiniteConfiguration<T>
-) => {
-  isLoading: boolean;
-  isError: boolean;
-} & SWRInfiniteResponse<T>;
-
-export type QueryInfiniteProps<T = any> = Parameters<QueryInfinite<T>>;
-export type QueryInfiniteReturn<T = any> = ReturnType<QueryInfinite<T>>;
+export type Opts<T = any, E = any> = SWRConfiguration<T, E>;
+export type OptsInfinite<T = any, E = any> = SWRInfiniteConfiguration<T, E>;
 
 export default useQuery;

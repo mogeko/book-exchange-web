@@ -1,5 +1,4 @@
-import useQuery from "./useQuery";
-import { type SWRConfiguration } from "swr";
+import useQuery, { type Opts } from "./useQuery";
 
 function useComments(param: ParamProps = {}, opts?: Opts<CommentsType>) {
   return useQuery<CommentsType>("/comments", param, opts);
@@ -48,7 +47,5 @@ interface ParamProps {
   limit?: number;
   page?: number;
 }
-
-type Opts<T, E = any> = SWRConfiguration<T, E>;
 
 export default useComments;

@@ -58,11 +58,8 @@ exports[`User snapshot a user menu with logined 1`] = `
           class="justify-between"
           href="/#"
         >
-          Profile
-          <span
-            class="badge"
-          >
-            18
+          <span>
+            Profile
           </span>
         </a>
       </li>
@@ -71,20 +68,9 @@ exports[`User snapshot a user menu with logined 1`] = `
           class="justify-between"
           href="/#"
         >
-          Settings
-          <span
-            class="badge"
-          >
-            69
+          <span>
+            Settings
           </span>
-        </a>
-      </li>
-      <li>
-        <a
-          class="justify-between"
-          href="/#"
-        >
-          Logout
         </a>
       </li>
     </ul>
@@ -143,11 +129,8 @@ exports[`User snapshot a user menu without logined 1`] = `
           class="justify-between"
           href="/#"
         >
-          Profile
-          <span
-            class="badge"
-          >
-            18
+          <span>
+            Profile
           </span>
         </a>
       </li>
@@ -156,20 +139,9 @@ exports[`User snapshot a user menu without logined 1`] = `
           class="justify-between"
           href="/#"
         >
-          Settings
-          <span
-            class="badge"
-          >
-            69
+          <span>
+            Settings
           </span>
-        </a>
-      </li>
-      <li>
-        <a
-          class="justify-between"
-          href="/#"
-        >
-          Logout
         </a>
       </li>
     </ul>
@@ -215,6 +187,31 @@ exports[`User with abnormal state snapshot user menu is loading 1`] = `
         </svg>
       </div>
     </label>
+    <ul
+      class="menu menu-compact dropdown-content shadow bg-base-300 rounded-box w-52 mt-3 p-2 sm:mt-4 sm:p-0"
+      tabindex="0"
+    >
+      <li>
+        <a
+          class="justify-between"
+          href="/#"
+        >
+          <span>
+            Profile
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="justify-between"
+          href="/#"
+        >
+          <span>
+            Settings
+          </span>
+        </a>
+      </li>
+    </ul>
   </div>
 </div>
 `;
@@ -259,6 +256,31 @@ exports[`User with abnormal state snapshot user menu when error occurred 1`] = `
         </svg>
       </div>
     </label>
+    <ul
+      class="menu menu-compact dropdown-content shadow bg-base-300 rounded-box w-52 mt-3 p-2 sm:mt-4 sm:p-0"
+      tabindex="0"
+    >
+      <li>
+        <a
+          class="justify-between"
+          href="/#"
+        >
+          <span>
+            Profile
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="justify-between"
+          href="/#"
+        >
+          <span>
+            Settings
+          </span>
+        </a>
+      </li>
+    </ul>
   </div>
 </div>
 `;

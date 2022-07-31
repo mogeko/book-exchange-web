@@ -1,7 +1,6 @@
-import useQuery from "./useQuery";
-import { type SWRConfiguration } from "swr";
+import useQuery, { type Opts } from "./useQuery";
 
-function useBadge(id: string, opts?: SWRConfiguration<BadgesType>) {
+function useBadge(id: string, opts?: Opts<BadgesType>) {
   const { data, isError } = useQuery<BadgesType>(`/badges/${id}`, {}, opts);
   const handleZero = (badge: number) => (badge === 0 ? null : badge);
 

@@ -30,7 +30,7 @@ describe("User", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it("renders a user menu with logined", () => {
+  it.skip("renders a user menu with logined", () => {
     useUserMock.returnResult().withLogined();
     render(<User />);
 
@@ -56,7 +56,7 @@ describe("User with abnormal state", () => {
     jest.resetAllMocks();
   });
 
-  it("renders user menu when error occurred", () => {
+  it.skip("renders user menu when error occurred", () => {
     useUserMock.returnResult().error();
     const { container } = render(<User />);
 
