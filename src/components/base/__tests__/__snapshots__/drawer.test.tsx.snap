@@ -59,11 +59,8 @@ exports[`Drawer snapshot a globale menu 1`] = `
             class="justify-between"
             href="/#"
           >
-            My library
-            <span
-              class="badge"
-            >
-              90
+            <span>
+              My library
             </span>
           </a>
         </li>
@@ -72,11 +69,8 @@ exports[`Drawer snapshot a globale menu 1`] = `
             class="justify-between"
             href="/#"
           >
-            Ranking
-            <span
-              class="badge"
-            >
-              13
+            <span>
+              Ranking
             </span>
           </a>
         </li>
@@ -85,20 +79,9 @@ exports[`Drawer snapshot a globale menu 1`] = `
             class="justify-between"
             href="/#"
           >
-            Quote
-            <span
-              class="badge"
-            >
-              84
+            <span>
+              Quote
             </span>
-          </a>
-        </li>
-        <li>
-          <a
-            class="justify-between"
-            href="/random"
-          >
-            I'm Feeling Lucky
           </a>
         </li>
       </ul>
@@ -141,11 +124,8 @@ exports[`Drawer snapshot a globale menu 4`] = `
         class="justify-between"
         href="/#"
       >
-        My library
-        <span
-          class="badge"
-        >
-          90
+        <span>
+          My library
         </span>
       </a>
     </li>
@@ -154,11 +134,8 @@ exports[`Drawer snapshot a globale menu 4`] = `
         class="justify-between"
         href="/#"
       >
-        Ranking
-        <span
-          class="badge"
-        >
-          13
+        <span>
+          Ranking
         </span>
       </a>
     </li>
@@ -167,20 +144,9 @@ exports[`Drawer snapshot a globale menu 4`] = `
         class="justify-between"
         href="/#"
       >
-        Quote
-        <span
-          class="badge"
-        >
-          84
+        <span>
+          Quote
         </span>
-      </a>
-    </li>
-    <li>
-      <a
-        class="justify-between"
-        href="/random"
-      >
-        I'm Feeling Lucky
       </a>
     </li>
   </ul>

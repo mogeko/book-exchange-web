@@ -1,28 +1,34 @@
+import { MenusContext } from "@/layouts/providers/menusProvider";
+import Badge from "@/components/badge";
 import { HiMenu } from "react-icons/hi";
 import Link from "next/link";
-import { menus } from "@/lib/_variable";
-import useBadge from "@/lib/hooks/useBadges";
+import { useContext } from "react";
 
 const DrawerMenu: React.FC<DrawerMenuProps> = ({ toggleId }) => {
-  const { menus: badges } = useBadge("1");
   return (
     <div className="drawer-side">
       <label htmlFor={toggleId} className="drawer-overlay" />
-      <ul className="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content">
-        {menus.root.map((menu, index) => (
-          <li key={index}>
-            <Link href={menu.href}>
-              <a className="justify-between">
-                {menu.name}
-                {badges[index] && (
-                  <span className="badge">{badges[index]}</span>
-                )}
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <MenusButtons />
     </div>
+  );
+};
+
+const MenusButtons: React.FC = () => {
+  const menus = useContext(MenusContext);
+
+  return (
+    <ul className="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content">
+      {Object.entries(menus.root).map(([key, [name, href]], index) => (
+        <li key={index}>
+          <Link href={href}>
+            <a className="justify-between">
+              <span>{name}</span>
+              <Badge badgeKey={key} />
+            </a>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 

@@ -1,11 +1,12 @@
 import { VscError, VscLoading } from "react-icons/vsc";
-import useBadge from "@/lib/hooks/useBadges";
 import { useUser } from "@/lib/hooks/useUsers";
-import { menus } from "@/lib/_variable";
-import { HiUser } from "react-icons/hi";
+import { MenusContext } from "@/layouts/providers/menusProvider";
 import Skeleton from "@/components/base/skeleton";
+import Badge from "@/components/badge";
+import { HiUser } from "react-icons/hi";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 
 const User: React.FC = () => {
   return (
@@ -49,21 +50,19 @@ const UserAvatar: React.FC = () => {
 };
 
 const UserMenu: React.FC = () => {
-  const { isLoading, isError } = useUser("1");
-  const { user: badges } = useBadge("1");
+  const menus = useContext(MenusContext);
 
-  if (isLoading || isError) return <></>;
   return (
     <ul
       tabIndex={0}
       className="menu menu-compact dropdown-content shadow bg-base-300 rounded-box w-52 mt-3 p-2 sm:mt-4 sm:p-0"
     >
-      {menus.user.map((menu, index) => (
+      {Object.entries(menus.user).map(([key, [name, href]], index) => (
         <li key={index}>
-          <Link href={menu.href}>
+          <Link href={href}>
             <a className="justify-between">
-              {menu.name}
-              {badges[index] && <span className="badge">{badges[index]}</span>}
+              <span>{name}</span>
+              <Badge badgeKey={key} />
             </a>
           </Link>
         </li>

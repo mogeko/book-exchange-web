@@ -1,32 +1,35 @@
-import useBadge from "@/lib/hooks/useBadges";
 import { DrawerButton } from "@/components/base/drawer";
 import Search from "@/components/search";
 import Logo from "@/components/base/logo";
 import User from "@/components/user";
+import Badge from "@/components/badge";
 import logoImage from "@/public/images/logo.svg";
-import { menus } from "@/lib/_variable";
+import { MenusContext } from "@/layouts/providers/menusProvider";
 import Link from "next/link";
+import { useContext } from "react";
 
 const TopNavbar: React.FC = () => {
-  const { menus: badges } = useBadge("1");
+  const menus = useContext(MenusContext);
+
   return (
     <div
       className="hidden h-7 bg-black justify-between sm:flex"
       data-theme="dracula"
     >
-      <nav className="navbar min-h-0 flex-1">
-        {menus.root.map((menu, index) => (
-          <Link href={menu.href} key={index}>
+      <nav className="navbar min-h-0 flex-">
+        {Object.entries(menus.root).map(([key, [name, href]], index) => (
+          <Link href={href} key={index}>
             <a className="btn btn-link btn-xs gap-1 text-gray-400 hover:text-primary focus:text-primary-focus">
-              {menu.name}
-              {badges[index] && (
-                <span className="badge badge-xs badge-primary">
-                  {badges[index]}
-                </span>
-              )}
+              {name}
+              <Badge className="badge-xs badge-primary" badgeKey={key} />
             </a>
           </Link>
         ))}
+        <Link href="/random">
+          <a className="btn btn-link btn-xs text-gray-400 hover:text-primary focus:text-primary-focus">
+            I&apos;m Feeling Lucky!
+          </a>
+        </Link>
       </nav>
       <div className="justify-end">
         <User />
